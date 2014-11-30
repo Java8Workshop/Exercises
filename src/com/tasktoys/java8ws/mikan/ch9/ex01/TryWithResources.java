@@ -6,6 +6,7 @@ package com.tasktoys.java8ws.mikan.ch9.ex01;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.PrintWriter;
 import java.util.Scanner;
 import java.util.logging.Logger;
 
@@ -20,16 +21,29 @@ public class TryWithResources {
 
     public static void main(String[] args) {
         Scanner in = null;
+        PrintWriter out = null;
         try {
             in = new Scanner(new File("README.md"));
+            out = new PrintWriter("out/ch9.ex01.txt");
             while (in.hasNext()) {
-                System.out.println("" + in.next().toLowerCase());
+                out.println(in.next().toLowerCase());
             }
         } catch (FileNotFoundException ex) {
             LOG.severe(ex.getMessage());
         } finally {
             if (in != null) {
-                in.close();
+                try {
+                    in.close();
+                } catch (Exception e) {
+                    System.err.println(e.getMessage());
+                }
+            }
+            if (out != null) {
+                try {
+                    out.close();
+                } catch (Exception e) {
+                    System.err.println(e.getMessage());
+                }
             }
         }
     }

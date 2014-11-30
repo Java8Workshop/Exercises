@@ -11,12 +11,13 @@ public class Ex01 {
 
   public static void main(String[] args) {
     System.out.println("test");
-    
-    
+     
+    Scanner in = null;
+    PrintWriter out = null;
     
     try{
-      Scanner in = new Scanner( Paths.get("./README.md") );
-      PrintWriter out = new PrintWriter("./outMrBearing.txt");
+      in = new Scanner( Paths.get("./README.md") );
+      out = new PrintWriter("./outMrBearing.txt");
       while(in.hasNext())
         out.println(in.next().toLowerCase());
       
@@ -24,7 +25,9 @@ public class Ex01 {
       out.close();
       
     }catch(Exception e){
-      
+      e.printStackTrace();
+      in.close();
+      out.close();
     }
     
   }

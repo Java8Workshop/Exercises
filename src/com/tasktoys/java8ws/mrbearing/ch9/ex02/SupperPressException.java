@@ -37,6 +37,7 @@ public class SupperPressException {
       
       e.printStackTrace();
       ie = e;
+      throw ie;
       
     } finally{
       safeClose(out, ie);
@@ -52,7 +53,7 @@ public class SupperPressException {
       }
     } catch (IOException e) {
       if(supper_e == null)
-        throw supper_e;
+        supper_e.addSuppressed(e);
     }
   }
   

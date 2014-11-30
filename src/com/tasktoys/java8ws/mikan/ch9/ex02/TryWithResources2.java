@@ -34,20 +34,20 @@ public class TryWithResources2 {
         } catch (FileNotFoundException ex) {
             LOG.severe(ex.getMessage());
             original = ex;
+            throw ex;
         } finally {
             safeClose(in);
             safeClose(out);
         }
     }
 
-    private static void safeClose(Closeable c) throws Throwable {
+    private static void safeClose(Closeable c) {
         if (c != null) {
             try {
                 c.close();
             } catch (Throwable e) {
                 if (original != null) {
                     original.addSuppressed(e);
-                    throw original;
                 }
                 LOG.log(Level.SEVERE, "Closing failed.", e);
             }

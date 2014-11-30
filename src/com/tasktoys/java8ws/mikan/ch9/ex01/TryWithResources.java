@@ -8,6 +8,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 import java.util.Scanner;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
@@ -19,7 +20,7 @@ public class TryWithResources {
 
     private static final Logger LOG = Logger.getLogger(TryWithResources.class.getSimpleName());
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Throwable {
         Scanner in = null;
         PrintWriter out = null;
         try {
@@ -30,19 +31,20 @@ public class TryWithResources {
             }
         } catch (FileNotFoundException ex) {
             LOG.severe(ex.getMessage());
+            throw ex;
         } finally {
             if (in != null) {
                 try {
                     in.close();
-                } catch (Exception e) {
-                    System.err.println(e.getMessage());
+                } catch (Throwable e) {
+                    LOG.log(Level.SEVERE, "Closing failed.", e);
                 }
             }
             if (out != null) {
                 try {
                     out.close();
-                } catch (Exception e) {
-                    System.err.println(e.getMessage());
+                } catch (Throwable e) {
+                    LOG.log(Level.SEVERE, "Closing failed.", e);
                 }
             }
         }

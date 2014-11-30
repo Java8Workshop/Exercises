@@ -46,13 +46,13 @@ public class SupperPressException {
   }
   
   
-  private static void safeClose(Closeable res ,Exception supper_e) throws Exception {
+  private static void safeClose(Closeable res ,Exception supper_e) {
     try {
       if (res != null) {
         res.close();
       }
     } catch (IOException e) {
-      if(supper_e == null)
+      if(supper_e != null)
         supper_e.addSuppressed(e);
     }
   }

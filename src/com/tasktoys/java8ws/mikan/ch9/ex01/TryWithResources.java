@@ -25,7 +25,7 @@ public class TryWithResources {
         PrintWriter out = null;
         try {
             in = new Scanner(new File("README.md"));
-            out = new PrintWriter("out/ch9.ex01.txt");
+            out = new PrintWriter(new File("out/ch9.ex01.txt"));
             while (in.hasNext()) {
                 out.println(in.next().toLowerCase());
             }

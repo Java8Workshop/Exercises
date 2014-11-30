@@ -33,7 +33,9 @@ public class WithoutTryWithResources {
         res.close();
       }
     } catch (IOException e) {
-      base.addSuppressed(e);
+      if (base != null) {
+        base.addSuppressed(e);
+      }
     }
   }
 

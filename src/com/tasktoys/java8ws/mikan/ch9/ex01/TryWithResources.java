@@ -26,13 +26,24 @@ public class TryWithResources {
             in = new Scanner(new File("README.md"));
             out = new PrintWriter("out/ch9.ex01.txt");
             while (in.hasNext()) {
-                System.out.println("" + in.next().toLowerCase());
+                out.println(in.next().toLowerCase());
             }
         } catch (FileNotFoundException ex) {
             LOG.severe(ex.getMessage());
         } finally {
             if (in != null) {
-                in.close();
+                try {
+                    in.close();
+                } catch (Exception e) {
+                    System.err.println(e.getMessage());
+                }
+            }
+            if (out != null) {
+                try {
+                    out.close();
+                } catch (Exception e) {
+                    System.err.println(e.getMessage());
+                }
             }
         }
     }

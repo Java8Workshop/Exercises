@@ -10,7 +10,7 @@ import java.util.Scanner;
  * @author intptr_t
  */
 public class Ch9Ex02 {
-	public static void main(String[] args) {
+	public static void main(String[] args) throws Throwable {
 		Scanner in = null;
 		PrintWriter out = null;
 		Throwable secondaryException = null;
@@ -26,7 +26,8 @@ public class Ch9Ex02 {
 			}
 		} catch(Exception e) {
 			secondaryException = e;
-			System.out.println("exception[1]");
+			System.err.println("exception[1]");
+			throw e;
 		} finally {
 			try {
 				if (in != null) { in.close(); }
@@ -35,7 +36,8 @@ public class Ch9Ex02 {
 					e.addSuppressed(secondaryException);
 				}
 				secondaryException = e;
-				System.out.println("exception[2]");
+				System.err.println("exception[2]");
+				throw e;
 			} finally {
 				try {
 					if (out != null){ out.close(); }
@@ -43,7 +45,8 @@ public class Ch9Ex02 {
 					if(secondaryException != null) {
 						e.addSuppressed(secondaryException);
 					}
-					System.out.println("exception[3]");
+					System.err.println("exception[3]");
+					throw e;
 				}
 			}
 		}

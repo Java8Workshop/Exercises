@@ -17,12 +17,13 @@ public class Ch9Ex02 {
 
 		try {
 			// in = new Scanner(Paths.get("/usr/share/dict/words"));
+			// out = new PrintWriter("/tmp/out.txt");
 			in = new Scanner(Paths.get("./README.md"));
-			out = new PrintWriter("/tmp/out.txt");
+			out = new PrintWriter("./out/out09-02.md");
 
 			while(in.hasNext()) {
 				out.println(in.next().toLowerCase());
-			}			
+			}
 		} catch(Exception e) {
 			secondaryException = e;
 			System.out.println("exception[1]");

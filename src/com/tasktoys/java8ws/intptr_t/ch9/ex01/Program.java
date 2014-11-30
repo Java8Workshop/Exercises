@@ -14,12 +14,14 @@ public class Program {
 		Scanner in = null;
 		PrintWriter out = null;
 		try {
-			in = new Scanner(Paths.get("/usr/share/dict/words"));
-			out = new PrintWriter("/tmp/out.txt");
+			// in = new Scanner(Paths.get("/usr/share/dict/words"));
+			//out = new PrintWriter("/tmp/out.txt");
+			in = new Scanner(Paths.get("./README.md"));
+			out = new PrintWriter("./out/out09-01.md");
 
 			while(in.hasNext()) {
 				out.println(in.next().toLowerCase());
-			}			
+			}
 		} finally {
 			try {
 				if (in != null) { in.close(); }

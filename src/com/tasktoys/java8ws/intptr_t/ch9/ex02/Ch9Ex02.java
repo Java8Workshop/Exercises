@@ -10,7 +10,7 @@ import java.util.Scanner;
  * @author intptr_t
  */
 public class Ch9Ex02 {
-	public static void main(String[] args) throws Exception {
+	public static void main(String[] args) {
 		Scanner in = null;
 		PrintWriter out = null;
 		Throwable secondaryException = null;

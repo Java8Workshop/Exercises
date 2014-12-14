@@ -10,6 +10,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -27,7 +28,7 @@ public class UrlRetriever {
             target = args[0];
         }
         try (InputStream input = new URL(target).openStream()) {
-            Files.copy(input, Paths.get("out/ch9.ex07.txt"));
+            Files.copy(input, Paths.get("out/ch9.ex07.txt"), StandardCopyOption.REPLACE_EXISTING);
         } catch (MalformedURLException ex) {
             LOG.log(Level.SEVERE, null, ex);
         } catch (IOException ex) {

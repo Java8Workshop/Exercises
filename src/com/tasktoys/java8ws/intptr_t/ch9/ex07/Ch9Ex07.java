@@ -12,7 +12,8 @@ public class Ch9Ex07 {
 	public static void main(String[] args) throws IOException {
 		String filePath = new File(".").getAbsolutePath() + "/README.md";
 		URL url = new URL( "file://" + filePath );
-		InputStream istream = url.openStream();
-		Files.copy(istream, Paths.get("./out/intptr_t-09-07.txt"), StandardCopyOption.REPLACE_EXISTING);
+		try( InputStream istream = url.openStream() ) {
+			Files.copy(istream, Paths.get("./out/intptr_t-09-07.txt"), StandardCopyOption.REPLACE_EXISTING);
+		}
 	}
 }

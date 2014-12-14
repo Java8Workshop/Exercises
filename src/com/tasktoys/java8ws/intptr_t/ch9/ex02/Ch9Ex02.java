@@ -18,7 +18,7 @@ public class Ch9Ex02 {
 		try {
 			// in = new Scanner(Paths.get("/usr/share/dict/words"));
 			// out = new PrintWriter("/tmp/out.txt");
-			in = new Scanner(Paths.get("./README.md"));
+			in = new Scanner(Paths.get("./README.mdz"));
 			out = new PrintWriter("./out/out09-02.md");
 
 			while(in.hasNext()) {

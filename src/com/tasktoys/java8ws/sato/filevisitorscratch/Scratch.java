@@ -10,7 +10,7 @@ public class Scratch {
 
 	public static void main(String[] args) {
 
-		MyVisitor v = new MyVisitor();
+		MyVisitor v = new MyVisitor("MyVisitor.java");
 		
 		Path path = Paths.get("./README.md");
 		try {
@@ -19,16 +19,19 @@ public class Scratch {
 			e.printStackTrace();
 		}
 
-		try {
-			FileVisitResult result = v.visitFileFailed(path, new IOException());
-			System.out.println(result);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+		FileVisitResult result1 = v.visitFileFailed(path, new IOException());
+		System.out.println(result1);
 		
 		try {
 			Path result = Files.walkFileTree(Paths.get("./README.md"), v);
-			System.out.println(result);
+			System.out.println(result + " " + v.getResult());
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
+		try {
+			Path result = Files.walkFileTree(Paths.get("./src/com/tasktoys/java8ws/sato/filevisitorscratch/"), v);
+			System.out.println(result + " " + v.getResult());
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

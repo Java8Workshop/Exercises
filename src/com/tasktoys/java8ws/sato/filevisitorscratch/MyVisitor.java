@@ -1,4 +1,4 @@
-package com.tasktoys.java8ws.sato.FileVisitorScratch;
+package com.tasktoys.java8ws.sato.filevisitorscratch;
 
 import java.io.IOException;
 import java.nio.file.FileVisitResult;

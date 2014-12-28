@@ -22,6 +22,18 @@ public class LabeledPoint {
         this.y = y;
         this.label = label;
     }
+    
+    public int getX() {
+        return x;
+    }
+    
+    public int getY() {
+        return y;
+    }
+
+    public String getLabel() {
+        return label;
+    }
 
     @Override
     public boolean equals(Object otherObject) {

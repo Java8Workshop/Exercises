@@ -4,9 +4,11 @@ import java.util.Objects;
 
 public class LabeledPoint {
 
-	private String label;
-	private int x;
-	private int y;
+	protected final String label;
+	
+	protected final int x;
+	
+	protected final int y;
 
 	public LabeledPoint(String label, int x, int y) {
 		this.label = label;

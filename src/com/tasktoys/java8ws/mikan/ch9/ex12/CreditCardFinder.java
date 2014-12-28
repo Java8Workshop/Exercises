@@ -4,10 +4,10 @@
  */
 package com.tasktoys.java8ws.mikan.ch9.ex12;
 
+import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -30,33 +30,40 @@ public class CreditCardFinder {
 
     private static final String FINDSTR_REGEXP = "\"[0-9][0-9][0-9][0-9]-[0-9][0-9][0-9][0-9]-[0-9][0-9][0-9][0-9]-[0-9]\""; // findstr has character length limitation.
     private static final String FINDSTR_SUFFIX = "\\*.txt";
-    private static final Path TMP_FILE_PATH = Paths.get("out/ch9.ex12.txt");
 
-    public Map<String, String> find(String path) {
+    public Map<String, String> find(String path) throws IOException {
         return find(path, true, true);
     }
 
-    public Map<String, String> find(String path, boolean findSubFolder, boolean ignoreCase) {
+    public Map<String, String> find(String path, boolean findSubFolder, boolean ignoreCase) throws IOException {
         // Prepare
+        File temp;
+        temp = File.createTempFile("CreditCardFinder", ".txt");
         System.out.println("PATH: " + path + ", SUFFIX: " + FINDSTR_SUFFIX);
-        ProcessBuilder builder = new ProcessBuilder("findstr", "/s", "/i", FINDSTR_REGEXP, path + FINDSTR_SUFFIX);
-        builder.redirectOutput(TMP_FILE_PATH.toFile());
+        List<String> params = new ArrayList<>();
+        params.add("findstr");
+        if (findSubFolder) {
+            params.add("/s");
+        }
+        if (ignoreCase) {
+            params.add("/i");
+        }
+        params.add(FINDSTR_REGEXP);
+        params.add(path + FINDSTR_SUFFIX);
+        ProcessBuilder builder = new ProcessBuilder(params);
+        builder.redirectOutput(temp);
         // Execute
         try {
             Process process = builder.start();
             process.waitFor();
-        } catch (IOException | InterruptedException ex) {
-            System.err.println(ex);
-            return null;
+        } catch (InterruptedException ex) {
+            throw new RuntimeException(ex);
         }
         // Load result
         List<String> lines;
-        try {
-            lines = Files.readAllLines(TMP_FILE_PATH);
-        } catch (IOException ex) {
-            System.err.println(ex);
-            return null;
-        }
+        lines = Files.readAllLines(temp.toPath());
+        // Remove temp file
+        Files.delete(temp.toPath());
         // Parse result
         Map<String, String> result = new HashMap<>(lines.size());
         lines.stream().filter((line) -> (line.contains(":"))).forEach((line) -> {

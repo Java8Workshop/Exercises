@@ -10,14 +10,14 @@
 
 <VBox xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.tasktoys.java8ws.mikan.ch9.ex12.ui.fx.CreditCardFinderController">
    <children>
-       <HBox alignment="CENTER" prefHeight="24.0" prefWidth="600.0">
+       <HBox alignment="CENTER" prefHeight="35.0" prefWidth="600.0">
           <children>
-            <CheckBox mnemonicParsing="false" selected="true" text="Sub Folder">
+            <CheckBox fx:id="subFolderCheckBox" mnemonicParsing="false" selected="true" text="Sub Folder">
                <HBox.margin>
                   <Insets left="5.0" right="5.0" />
                </HBox.margin>
             </CheckBox>
-            <CheckBox mnemonicParsing="false" selected="true" text="Ignore Case">
+            <CheckBox fx:id="ignoreCaseCheckBox" mnemonicParsing="false" selected="true" text="Ignore Case">
                <HBox.margin>
                   <Insets left="5.0" right="5.0" />
                </HBox.margin>

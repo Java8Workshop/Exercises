@@ -49,9 +49,8 @@ public class CreditCardFinderController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        progressIndicator.setVisible(false);
         pathTextField.setText(System.getProperty("user.home"));
-        statusLabel.setText("Press \"Find\" button.");
+        updateStatus(false, "Press \"Find\" button.");
     }
 
     @FXML
@@ -65,18 +64,17 @@ public class CreditCardFinderController implements Initializable {
         task.setOnCancelled((e) -> updateStatus(false, "Canceled."));
         task.setOnFailed((e) -> updateStatus(false, "Failed."));
         task.setOnSucceeded((e) -> {
-            progressIndicator.setVisible(false);
             Map<String, String> result;
             try {
                 result = task.get();
             } catch (InterruptedException | ExecutionException ex) {
-                System.err.println(ex);
+                updateStatus(false, "Exception caught: " + ex.getMessage());
                 return;
             }
             ObservableList<String> listRecords = FXCollections.observableArrayList();
             result.keySet().stream().forEach((file) -> listRecords.add(result.get(file) + " (" + file + ")"));
             resultListView.setItems(listRecords);
-            statusLabel.setText("Found " + result.size() + " item(s).");
+            updateStatus(false, "Found " + result.size() + " item(s).");
         });
         executor.execute(task);
     }
@@ -100,7 +98,7 @@ public class CreditCardFinderController implements Initializable {
         }
 
         @Override
-        public Map<String, String> call() {
+        public Map<String, String> call() throws Exception {
             return new CreditCardFinder().find(path, findSubFolder, ignoreCase);
         }
     }

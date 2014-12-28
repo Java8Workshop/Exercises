@@ -46,6 +46,20 @@ public class MultiCatchAndThrow {
             throw e;
         }
     }
+    //    Exception table:
+    //       from    to  target type
+    //           0    22    22   Class java/io/FileNotFoundException
+    //           0    22    22   Class java/net/UnknownHostException
+    //    LineNumberTable:
+    //      line 40: 0
+    //      line 41: 6
+    //      line 43: 14
+    //      line 45: 22
+    //      line 46: 23
+    //    LocalVariableTable:
+    //       Start  Length  Slot  Name   Signature
+    //          23       2     1     e   Ljava/io/IOException; ★ IOE になってるね！
+    //           0      25     0  this   Lcom/tasktoys/java8ws/mikan/ch9/ex03/MultiCatchAndThrow;
 
     public void process2() throws IOException {
         try {

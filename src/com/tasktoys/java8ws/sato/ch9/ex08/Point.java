@@ -1,6 +1,6 @@
 package com.tasktoys.java8ws.sato.ch9.ex08;
 
-public class Point {
+public class Point implements Comparable<Point> {
 
 	private int x;
 	private int y;

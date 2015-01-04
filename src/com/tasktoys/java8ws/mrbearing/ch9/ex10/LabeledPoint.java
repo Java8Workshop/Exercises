@@ -4,7 +4,7 @@ import java.util.Objects;
 
 import com.tasktoys.java8ws.mrbearing.ch9.ex08.Point;
 
-public class LabeledPoint {
+public class LabeledPoint implements Comparable<LabeledPoint>{
 
   private String label;
   private int x;
@@ -29,7 +29,8 @@ public class LabeledPoint {
         && Objects.equals(y, other.y);
   }
   
-  public int conpareTo(LabeledPoint other) {
+  @Override
+  public int compareTo(LabeledPoint other) {
 
     int diff = Integer.compare(x, other.x);
     if (diff != 0)

@@ -2,7 +2,7 @@ package com.tasktoys.java8ws.sato.ch9.ex10;
 
 import java.util.Objects;
 
-public class LabeledPoint {
+public class LabeledPoint implements Comparable<LabeledPoint> {
 
 	private String label;
 	private int x;

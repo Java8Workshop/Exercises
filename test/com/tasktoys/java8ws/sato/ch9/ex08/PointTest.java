@@ -4,6 +4,8 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
+
+
 public class PointTest {
 
 	@Test
@@ -26,4 +28,19 @@ public class PointTest {
 		assertTrue(p4.compareTo(p2) == p4.compareTo2(p2));
 		assertTrue(p4.compareTo(p3) == p4.compareTo2(p3));
 	}
+	
+	@Test
+  public void testCompareTo_overflowCase() {
+      Point p1 = new Point(Integer.MAX_VALUE, Integer.MAX_VALUE);
+      Point p2 = new Point(Integer.MIN_VALUE, Integer.MIN_VALUE);
+      assertTrue(p1.compareTo(p2) > 0);
+  }
+
+	@Test
+  public void testCompareTo_normalCase() {
+      Point p1 = new Point(5, 5);
+      Point p2 = new Point(1, 1);
+      assertTrue(p1.compareTo(p2) > 0);
+  }
+	
 }

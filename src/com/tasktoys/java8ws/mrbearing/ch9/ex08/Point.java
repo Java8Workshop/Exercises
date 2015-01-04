@@ -5,11 +5,10 @@ public class Point {
   private int x;
   private int y;
 
-  public Point(int _x, int _y) {
+  public Point(int x, int y) {
     super();
-    this.x = _x;
-    this.y = _y;
-
+    this.x = x;
+    this.y = y;
   }
 
   public int conpareToOrg(Point other) {
@@ -22,11 +21,14 @@ public class Point {
   }
 
   public int compareTo(Point other) {
-    long diff = this.x - other.x;
+    long diff = (long) this.x - (long) other.x;
     if (diff != 0)
-      return (int) diff;
+      return diff > 0 ? 1 : -1;
 
-    long diffY = this.y - other.y;
+    long diffY = (long) this.y - (long) other.y;
+    if (diffY != 0)
+      return diffY > 0 ? 1 : -1;
+      
     return (int) diffY;
   }
 

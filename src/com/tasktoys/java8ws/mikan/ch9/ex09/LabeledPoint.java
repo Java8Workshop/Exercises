@@ -49,9 +49,13 @@ public class LabeledPoint {
         LabeledPoint other = (LabeledPoint) otherObject;
         return Objects.equals(x, other.x) && Objects.equals(y, other.y) && Objects.equals(label, other.label);
     }
-
+    
     @Override
     public int hashCode() {
+	return Objects.hash(x, y, label);
+    }
+
+    public int hashCodeFaster() {
         int hash = 7;
         hash = 43 * hash + Objects.hashCode(this.label);
         hash = 43 * hash + this.x;

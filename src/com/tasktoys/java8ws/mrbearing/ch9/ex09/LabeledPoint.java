@@ -23,8 +23,15 @@ public class LabeledPoint {
   }
 
   @Override
-  public boolean equals(Object otherObjects) {
-    LabeledPoint other = (LabeledPoint) otherObjects;
+  public boolean equals(Object otherObject) {
+    if(this == otherObject)
+      return true;
+    if (otherObject == null)
+      return false;
+    if(getClass() != otherObject.getClass())
+      return false;
+    LabeledPoint other = (LabeledPoint) otherObject;
+    
     return Objects.equals(label, other.label) && Objects.equals(x, other.x)
         && Objects.equals(y, other.y);
   }

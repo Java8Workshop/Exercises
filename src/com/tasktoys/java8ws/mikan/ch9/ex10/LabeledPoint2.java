@@ -4,6 +4,8 @@
  */
 package com.tasktoys.java8ws.mikan.ch9.ex10;
 
+import java.util.Objects;
+
 import com.tasktoys.java8ws.mikan.ch9.ex09.LabeledPoint;
 
 /**
@@ -19,9 +21,7 @@ public class LabeledPoint2 extends LabeledPoint implements Comparable<LabeledPoi
 
     @Override
     public int compareTo(LabeledPoint2 other) {
-        if (equals(other)) {
-            return 0;
-        }
+	Objects.requireNonNull(other);
         int diff = Integer.compare(getX(), other.getX());
         if (diff != 0) {
             return diff;

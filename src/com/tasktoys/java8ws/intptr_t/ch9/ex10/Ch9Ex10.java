@@ -2,16 +2,15 @@ package com.tasktoys.java8ws.intptr_t.ch9.ex10;
 
 import java.util.Objects;
 
-class LabeledPoint implements Comparable<LabeledPoint>
-{
+class LabeledPoint implements Comparable<LabeledPoint> {
 	private String label;
 	private int x;
 	private int y;
 	
-	public LabeledPoint( String alabel, int ax, int ay ) {
-		this.label = alabel;
-		this.x = ax;
-		this.y = ay;
+	public LabeledPoint( String label, int x, int y ) {
+		this.label = label;
+		this.x = x;
+		this.y = y;
 	}
 	
 	public boolean equals( Object otherObject ) {
@@ -37,13 +36,12 @@ class LabeledPoint implements Comparable<LabeledPoint>
 
 	@Override
 	public int compareTo(LabeledPoint o) {
-		if( o == null ) {
-			return -1;
-		}
+		Objects.requireNonNull(o);
 
-		int diff;
-		diff = this.label.compareTo(o.label);
-		if(diff != 0) {
+		int diff;		
+		if( !Objects.equals(this.label, o.label) ) {
+			Objects.requireNonNull(o.label);
+			diff = this.label.compareTo(o.label);
 			return diff;
 		}
 		diff = Integer.compare(this.x, o.x);
@@ -63,6 +61,7 @@ public class Ch9Ex10 {
 		LabeledPoint dif1 = new LabeledPoint("0", 2, 3);
 		LabeledPoint dif2 = new LabeledPoint("1", 0, 3);		
 		LabeledPoint dif3 = new LabeledPoint("1", 2, 0);
+		LabeledPoint nil = new LabeledPoint(null, 2, 3);
 		
 		System.out.println("hash: " +
 				base.hashCode() + "," +
@@ -70,18 +69,35 @@ public class Ch9Ex10 {
 				dif1.hashCode() + "," + 
 				dif2.hashCode() + "," + 
 				dif3.hashCode() );		
-		System.out.println(base.equals(null));
-		System.out.println(base.equals(base));
-		System.out.println(base.equals(same));
-		System.out.println(base.equals(dif1));
-		System.out.println(base.equals(dif2));
-		System.out.println(base.equals(dif3));
+		System.out.println("null: " + base.equals(null));
+		System.out.println("base: " + base.equals(base));
+		System.out.println("same: " + base.equals(same));
+		System.out.println("dif1: " + base.equals(dif1));
+		System.out.println("dif2: " + base.equals(dif2));
+		System.out.println("dif3: " + base.equals(dif3));
+		System.out.println("nil:  " + base.equals(nil));		
 		System.out.println();
-		System.out.println(base.compareTo(null));
+		try{
+			System.out.println(base.compareTo(null));
+		} catch( NullPointerException e ) {
+			System.out.println(e);
+		}
+
 		System.out.println(base.compareTo(base));		
-		System.out.println(base.compareTo(same));
-		System.out.println(base.compareTo(dif1));
-		System.out.println(base.compareTo(dif2));
-		System.out.println(base.compareTo(dif3));		
+		System.out.println(base.compareTo(same) + " : " + same.compareTo(base) );
+		System.out.println(base.compareTo(dif1) + " : " + dif1.compareTo(base) );
+		System.out.println(base.compareTo(dif2) + " : " + dif2.compareTo(base) );
+		System.out.println(base.compareTo(dif3) + " : " + dif3.compareTo(base) );
+		try {
+			System.out.println(base.compareTo(nil));
+		} catch( NullPointerException e ) {
+			System.out.print(e);
+		}
+		System.out.print(" : ");
+		try {
+			System.out.println(nil.compareTo(base));
+		} catch(NullPointerException e) {
+			System.out.println(e);
+		}
 	}
 }

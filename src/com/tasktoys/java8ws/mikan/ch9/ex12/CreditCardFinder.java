@@ -64,7 +64,7 @@ public class CreditCardFinder {
         Files.delete(temp.toPath());
         // Parse result
         Map<String, String> result = new HashMap<>(lines.size());
-        lines.stream().filter((line) -> (line.contains(":"))).forEach((line) -> {
+        lines.stream().filter(line -> (line.contains(":"))).forEach(line -> {
             int splitPos = line.lastIndexOf(':');
             String file = line.substring(0, splitPos);
             String card = line.substring(splitPos + 1);

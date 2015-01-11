@@ -14,9 +14,14 @@ public class Ch9Ex11 {
 					credit.getBytes(),
 					StandardOpenOption.CREATE,StandardOpenOption.TRUNCATE_EXISTING);
 		// メイン処理
-		ProcessBuilder processBuilder = new ProcessBuilder("grep","-r","\\([0-9]\\{4\\}[-| ]\\?\\)\\{3\\}[0-9]\\{4\\}", "./out");
+		ProcessBuilder processBuilder = new ProcessBuilder("grep",
+				"-r","\\([0-9]\\{4\\}-\\)\\{3\\}[0-9]\\{4\\}",
+				System.getProperty("user.home")
+				//[列挙が遅くあがってこない場合、本コメントをアンコメントしてディレクトリを限定する] + "/git/"
+				);
 		processBuilder.inheritIO();
 		Process process = processBuilder.start();
 		process.waitFor(60L,TimeUnit.SECONDS);
+		System.out.println("done.");
 	}
 }

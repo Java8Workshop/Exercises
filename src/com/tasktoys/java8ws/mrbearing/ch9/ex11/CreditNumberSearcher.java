@@ -9,7 +9,7 @@ public class CreditNumberSearcher {
   }
 
   public static void main(String[] args) throws InterruptedException, IOException {
-    ProcessBuilder bulider = new ProcessBuilder("dir");
+    ProcessBuilder bulider = new ProcessBuilder("findstr");
     bulider.inheritIO();
     bulider.start().waitFor();
     

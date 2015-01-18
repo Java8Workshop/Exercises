@@ -1,6 +1,8 @@
 練習問題回答共有リポジトリ
 =========
 
+[![Build Status](https://travis-ci.org/Java8Workshop/Exercises.svg)](https://travis-ci.org/Java8Workshop/Exercises)
+
 こちらは『Java SE8 実践プログラミング』輪読会の練習問題回答共有リポジトリです。輪読会については[こちら](https://github.com/Java8Workshop/About)をご覧ください。
 
 ## Eclipse で開発する場合

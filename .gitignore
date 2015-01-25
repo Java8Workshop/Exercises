@@ -1,7 +1,6 @@
 /bin/
 /nbproject/private/
 /build/
-/out/
 /report/
 .jacocoverage
 .DS_Store

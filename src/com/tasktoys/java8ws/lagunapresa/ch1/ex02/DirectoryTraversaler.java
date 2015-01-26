@@ -16,9 +16,9 @@ public class DirectoryTraversaler {
 	public List<File> listDir(File root) {
 		if (root.isDirectory()) {
 			List<File> ls = new ArrayList<>();
-			List<File> childs = Arrays.asList(root.listFiles(File::isDirectory));
-			ls.addAll(childs);
-			for (File child : childs) {
+			List<File> children = Arrays.asList(root.listFiles(File::isDirectory));
+			for (File child : children) {
+				ls.add(child);
 				ls.addAll(listDir(child));
 			}
 			return ls;
@@ -31,9 +31,9 @@ public class DirectoryTraversaler {
 	public List<File> listDir2(File root) {
 		if (root.isDirectory()) {
 			List<File> ls = new ArrayList<>();
-			List<File> childs = Arrays.asList(root.listFiles(file -> file.isDirectory()));
-			ls.addAll(childs);
-			for (File child : childs) {
+			List<File> children = Arrays.asList(root.listFiles(file -> file.isDirectory()));
+			for (File child : children) {
+				ls.add(child);
 				ls.addAll(listDir2(child));
 			}
 			return ls;

@@ -1,10 +1,15 @@
 package com.tasktoys.java8ws.lagunapresa.ch1.ex02;
 
 import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class DirectoryTraversaler {
 
@@ -37,4 +42,13 @@ public class DirectoryTraversaler {
 		}
 	}
 
+	// そもそも、java.io.File#listFiles を使わなくて良いならもっと Java8 っぽく書ける
+	public List<File> listDir3(File root) throws IOException {
+		try (Stream<Path> paths = Files.walk(root.toPath())) {
+			return paths.map(Path::toFile)
+					.filter(File::isDirectory)
+					.filter(that -> !root.equals(that))
+					.collect(Collectors.toList());
+		}
+	}
 }

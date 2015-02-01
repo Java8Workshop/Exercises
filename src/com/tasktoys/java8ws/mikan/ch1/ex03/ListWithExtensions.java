@@ -30,10 +30,7 @@ public class ListWithExtensions {
         File[] file = dir.listFiles(p -> {
             return p.isFile() && p.getName().endsWith(ext); // "ext" captured.
         });
-        List<File> subDirs = Arrays.asList(file);
-        if (!subDirs.isEmpty()) {
-            list.addAll(subDirs);
-        }
+        list.addAll(Arrays.asList(file));
         return list;
     }
 }

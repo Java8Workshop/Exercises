@@ -5,7 +5,6 @@
 package com.tasktoys.java8ws.mikan.ch1.ex03;
 
 import java.io.File;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
@@ -17,20 +16,18 @@ import java.util.Objects;
 public class ListWithExtensions {
 
     public static void main(String[] args) {
-        new ListWithExtensions().getFilesByExtension(System.getProperty("user.home"), ".txt").forEach(s -> System.out.println(s));
+        new ListWithExtensions().getFilesByExtension(System.getProperty("user.home"), ".txt").forEach(System.out::println);
     }
 
-    public List<File> getFilesByExtension(String path, String ext) {
+    public List<String> getFilesByExtension(String path, String ext) {
         Objects.requireNonNull(path);
         File dir = new File(path);
         if (!dir.isDirectory()) {
             throw new IllegalArgumentException("Not a directory: " + dir);
         }
-        List<File> list = new ArrayList<>();
-        File[] file = dir.listFiles(p -> {
-            return p.isFile() && p.getName().endsWith(ext); // "ext" captured.
-        });
-        list.addAll(Arrays.asList(file));
+        List<String> list = Arrays.asList(dir.list((file, name) -> {
+            return file.exists() && name.endsWith(ext); // "ext" captured.
+        }));
         return list;
     }
 }

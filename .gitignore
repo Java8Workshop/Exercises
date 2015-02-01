@@ -2,6 +2,5 @@
 /nbproject/private/
 /build/
 /report/
-/out/*
 .jacocoverage
 .DS_Store

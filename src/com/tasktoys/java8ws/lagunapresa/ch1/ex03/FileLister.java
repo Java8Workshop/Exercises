@@ -7,7 +7,7 @@ import java.util.List;
 public class FileLister {
 
 	public List<String> filesIn(File root, String ext) {
-		return Arrays.asList(root.list((a, b) -> b.endsWith(ext)));
+		return Arrays.asList(root.list((x, name) -> name.endsWith(ext)));
 	}
 
 }

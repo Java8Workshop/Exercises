@@ -17,7 +17,7 @@ import java.util.Objects;
 public class SubDirectories {
 
     public static void main(String[] args) {
-        new SubDirectories().getSubDirectories(System.getProperty("user.home")).forEach(s -> System.out.println(s));
+        new SubDirectories().getSubDirectories(System.getProperty("user.home")).forEach(System.out::println);
     }
 
     private final List<File> list = new ArrayList<>();
@@ -29,7 +29,7 @@ public class SubDirectories {
             throw new IllegalArgumentException("Not a directory: " + dir);
         }
         list.clear();
-        addSubDirectories(new File(path));
+        addSubDirectories(dir);
         return list;
     }
 

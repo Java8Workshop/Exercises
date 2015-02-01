@@ -9,8 +9,8 @@ public class Ch1Ex02 {
 		File file = new File("./");
 		ArrayList<File> subdirs1, subdirs2;
 		
-		subdirs1 = new ArrayList<File>();
-		subdirs2 = new ArrayList<File>();
+		subdirs1 = new ArrayList<>();
+		subdirs2 = new ArrayList<>();
 		
 		// lambda version
 		System.out.println("lambda:");

@@ -18,7 +18,7 @@ import java.util.Objects;
 public class SubDirectories2 implements FileFilter {
 
     public static void main(String[] args) {
-        new SubDirectories2().getSubDirectories(System.getProperty("user.home")).forEach(s -> System.out.println(s));
+        new SubDirectories2().getSubDirectories(System.getProperty("user.home")).forEach(System.out::println);
     }
 
     private final List<File> list = new ArrayList<>();
@@ -30,7 +30,7 @@ public class SubDirectories2 implements FileFilter {
             throw new IllegalArgumentException("Not a directory: " + dir);
         }
         list.clear();
-        addSubDirectories(new File(path));
+        addSubDirectories(dir);
         return list;
     }
 

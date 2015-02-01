@@ -2,7 +2,6 @@ package com.tasktoys.java8ws.mrbearing.ch1.ex1;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Comparator;
 import java.util.List;
 import java.util.Random;
 
@@ -28,10 +27,9 @@ public class ArraySort {
           System.out.println(threadName);
           return Integer.compare((Integer) first, (Integer)second);
         });
-        
       }
     });
-    th.setName("main");
+    th.setName("daihyo");
     th.start();
   }
 

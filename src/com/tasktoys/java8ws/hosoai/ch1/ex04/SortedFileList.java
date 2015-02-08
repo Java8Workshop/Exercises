@@ -7,6 +7,7 @@ public class SortedFileList {
 	public File[] dirFirstSort(File[] inputFiles){
 		Stream<File> directories = Stream.of(inputFiles).filter(File::isDirectory).sorted(SortedFileList::fileComparate);
 		Stream<File> files = Stream.of(inputFiles).filter(File::isFile).sorted(SortedFileList::fileComparate);
+		
 		return (File[])Stream.concat(directories, files).toArray(File[]::new);
 	}
 	

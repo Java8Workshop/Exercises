@@ -15,14 +15,12 @@ import java.util.Map;
 /**
  * Find credit card numbers from home directory.
  *
- * <p>
  * Sample output:
  * <pre>
  * 5678-5678-5678-5678 (C:\Users\yutaka\test2.txt)
  * 9999-9999-9999-9999 (C:\Users\yutaka\Downloads\test3.txt)
  * 1234-1234-1234-1234 (C:\Users\yutaka\test.txt)
  * </pre>
- * </p>
  *
  * @author mikan
  */

@@ -3,5 +3,6 @@
 /build/
 /report/
 /out/*
+!/out/README
 .jacocoverage
 .DS_Store

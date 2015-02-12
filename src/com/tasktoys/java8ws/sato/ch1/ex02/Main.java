@@ -3,12 +3,14 @@ package com.tasktoys.java8ws.sato.ch1.ex02;
 import java.io.File;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class Main {
 
 	public static void main(String[] args) {
 		File file = new File("./");
-		File[] files = file.listFiles((f, str) -> true);
+		File[] files = file.listFiles(f -> true);
 		print(files);
 		print(file.listFiles(Main::filter));
 		
@@ -16,19 +18,14 @@ public class Main {
 		print(getAllSubDirectory(file));
 	}
 	
-	public static boolean filter(File file, String str) {
+	public static boolean filter(File file) {
 		return true;
 	}
 	
 	public static List<File> getSubDirectory(File file) {
-		List<File> ls = new LinkedList<>();
-		if (file.isDirectory()) {
-			File[] files = file.listFiles((f, str) -> true);
-			for (int i = 0; i < files.length; i++) {
-				if (files[i].isDirectory()) ls.add(files[i]);
-			}
-		}
-		return ls;
+		if (file.isDirectory())
+			return Stream.of(file.listFiles(f -> f.isDirectory())).collect(Collectors.toList());
+		return new LinkedList<File>();
 	}
 	
 	public static List<File> getAllSubDirectory(File file) {

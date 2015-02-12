@@ -6,3 +6,6 @@
 !/out/README
 .jacocoverage
 .DS_Store
+.idea
+.idea/*
+

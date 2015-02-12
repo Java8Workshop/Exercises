@@ -19,13 +19,14 @@ public final class FileDeleter {
 	public static void deleteIfExists(File root, FileFilter filter) {
 		if (root.isDirectory()) {
 			Stream.of(root.listFiles()).forEach(f -> FileDeleter.deleteIfExists(f, filter));
-		}
-		try {
-			if (filter.accept(root)) {
-				Files.deleteIfExists(root.toPath());
+		} else {
+			try {
+				if (filter.accept(root)) {
+					Files.deleteIfExists(root.toPath());
+				}
+			} catch (IOException e) {
+				fail(e.toString());
 			}
-		} catch (IOException e) {
-			fail();
 		}
 	}
 

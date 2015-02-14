@@ -10,9 +10,19 @@ public class CaptureForEx {
 		for(String name : names){
 			runners.add(()->System.out.println(name));
 		}
+		names[1] = "Hoge";
 		for(Runnable r :runners){
 			r.run();
 		}
+		
+		Object[] objects = new Object[]{1, "Test", new ArrayList<Runnable>()};
+		for(Object obj : objects){
+			runners.add(()->System.out.println(obj));
+		}
+		for(Runnable r :runners){
+			r.run();
+		}
+		
 		runners.clear();
 	}
 	
@@ -31,6 +41,6 @@ public class CaptureForEx {
 	
 	public static void main(String[] args) {
 		new CaptureForEx().callNamesByForEx();
-		new CaptureForEx().callNamesByFor();
+//		new CaptureForEx().callNamesByFor();
 	}
 }

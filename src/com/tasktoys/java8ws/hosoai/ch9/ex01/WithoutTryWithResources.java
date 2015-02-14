@@ -27,9 +27,9 @@ public class WithoutTryWithResources {
 				in = null;
 			}
 			try{
-				if(out!=null){
-					out.close();
-				}
+//				if(out!=null){
+//					out.close();
+//				}
 			}catch(Exception e2){
 				System.err.println("Cannnot Close output file");
 				throw e2;

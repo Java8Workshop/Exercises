@@ -15,7 +15,7 @@ import com.tasktoys.java8ws.util.FileDeleter;
 
 public class FileObjectSortTest {
 
-  private static final File OUT = Paths.get("out").toFile();
+  private static final File OUT = Paths.get("out","mrbearing").toFile();
 
   @Test
   public void testFileSort() {

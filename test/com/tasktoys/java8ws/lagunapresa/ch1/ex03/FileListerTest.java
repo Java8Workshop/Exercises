@@ -21,7 +21,7 @@ public class FileListerTest {
 
 	@Before
 	public void setUp() throws Exception {
-		FileDeleter.deleteIfExists(OUT);
+		FileDeleter.deleteIfExists(OUT, f -> !f.getName().equals("README"));
 		OUT.mkdirs();
 		Files.createFile(Paths.get("out", "dummy0.txt"));
 		Files.createFile(Paths.get("out", "dummy1.000"));

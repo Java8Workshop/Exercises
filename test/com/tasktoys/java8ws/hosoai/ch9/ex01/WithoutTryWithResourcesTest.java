@@ -1,9 +1,6 @@
 package com.tasktoys.java8ws.hosoai.ch9.ex01;
 
-import static org.junit.Assert.*;
-
-import java.nio.file.Files;
-import java.nio.file.Paths;
+import static org.junit.Assert.fail;
 
 import org.junit.Before;
 import org.junit.Test;

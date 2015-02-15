@@ -1,7 +1,5 @@
 package com.tasktoys.java8ws.hosoai.ch1.ex03;
 
-import static org.junit.Assert.*;
-
 import java.io.File;
 
 import org.junit.Before;

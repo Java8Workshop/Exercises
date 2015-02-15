@@ -20,9 +20,9 @@ public class WithoutTryWithResources {
 				if(in!=null){
 					in.close();
 				}
-				if(out!=null){
-					out.close();
-				}
+//				if(out!=null){
+//					out.close();
+//				}
 			}catch(Exception e1){
 				e.addSuppressed(e1);
 			}finally{

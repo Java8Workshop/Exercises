@@ -1,14 +1,8 @@
 package com.tasktoys.java8ws.hosoai.ch9.ex11;
 
-import java.io.File;
 import java.io.IOException;
 import java.io.Writer;
-import java.lang.ProcessBuilder.Redirect;
-import java.nio.charset.MalformedInputException;
-import java.nio.file.AccessDeniedException;
 import java.nio.file.Files;
-import java.nio.file.InvalidPathException;
-import java.nio.file.NoSuchFileException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;

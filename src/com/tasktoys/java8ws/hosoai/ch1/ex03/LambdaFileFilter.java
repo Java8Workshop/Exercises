@@ -7,6 +7,7 @@ import java.nio.file.Paths;
 public class LambdaFileFilter {
 	public File[] getFilteredFiles(String dir, String ext){
 		Path path = Paths.get(dir);
-		return path.toFile().listFiles(file->!file.isDirectory()&&file.getName().substring(file.getName().lastIndexOf(".")).endsWith(ext));
+		return path.toFile().listFiles((file,name)->file.isFile()&&name.endsWith(ext));
+//		return path.toFile().listFiles(file->!file.isDirectory()&&file.getName().substring(file.getName().lastIndexOf(".")).endsWith(ext));
 	}
 }

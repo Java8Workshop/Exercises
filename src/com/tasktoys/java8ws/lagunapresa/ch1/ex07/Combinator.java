@@ -12,7 +12,7 @@ public class Combinator {
         ).start();
     }
 
-    private static Runnable p(String msg) {
+    static Runnable p(String msg) {
         return () -> System.out.println(msg);
     }
 

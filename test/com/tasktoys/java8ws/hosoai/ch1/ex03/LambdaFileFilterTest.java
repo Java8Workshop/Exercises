@@ -15,6 +15,7 @@ public class LambdaFileFilterTest {
 
 	@Test
 	public void test() {
+	  
 		File[] files = target.getFilteredFiles("out", "txt");
 		for(File f : files){
 			System.out.println(f);

@@ -3,14 +3,15 @@ package com.tasktoys.java8ws.mrbearing.ch1.ex6;
 public class Main {
 
   public static Runnable uncheck(RunnableEx runner){
-    try{
-      runner.run();
-    }catch(Exception e){
-      e.printStackTrace();
-    }
-    
-    return null;
+    return () -> {
+      try{
+        runner.run();
+      }catch(Exception e){
+        e.printStackTrace();
+      }
+    };
   }
+  
 
  
   interface RunnableEx {
@@ -23,7 +24,7 @@ public class Main {
       Thread.sleep(1000);
       throw new Exception("boo");
     })).start();
-    
+    System.out.println("Nuuuu");
   }
 
 }

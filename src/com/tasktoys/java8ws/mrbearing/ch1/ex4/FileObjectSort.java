@@ -9,7 +9,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import com.tasktoys.java8ws.util.FileDeleter;
 
 public class FileObjectSort {
 
@@ -53,7 +52,7 @@ public class FileObjectSort {
     
     List<Path> pathList = new ArrayList<>();
     File[] fileArray = null;
-    FileDeleter.deleteIfExists(OUT);
+    //FileDeleter.deleteIfExists(OUT);
     OUT.mkdirs();
        
     

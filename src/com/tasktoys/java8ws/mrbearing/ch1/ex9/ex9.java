@@ -9,6 +9,7 @@ public class ex9 {
 
   interface Collection2<T> extends Collection<T>{
     default void forEachIf(Consumer<T> action,Predicate<T> filter) {
+      Objects.requireNonNull(filter);
       Objects.requireNonNull(action);
       for (T t : this) {
         if(filter.test(t))

@@ -21,6 +21,7 @@ public class ListWithExtensions {
 
     public List<String> getFilesByExtension(String path, String ext) {
         Objects.requireNonNull(path);
+        Objects.requireNonNull(ext);
         File dir = new File(path);
         if (!dir.isDirectory()) {
             throw new IllegalArgumentException("Not a directory: " + dir);

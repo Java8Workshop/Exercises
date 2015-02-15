@@ -6,7 +6,6 @@ package com.tasktoys.java8ws.mikan.ch1.ex04;
 
 import java.io.File;
 import java.util.Arrays;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.Objects;
 
@@ -22,16 +21,16 @@ public class DirectoryFirstLister {
 
     public List<File> listFiles(String path) {
         Objects.requireNonNull(path);
-        File dir = new File(path);
-        List<File> dirs = Arrays.asList(dir.listFiles(file -> {
-            return file.isDirectory();
-        }));
-        List<File> files = Arrays.asList(dir.listFiles(file -> {
-            return !file.isDirectory();
-        }));
-        List<File> list = new LinkedList<>();
-        list.addAll(dirs);
-        list.addAll(files);
-        return list;
+        File[] list = new File(path).listFiles();
+        Arrays.sort(list, (File a, File b) -> {
+            if (a.isDirectory() && !b.isDirectory()) {
+                return -1;
+            } else if (!a.isDirectory() && b.isDirectory()) {
+                return 1;
+            } else {
+                return a.getName().compareTo(b.getName());
+            }
+        });
+        return Arrays.asList(list);
     }
 }

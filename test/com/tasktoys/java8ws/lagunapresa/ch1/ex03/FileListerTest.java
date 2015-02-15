@@ -1,12 +1,17 @@
 package com.tasktoys.java8ws.lagunapresa.ch1.ex03;
 
+import static org.hamcrest.CoreMatchers.is;
+import static org.junit.Assert.assertThat;
 
-import com.tasktoys.java8ws.util.FileDeleter;
 import java.io.File;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.List;
+
 import org.junit.Before;
 import org.junit.Test;
+
+import com.tasktoys.java8ws.util.FileDeleter;
 
 public class FileListerTest {
 
@@ -16,7 +21,7 @@ public class FileListerTest {
 
 	@Before
 	public void setUp() throws Exception {
-		FileDeleter.deleteIfExists(OUT);
+		FileDeleter.deleteIfExists(OUT, f -> !f.getName().equals("README"));
 		OUT.mkdirs();
 		Files.createFile(Paths.get("out", "dummy0.txt"));
 		Files.createFile(Paths.get("out", "dummy1.000"));
@@ -26,11 +31,10 @@ public class FileListerTest {
 
 	@Test
 	public void testFilesIn() {
-                /*
-                 * This code is poorly-reproducible. Noted by mikan.
-                 */
-//		assertThat(FL.filesIn(OUT, ".txt"),
-//				is(Arrays.asList("dummy0.txt", "dummy3.txt")));
+		List<String> result = FL.filesIn(OUT, ".txt");
+		assertThat(result.size(), is(2));
+		assertThat(result.contains("dummy0.txt"), is(true));
+		assertThat(result.contains("dummy3.txt"), is(true));
 	}
 
 }

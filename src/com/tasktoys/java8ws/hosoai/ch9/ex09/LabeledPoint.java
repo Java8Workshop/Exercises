@@ -1,6 +1,5 @@
 package com.tasktoys.java8ws.hosoai.ch9.ex09;
 
-import java.util.Objects;
 
 public class LabeledPoint {
 	private String label;

@@ -22,8 +22,9 @@ public class CaptureChecker {
         String[] names = {"Peter", "Paul", "Mary"};
         List<Runnable> runners = new ArrayList<>();
         for (String name : names) {
-            runners.add(() -> System.out.println(name));
+            runners.add(() -> System.out.println("[sample1]" + name));
         }
+        runners.forEach(run -> new Thread(run).start());
     }
 
     private static void sample2() {
@@ -31,7 +32,8 @@ public class CaptureChecker {
         List<Runnable> runners = new ArrayList<>();
         for (int i = 0; i < names.length; i++) {
             String name = names[i];
-            runners.add(() -> System.out.println(name));
+            runners.add(() -> System.out.println("[sample1]" + name));
         }
+        runners.forEach(run -> new Thread(run).start());
     }
 }

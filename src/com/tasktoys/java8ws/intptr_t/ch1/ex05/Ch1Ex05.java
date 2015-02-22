@@ -46,6 +46,7 @@ public class Ch1Ex05 {
 		};
 		for(JFrame f : frames){
 			f.setVisible(true);
+			f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		}
 	}
 }

@@ -33,7 +33,7 @@ public class CaptureChecker {
         List<Runnable> runners = new ArrayList<>();
         for (int i = 0; i < names.length; i++) {
             String name = names[i];
-            runners.add(() -> System.out.println("[sample1]" + name));
+            runners.add(() -> System.out.println("[sample2]" + name));
         }
         runners.forEach(run -> new Thread(run).start());
     }
@@ -43,7 +43,7 @@ public class CaptureChecker {
         List<Runnable> runners = new ArrayList<>();
         for (int i = 0; i < names.length; i++) {
             int j = i;
-            runners.add(() -> System.out.println("[sample1]" + names[j]));
+            runners.add(() -> System.out.println("[sample3]" + names[j]));
         }
         runners.forEach(run -> new Thread(run).start());
     }

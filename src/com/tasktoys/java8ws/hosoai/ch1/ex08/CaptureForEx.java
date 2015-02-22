@@ -40,7 +40,7 @@ public class CaptureForEx {
 	}
 	
 	public static void main(String[] args) {
-		new CaptureForEx().callNamesByForEx();
-//		new CaptureForEx().callNamesByFor();
+//		new CaptureForEx().callNamesByForEx();
+		new CaptureForEx().callNamesByFor();
 	}
 }

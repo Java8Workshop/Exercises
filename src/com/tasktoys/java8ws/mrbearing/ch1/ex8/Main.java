@@ -18,9 +18,17 @@ public class Main {
     for(Runnable r: runners)
       r.run();
     System.out.println("********");
-    for(int i= 0; i<names.length ;i++)
-      System.out.println(names[i]);
     
+    List<Runnable> runners2 = new ArrayList<>();
+    
+    for(int i= 0; i<names.length ;i++){
+      String name = names[i];
+      runners2.add(()->System.out.println(name));
+    }
+    
+    
+    for(Runnable r: runners2)
+      r.run();
   }
 
 }

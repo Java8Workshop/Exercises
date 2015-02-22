@@ -18,7 +18,7 @@ public class AndThen {
             } catch (InterruptedException ex) {
                 System.err.println(ex);
             }
-        },() -> {
+        }, () -> {
             System.out.println("fuga");
             try {
                 Thread.sleep(1000);
@@ -28,7 +28,14 @@ public class AndThen {
         })).start();
     }
 
-    public static Runnable andThen(Runnable run1, Runnable run2) {
+    public static Runnable andThen(Runnable first, Runnable second) {
+        return () -> {
+            first.run();
+            second.run();
+        };
+    }
+
+    public static Runnable andThenWithThread(Runnable run1, Runnable run2) {
         return () -> {
             Thread first = new Thread(run1);
             first.start();

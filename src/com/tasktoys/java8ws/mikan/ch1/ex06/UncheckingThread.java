@@ -16,7 +16,8 @@ public class UncheckingThread {
             Thread.sleep(1000);
         })).start();
     }
-    
+
+    @FunctionalInterface
     public interface RunnableEx {
         public void run() throws Exception;
     }

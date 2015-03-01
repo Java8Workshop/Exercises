@@ -6,5 +6,7 @@ import java.util.function.Predicate;
 
 public interface Collection2<E> extends Collection<E> {
 	
-	public void forEachIf(Consumer<E> action, Predicate<E> filter);
+	default void forEachIf(Consumer<E> action, Predicate<E> filter) {
+		this.stream().filter(filter).forEach(action);
+	}
 }

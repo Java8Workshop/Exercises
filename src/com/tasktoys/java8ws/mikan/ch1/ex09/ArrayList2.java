@@ -8,8 +8,6 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
-import java.util.function.Consumer;
-import java.util.function.Predicate;
 
 /**
  *
@@ -85,10 +83,5 @@ public class ArrayList2<E> implements List2<E> {
     @Override
     public void clear() {
         list.clear();
-    }
-
-    @Override
-    public void forEachIf(Consumer<E> action, Predicate<E> filter) {
-        list.stream().filter(filter).forEach(action);
     }
 }

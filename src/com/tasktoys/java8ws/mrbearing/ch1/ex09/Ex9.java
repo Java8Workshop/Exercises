@@ -1,4 +1,4 @@
-package com.tasktoys.java8ws.mrbearing.ch1.ex9;
+package com.tasktoys.java8ws.mrbearing.ch1.ex09;
 
 import java.util.ArrayList;
 import java.util.Collection;

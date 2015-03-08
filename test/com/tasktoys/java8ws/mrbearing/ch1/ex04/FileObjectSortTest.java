@@ -10,7 +10,7 @@ import java.util.List;
 
 import org.junit.Test;
 
-import com.tasktoys.java8ws.mrbearing.ch1.ex4.FileObjectSort;
+import com.tasktoys.java8ws.mrbearing.ch1.ex04.FileObjectSort;
 import com.tasktoys.java8ws.util.FileDeleter;
 
 public class FileObjectSortTest {

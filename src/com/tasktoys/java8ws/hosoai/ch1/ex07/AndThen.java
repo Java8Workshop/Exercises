@@ -1,7 +1,7 @@
 package com.tasktoys.java8ws.hosoai.ch1.ex07;
 
 public class AndThen {
-	public static Runnable andThen(Runnable first, Runnable second){	
+	public static Runnable andThen(Runnable first, Runnable second){
 		return ()->{first.run();second.run();};
 	}
 	

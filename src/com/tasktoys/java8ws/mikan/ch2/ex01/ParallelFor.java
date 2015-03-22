@@ -33,13 +33,13 @@ public class ParallelFor {
     private final int segmentSize;
 
     public static void main(String[] args) throws IOException {
-        ParallelFor myClass = new ParallelFor(DEFAULT_WORD_LENGTH, DEFAULT_SEGMENT_SIZE);
-        myClass.fetchAliceDotTxt();
+        ParallelFor.fetchAliceDotTxt();
         String contents = new String(Files.readAllBytes(Paths.get("out/alice.txt")), StandardCharsets.UTF_8);
         List<String> words = Arrays.asList(contents.split("[\\P{L}]+"));
+        ParallelFor pf = new ParallelFor(DEFAULT_WORD_LENGTH, DEFAULT_SEGMENT_SIZE);
         System.out.println("Number of words: " + words.size());
-        System.out.println("for:\t" + myClass.countSequential(words));
-        System.out.println("thread:\t" + myClass.countParallel(words));
+        System.out.println("for:\t" + pf.countSequential(words));
+        System.out.println("thread:\t" + pf.countParallel(words));
     }
 
     public static void fetchAliceDotTxt() {

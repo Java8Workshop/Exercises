@@ -1,4 +1,4 @@
-package com.tasktoys.java8ws.sato.ch2;
+package com.tasktoys.java8ws.sato.ch2.ex01;
 
 import java.util.Arrays;
 import java.util.List;

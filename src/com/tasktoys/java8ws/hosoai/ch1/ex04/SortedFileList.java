@@ -11,7 +11,7 @@ public class SortedFileList {
 		Stream<File> directories = Stream.of(inputFiles).filter(File::isDirectory).sorted(comp);
 		Stream<File> files = Stream.of(inputFiles).filter(File::isFile).sorted(comp);
 		
-		return (File[])Stream.concat(directories, files).toArray(File[]::new);
+		return Stream.concat(directories, files).toArray(File[]::new);
 	}
 	
 	public static int fileComparate(File f1, File f2){

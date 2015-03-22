@@ -27,20 +27,22 @@ import java.util.concurrent.Future;
  */
 public class ParallelFor {
 
-    private static final int SEGMENT_SIZE = 100;
-    private static final int MIN_COUNT_LENGTH = 12;
+    private static final int DEFAULT_WORD_LENGTH = 12;
+    private static final int DEFAULT_SEGMENT_SIZE = 100;
+    private final int wordLength;
+    private final int segmentSize;
 
     public static void main(String[] args) throws IOException {
-        ParallelFor myClass = new ParallelFor();
-        myClass.fetchAliceDotTxt();
+        ParallelFor.fetchAliceDotTxt();
         String contents = new String(Files.readAllBytes(Paths.get("out/alice.txt")), StandardCharsets.UTF_8);
         List<String> words = Arrays.asList(contents.split("[\\P{L}]+"));
+        ParallelFor pf = new ParallelFor(DEFAULT_WORD_LENGTH, DEFAULT_SEGMENT_SIZE);
         System.out.println("Number of words: " + words.size());
-        System.out.println("for:\t" + myClass.countSequential(words));
-        System.out.println("thread:\t" + myClass.countParallel(words));
+        System.out.println("for:\t" + pf.countSequential(words));
+        System.out.println("thread:\t" + pf.countParallel(words));
     }
 
-    private void fetchAliceDotTxt() {
+    public static void fetchAliceDotTxt() {
         if (new File("out/alice.txt").exists()) {
             System.out.println("alice.txt already found. Download skipping.");
             return;
@@ -54,37 +56,43 @@ public class ParallelFor {
             System.err.println("IOException" + ex.getMessage());
         }
     }
+    
+    public ParallelFor(int wordLength, int segmentSize) {
+        this.wordLength = wordLength;
+        this.segmentSize = segmentSize;
+    }
 
-    private int countSequential(List<String> words) {
+
+    public int countSequential(List<String> words) {
         int count = 0;
         for (String w : words) {
-            if (w.length() > MIN_COUNT_LENGTH) {
+            if (w.length() > wordLength) {
                 count++;
             }
         }
         return count;
     }
 
-   private int countParallel(List <String> words) {
+   public int countParallel(List <String> words) {
        int count = 0;
         ExecutorService exec = Executors.newSingleThreadExecutor();
         List<Future<Integer>> futures = new ArrayList<>();
         int begin = 0;
-        int end = SEGMENT_SIZE;
+        int end = segmentSize;
         while (true) {
             Future<Integer> future;
             if (end >= words.size()) {
                 end = words.size();
-                future = exec.submit(new Counter(words.subList(begin, end)));
+                future = exec.submit(new Counter(words.subList(begin, end), wordLength));
                 // System.out.println("[2] " + begin + " " + end);
                 futures.add(future);
                 break;
             } else {
-                future = exec.submit(new Counter(words.subList(begin, end)));
+                future = exec.submit(new Counter(words.subList(begin, end), wordLength));
                 // System.out.println("[1] " + begin + " " + end);
                 futures.add(future);
                 begin = end;
-                end = begin + SEGMENT_SIZE;
+                end = begin + segmentSize;
             }
         }
         for (Future<Integer> future : futures) {
@@ -102,16 +110,18 @@ public class ParallelFor {
     private static class Counter implements Callable<Integer> {
 
         private final List<String> segment;
+        private final int wordLength;
         private int count = 0;
 
-        public Counter(List<String> segment) {
+        public Counter(List<String> segment, int wordLength) {
             this.segment = segment;
+            this.wordLength = wordLength;
         }
 
         @Override
         public Integer call() throws Exception {
             for (String w : segment) {
-                if (w.length() > MIN_COUNT_LENGTH) {
+                if (w.length() > wordLength) {
                     count++;
                 }
             }

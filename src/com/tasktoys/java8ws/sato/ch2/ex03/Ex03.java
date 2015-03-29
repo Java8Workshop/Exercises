@@ -77,7 +77,7 @@ public class Ex03 {
 		int fromIndex = 0;
 		int toIndex = segment;
 		
-		MyThread[] tarray = new MyThread[101];
+		MyThread[] tarray = new MyThread[100];
 		for (int i = 0; i < 100; i++) {
 			tarray[i] = new MyThread(words.subList(fromIndex, toIndex));
 			tarray[i].start();

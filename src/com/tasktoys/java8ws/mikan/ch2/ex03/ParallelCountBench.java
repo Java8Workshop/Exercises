@@ -49,21 +49,21 @@ public class ParallelCountBench {
         System.out.println("ParallelFor:\t" + (endPf - beginPf) + " [" + countPf + "]");
 
         // Take 1
-        // Pararell:	7045720 [1946] 2
-        // Sequential:	6982571 [1946] 1 FASTEST
-        // ParallelFor:	7318455 [1946] 3
+        // Pararell:    7045720 [1946] 2
+        // Sequential:  6982571 [1946] 1 FASTEST!
+        // ParallelFor: 7318455 [1946] 3
         // Take 2
-        // Pararell:	8094675 [1946] 3
-        // Sequential:	6821456 [1946] 1 FASTEST
-        // ParallelFor:	7967695 [1946] 2
+        // Pararell:    8094675 [1946] 3
+        // Sequential:  6821456 [1946] 1 FASTEST!
+        // ParallelFor: 7967695 [1946] 2
         // Take 3
-        // Pararell:	6221370 [1946] 1 FASTEST
-        // Sequential:	7220489 [1946] 2
-        // ParallelFor:	7324258 [1946] 3
+        // Pararell:    6221370 [1946] 1 FASTEST!
+        // Sequential:  7220489 [1946] 2
+        // ParallelFor: 7324258 [1946] 3
         // Take 4
-        // Pararell:	6863100 [1946] 1 FASTEST
-        // Sequential:	8007632 [1946] 3
-        // ParallelFor:	7996368 [1946] 2
+        // Pararell:    6863100 [1946] 1 FASTEST!
+        // Sequential:  8007632 [1946] 3
+        // ParallelFor: 7996368 [1946] 2
     }
 
     private static long countParallel(List<String> words) {

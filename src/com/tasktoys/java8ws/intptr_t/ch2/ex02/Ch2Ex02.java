@@ -13,13 +13,16 @@ public class Ch2Ex02 {
 				Files.readAllBytes(Paths.get("alice.txt")), StandardCharsets.UTF_8);
 		List<String> words = Arrays.asList(contents.split("[\\P{L}]+"));		
 		
-		// [0] := 合計呼び出し回数. [1] := フィルタにマッチした回数
-		final int[] filterCalledCount = new int[]{0, 0};
+		// [0] := 合計呼び出し回数, [1] := フィルタにマッチした回数, [2] := 5回目のときの呼び出し回数
+		final int[] filterCalledCount = new int[]{0, 0, 0};
 		
 		words.stream().filter( w -> {
 			filterCalledCount[0]++;
 			if(w.length() > 12){
 				filterCalledCount[1]++;
+				if( filterCalledCount[1] == 5 ) {
+					filterCalledCount[2] = filterCalledCount[0];
+				}
 				return true;
 			} else {
 				return false;
@@ -29,5 +32,6 @@ public class Ch2Ex02 {
 		System.out.println();
 		System.out.println("total count:" + filterCalledCount[0]);
 		System.out.println("match count:" + filterCalledCount[1]);
+		System.out.println("last count :" + filterCalledCount[2]);
 	}
 }

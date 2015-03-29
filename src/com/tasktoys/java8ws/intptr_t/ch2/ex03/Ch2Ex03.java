@@ -11,7 +11,9 @@ public class Ch2Ex03 {
 
 	public static void main(String[] args) throws IOException {
 		String contents = new String(
-				Files.readAllBytes(Paths.get("alice.txt")),StandardCharsets.UTF_8);
+				Files.readAllBytes(Paths.get("alice.txt")),
+				//Files.readAllBytes(Paths.get("2600.txt")),
+				StandardCharsets.UTF_8);
 		List<String> words = Arrays.asList(contents.split("[\\P{L}]+"));		
 
 		long begin, end, diff1, diff2;
@@ -28,7 +30,7 @@ public class Ch2Ex03 {
 		end = System.nanoTime();
 		diff2 = end - begin;
 
-		System.out.println( "stream  :" + count + " , " + (diff1 / 1000) + "us" );
-		System.out.println( "pstream :" + parallelCount + " , " + (diff2 / 1000) + "us" );		
+		System.out.println( "stream  :" + count + " , " + diff1 + "ns(" + (diff1/1000/1000) + "ms)" );
+		System.out.println( "pstream :" + parallelCount + " , " + diff2 + "ns(" + (diff2/1000/1000) + "ms)" );
 	}
 }

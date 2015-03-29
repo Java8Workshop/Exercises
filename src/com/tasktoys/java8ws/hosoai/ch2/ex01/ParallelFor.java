@@ -8,9 +8,7 @@ import java.util.Arrays;
 import java.util.List;
 
 public class ParallelFor {
-	static int sum=0;
-	private Object lock = new Object();
-	
+	static int sum=0;	
 	class Over12Counter extends Thread{
 		int count = 0;
 		List<String> words;
@@ -45,6 +43,8 @@ public class ParallelFor {
 				}
 				t[i] = new Over12Counter(words.subList(i*segment, upperBounds));
 				t[i].start();
+			}
+			for(int i=0;i<parallel;i++){
 				t[i].join();
 			}
 		} catch (IOException e) {

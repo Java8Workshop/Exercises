@@ -7,6 +7,21 @@ import java.nio.file.Paths;
 import java.util.Arrays;
 import java.util.List;
 
+
+/*
+ * Parallel last.
+ *  start Single Stream
+ *  end Single Stream: 	164211
+ *  start Parallel Stream
+ *  end Parallel Stream: 446274
+ * 
+ * Parallel first.
+ *  start Parallel Stream
+ *  end Parallel Stream: 413007
+ *  start Single Stream
+ *  end Single Stream: 	99801
+ */
+
 public class ParallelStreamPerformance {
 	List<String> words = null;
 	
@@ -31,12 +46,26 @@ public class ParallelStreamPerformance {
 	public static void main(String[] args) {
 		ParallelStreamPerformance instance = new ParallelStreamPerformance();
 		long startTime = System.nanoTime();
-		System.out.println("start Single Stream");
+		
+		// break in
 		instance.findLongWords(10);
-		System.out.println("ennd Single Stream: \t"+(System.nanoTime()-startTime));
-		startTime = System.nanoTime();
-		System.out.println("start Parallel Stream");
+		instance.findLongWords(10);
+		instance.findLongWords(10);
+		instance.findLongWords(10);
 		instance.parallelFindLongWords(10);
-		System.out.println("ennd Parallel Stream: \t"+(System.nanoTime()-startTime));
+		instance.parallelFindLongWords(10);
+		instance.parallelFindLongWords(10);
+		instance.parallelFindLongWords(10);
+		
+		System.out.println("start Parallel Stream");
+		startTime = System.nanoTime();
+		instance.parallelFindLongWords(10);
+		System.out.println("end Parallel Stream: \t"+(System.nanoTime()-startTime));
+		
+		System.out.println("start Single Stream");
+		startTime = System.nanoTime();
+		instance.findLongWords(10);
+		System.out.println("end Single Stream: \t"+(System.nanoTime()-startTime));
+
 	}
 }

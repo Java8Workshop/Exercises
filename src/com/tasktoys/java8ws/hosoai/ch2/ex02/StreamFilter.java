@@ -11,6 +11,7 @@ import java.util.stream.Stream;
 public class StreamFilter {
 	int length;
 	public static void main(String[] args) {
+		System.out.println("Results:");
 		for(String word : new StreamFilter().findLongWords(5)){
 			System.out.println(word);
 		}
@@ -23,7 +24,7 @@ public class StreamFilter {
 			List<String> words = Arrays.asList(contents.split("[\\P{L}]+"));
 			
 			Stream<String> wordStream = words.stream();
-			result = wordStream.filter(this::myFilter).peek(p->System.out.println(p)).limit(5).toArray(String[]::new);	
+			result = wordStream.filter(this::myFilter).limit(5).toArray(String[]::new);	
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

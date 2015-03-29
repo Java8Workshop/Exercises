@@ -50,7 +50,7 @@ public class Ch2Ex01 {
 		int q = words.size() % splitCount;
 		// 分割処理
 		List<IntPair<List<String>>> wordsSegment = new ArrayList<>(splitCount);
-		for(int i = 0; i < splitCount; i++) {
+		for(int i = 0; i < splitCount -1 ; i++) {
 			wordsSegment.add( new IntPair<List<String>>(i, words.subList(i*p, i*p + p)));
 		}
 		wordsSegment.add( new IntPair<List<String>>(splitCount, words.subList(splitCount*p, splitCount*p + q)));
@@ -92,9 +92,11 @@ public class Ch2Ex01 {
 	 */
 	static void countup(Thread[] threads, int[] counts) {
 		assert threads.length == counts.length;
+
+		// 要素番号とスレッドとの対を生成
 		List<IntPair<Thread>> list = new ArrayList<>();
-		for(int i = 0; i < threads.length; i++ ) {
-			list.add(new IntPair<Thread>(counts[i], threads[i]));
+		for(int i = 0; i < threads.length; i++) {
+			list.add(new IntPair<Thread>(i, threads[i]));
 		}
 		
 		// 各スレッドが終わるごとに加算
@@ -102,7 +104,7 @@ public class Ch2Ex01 {
 			try {
 				item.get().join();
 				synchronized(countLock) {
-					count += item.getInt();
+					count += counts[item.getInt()];
 				}
 			} catch (Exception e) {
 				e.printStackTrace();

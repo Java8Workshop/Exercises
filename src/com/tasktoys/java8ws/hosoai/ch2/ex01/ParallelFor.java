@@ -45,8 +45,11 @@ public class ParallelFor {
 				}
 				t[i] = new Over12Counter(words.subList(i*segment, upperBounds));
 				t[i].start();
+				t[i].join();
 			}
 		} catch (IOException e) {
+			e.printStackTrace();
+		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
 		return sum;

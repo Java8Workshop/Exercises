@@ -15,7 +15,7 @@ import java.util.Calendar;
 /**
  *
  * @author mikan
- * @see https://github.com/mikan/JavaTrainingCourse/blob/master/src/local/GUI/ex1_1/DigitalClock.java
+ * @see "https://github.com/mikan/JavaTrainingCourse/blob/master/src/local/GUI/ex1_1/DigitalClock.java"
  */
 @SuppressWarnings("serial")
 public class DigitalClockFrame extends Frame {

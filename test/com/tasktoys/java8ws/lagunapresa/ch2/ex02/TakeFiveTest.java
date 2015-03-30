@@ -1,12 +1,12 @@
 package com.tasktoys.java8ws.lagunapresa.ch2.ex02;
 
 import com.tasktoys.java8ws.lagunapresa.ch2.ex01.ParStream;
+import com.tasktoys.java8ws.util.Resource;
 import org.junit.Before;
 import org.junit.Test;
 
 import java.io.IOException;
 import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.Arrays;
 import java.util.List;
 import java.util.function.IntConsumer;
@@ -23,7 +23,7 @@ public class TakeFiveTest {
 
     List<String> words;
 
-    private static final Path ALICE = Paths.get("test/com/tasktoys/java8ws/lagunapresa/ch2/ex01/alice30.txt");
+    private static final Path ALICE = Resource.get("ch2/alice30.txt");
 
     @Before
     public void setUp() throws Exception {

@@ -14,7 +14,9 @@ public class TypeofIntArrayStream {
 		int[] values = new int[]{1,4,9,16};
 		// default stream
 		System.out.println(Stream.of(values).getClass());
+		Stream.of(values).forEach(System.out::println); // int[]なので中身みえないよ．
 		// int stream
 		System.out.println(IntStream.of(values).getClass());
+		IntStream.of(values).forEach(System.out::println);
 	}
 }

@@ -27,12 +27,16 @@ public class ParallelCountBench {
         fetchWarAndPeace();
         String contents = new String(Files.readAllBytes(Paths.get("out/war_and_peace.txt")), StandardCharsets.UTF_8);
         List<String> words = Arrays.asList(contents.split("[\\P{L}]+"));
-        ParallelFor pf = new ParallelFor(12, 10);
+        ParallelFor pf10 = new ParallelFor(12, 10);
+        ParallelFor pf100 = new ParallelFor(12, 100);
+        ParallelFor pf1000 = new ParallelFor(12, 1000);
         
         // Test run
         countSequential(words);
         countParallel(words);
-        pf.countSequential(words);
+        pf10.countSequential(words);
+        pf100.countSequential(words);
+        pf1000.countSequential(words);
 
         // Metrics run
         long beginParallel = System.nanoTime();
@@ -41,12 +45,20 @@ public class ParallelCountBench {
         long beginSequential = System.nanoTime();
         long countSequential = countSequential(words);
         long endSequential = System.nanoTime();
-        long beginPf = System.nanoTime();
-        long countPf = pf.countSequential(words);
-        long endPf = System.nanoTime();
-        System.out.println("Pararell:\t" + (endParallel - beginParallel) + " [" + countPararell + "]");
-        System.out.println("Sequential:\t" + (endSequential - beginSequential) + " [" + countSequential + "]");
-        System.out.println("ParallelFor:\t" + (endPf - beginPf) + " [" + countPf + "]");
+        long beginPf10 = System.nanoTime();
+        long countPf10 = pf10.countSequential(words);
+        long endPf10 = System.nanoTime();
+        long beginPf100 = System.nanoTime();
+        long countPf100 = pf100.countSequential(words);
+        long endPf100 = System.nanoTime();
+        long beginPf1000 = System.nanoTime();
+        long countPf1000 = pf100.countSequential(words);
+        long endPf1000 = System.nanoTime();
+        System.out.println("Pararell:\t\t" + (endParallel - beginParallel) + " [" + countPararell + "]");
+        System.out.println("Sequential:\t\t" + (endSequential - beginSequential) + " [" + countSequential + "]");
+        System.out.println("ParallelFor(10):\t" + (endPf10 - beginPf10) + " [" + countPf10 + "]");
+        System.out.println("ParallelFor(100):\t" + (endPf100 - beginPf100) + " [" + countPf100 + "]");
+        System.out.println("ParallelFor(1000):\t" + (endPf1000 - beginPf1000) + " [" + countPf1000 + "]");
 
         // Take 1
         // Pararell:    7045720 [1946] 2

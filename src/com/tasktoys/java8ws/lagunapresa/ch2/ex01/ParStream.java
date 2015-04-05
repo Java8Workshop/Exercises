@@ -81,7 +81,7 @@ public class ParStream {
         return segments;
     }
 
-    List<String> readAndSplit(Path res) throws IOException {
+    public final List<String> readAndSplit(Path res) throws IOException {
         String contents = new String(
                 Files.readAllBytes(res),
                 StandardCharsets.UTF_8);

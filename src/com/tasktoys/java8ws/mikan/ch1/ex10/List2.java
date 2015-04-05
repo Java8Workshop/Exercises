@@ -12,5 +12,4 @@ import java.util.List;
  */
 public interface List2<E> extends List<E> {
 
-    // TODO: Copy and paste Collections methods.
 }

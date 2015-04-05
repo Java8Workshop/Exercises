@@ -12,5 +12,6 @@ public class ListUser {
 
     public static void main(String[] args) {
         List2<String> list = new ArrayList2<>();
+        list.size();
     }
 }

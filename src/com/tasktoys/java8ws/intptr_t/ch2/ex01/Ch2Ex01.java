@@ -51,9 +51,9 @@ public class Ch2Ex01 {
 		// 分割処理
 		List<IntPair<List<String>>> wordsSegment = new ArrayList<>(splitCount);
 		for(int i = 0; i < splitCount -1 ; i++) {
-			wordsSegment.add( new IntPair<List<String>>(i, words.subList(i*p, i*p + p)));
+			wordsSegment.add( new IntPair<>(i, words.subList(i*p, i*p + p)));
 		}
-		wordsSegment.add( new IntPair<List<String>>(splitCount, words.subList(splitCount*p, splitCount*p + q)));
+		wordsSegment.add( new IntPair<>(splitCount, words.subList(splitCount*p, splitCount*p + q)));
 
 		//　各セグメントの合計個数格納先生成
 		int[] counts = new int[wordsSegment.size()];

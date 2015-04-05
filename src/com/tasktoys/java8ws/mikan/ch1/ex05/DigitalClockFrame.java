@@ -13,9 +13,10 @@ import java.awt.event.WindowEvent;
 import java.util.Calendar;
 
 /**
+ * Motoneta:
+ * <blockquote>https://github.com/mikan/JavaTrainingCourse/blob/master/src/local/GUI/ex1_1/DigitalClock.java</blockquote>
  *
  * @author mikan
- * @see https://github.com/mikan/JavaTrainingCourse/blob/master/src/local/GUI/ex1_1/DigitalClock.java
  */
 @SuppressWarnings("serial")
 public class DigitalClockFrame extends Frame {

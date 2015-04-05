@@ -1,10 +1,10 @@
 package com.tasktoys.java8ws.lagunapresa.ch2.ex01;
 
+import com.tasktoys.java8ws.util.Resource;
 import org.junit.Test;
 
 import java.io.IOException;
 import java.nio.file.Path;
-import java.nio.file.Paths;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
@@ -13,7 +13,7 @@ public class ParStreamTest {
 
     private static final ParStream PS = new ParStream();
 
-    private static final Path ALICE = Paths.get("test/com/tasktoys/java8ws/lagunapresa/ch2/ex01/alice30.txt");
+    private static final Path ALICE = Resource.get("ch2/alice30.txt");
 
     @Test
     public void test() throws IOException {

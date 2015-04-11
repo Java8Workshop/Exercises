@@ -9,52 +9,94 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Stream;
 
-public class WordCounter {
-  
-  private final int wordLength;
-  //private final int segmentSize;
+class Counter {
+  private int count;
 
-  public static void main(String[] args) throws IOException {
-    String contents = new String(Files.readAllBytes(
-        Paths.get("out/alice.txt")),StandardCharsets.UTF_8);
+  public Counter() {
+    this.count = 0;
+  }
+
+  public int getCount() {
+    return this.count;
+  }
+
+  public synchronized int countUp(int c) {
+    this.count += c;
+
+    return this.count;
+  }
+
+}
+
+public class WordCounter {
+
+  // private final int wordLength;
+  // private final int segmentSize;
+
+  public static void main(String[] args) throws IOException,
+      InterruptedException {
+    String contents = new String(
+        Files.readAllBytes(Paths.get("out/alice.txt")), StandardCharsets.UTF_8);
 
     List<String> words = Arrays.asList(contents.split("[\\P{L}]+"));
 
-    WordCounter counter = new WordCounter(12);
-    
-    System.out.println("All count "+ words.size());
-    System.out.println("seq:"+counter.countSeq(words));
-    System.out.println("para:"+counter.countPara(words,10));
-    
+    // WordCounter counter = new WordCounter(12);
+
+    System.out.println("All count " + words.size());
+    System.out.println("seq:" + countSeq(words, 12));
+    System.out.println("para:" + countPara(words, 12, 200));
+
   }
-  
-  public WordCounter(int wordLenght){
-    this.wordLength = wordLenght;
-    //this.segmentSize = segmentSize;
-  }
-  
-  public int countSeq(List<String> words){
-    int count= 0;
-    for(String w : words){
-      if(w.length() > wordLength) count++;
+
+  public static int countSeq(List<String> words, int wordLength) {
+    int count = 0;
+    for (String w : words) {
+      if (w.length() > wordLength)
+        count++;
     }
-    
+
     return count;
   }
-  
-  private int count = 0;
-  public int countPara(List<String> words,int segment){
-    
-    int begin =0;
-    int end = segment;
-    List<List<String>> segList = new ArrayList<List<String>>();
-    
-    while(true){
-      if(end >= words.size())
-        words.subList(begin, end);
-      
+
+  public static Counter counter = new Counter();
+
+  public static int countPara(List<String> words, int wordLength, int segment)
+      throws InterruptedException {
+
+    int begin = 0;
+    int end = segment - 1;
+    // List<List<String>> segList = new ArrayList<List<String>>();
+    List<Thread> threadList = new ArrayList<Thread>();
+
+    while (true) {
+      if (end >= words.size()) {
+        end = words.size() - 1;
+        List<String> wordlist = words.subList(begin, end);
+        threadList.add(new Thread(() -> {
+          counter.countUp(countSeq(wordlist, wordLength));
+        }));
+        break;
+      }
+      List<String> wordlist = words.subList(begin, end);
+      threadList.add(new Thread(() -> {
+        counter.countUp(countSeq(wordlist, wordLength));
+      }));
+
+      begin = end + 1;
+      end += segment;
     }
+    
+    System.out.println(threadList.size());
+
+    for (Thread thread : threadList) {
+      thread.start();
+    }
+
+    for (Thread thread : threadList) {
+      thread.join();
+    }
+    return counter.getCount();
+
   }
-  
-  
+
 }

@@ -36,7 +36,7 @@ public class Ch2Ex01 {
 	
 	public static void main(String[] args) throws IOException {
 		String contents = new String(
-				Files.readAllBytes(Paths.get("alice.txt")), StandardCharsets.UTF_8);
+				Files.readAllBytes(Paths.get("out/alice.txt")), StandardCharsets.UTF_8);
 		List<String> words = Arrays.asList(contents.split("[\\P{L}]+"));
 		
 		// CPUの個数で分割する

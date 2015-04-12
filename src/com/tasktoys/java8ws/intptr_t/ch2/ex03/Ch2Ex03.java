@@ -11,7 +11,7 @@ public class Ch2Ex03 {
 
 	public static void main(String[] args) throws IOException {
 		String contents = new String(
-				Files.readAllBytes(Paths.get("alice.txt")),
+				Files.readAllBytes(Paths.get("out/alice.txt")),
 				//Files.readAllBytes(Paths.get("2600.txt")),
 				StandardCharsets.UTF_8);
 		List<String> words = Arrays.asList(contents.split("[\\P{L}]+"));		

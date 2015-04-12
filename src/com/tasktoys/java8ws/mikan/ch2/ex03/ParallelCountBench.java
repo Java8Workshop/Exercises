@@ -54,26 +54,26 @@ public class ParallelCountBench {
         long beginPf1000 = System.nanoTime();
         long countPf1000 = pf100.countSequential(words);
         long endPf1000 = System.nanoTime();
-        System.out.println("Pararell:\t\t" + n2m(endParallel - beginParallel) + " [" + countPararell + "]");
+        System.out.println("Parallel:\t\t" + n2m(endParallel - beginParallel) + " [" + countPararell + "]");
         System.out.println("Sequential:\t\t" + n2m(endSequential - beginSequential) + " [" + countSequential + "]");
         System.out.println("ParallelFor(10):\t" + n2m(endPf10 - beginPf10) + " [" + countPf10 + "]");
         System.out.println("ParallelFor(100):\t" + n2m(endPf100 - beginPf100) + " [" + countPf100 + "]");
         System.out.println("ParallelFor(1000):\t" + n2m(endPf1000 - beginPf1000) + " [" + countPf1000 + "]");
 
         // Take 1
-        // Pararell:		7.709979 [1946] 1 (Fastest!)
+        // Parallel:		7.709979 [1946] 1 (Fastest!)
         // Sequential:		9.436506 [1946] 4
         // ParallelFor(10):	8.829252 [1946] 2
         // ParallelFor(100):	9.951939 [1946] 5
         // ParallelFor(1000):	8.958964 [1946] 3
         // Take 2
-        // Pararell:		7.560811 [1946] 3
+        // Parallel:		7.560811 [1946] 3
         // Sequential:		8.013435 [1946] 5
         // ParallelFor(10):	6.383167 [1946] 1 (Fastest!)
         // ParallelFor(100):	7.858805 [1946] 4
         // ParallelFor(1000):	7.229023 [1946] 2
         // Take 3
-        // Pararell:		7.701787 [1946] 3
+        // Parallel:		7.701787 [1946] 3
         // Sequential:		7.921954 [1946] 5
         // ParallelFor(10):	6.7822 [1946]   1 (Fastest!)
         // ParallelFor(100):	7.150513 [1946] 2

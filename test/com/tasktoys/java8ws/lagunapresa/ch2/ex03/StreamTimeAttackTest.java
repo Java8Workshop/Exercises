@@ -17,6 +17,8 @@ public class StreamTimeAttackTest {
 
     @Test
     public void compare() throws IOException {
+        //   serial try 5: 0.169, 0.163, 0.100, 0.108, 0.088
+        // parallel try 5: 0.717, 0.749, 0.742, 0.751, 0.697
         assertThat(TA.timeSerial(ALICE) < TA.timeParallel(ALICE), is(true));
     }
 

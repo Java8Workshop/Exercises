@@ -7,10 +7,12 @@ import java.nio.file.Paths;
 import java.util.Arrays;
 import java.util.List;
 
-public class Ch2Ex02 {	
+public class Ch2Ex02 {
+	final static int STOP_COUNT = 5;
+	
 	public static void main(String[] args) throws IOException {
 		String contents = new String(
-				Files.readAllBytes(Paths.get("alice.txt")), StandardCharsets.UTF_8);
+				Files.readAllBytes(Paths.get("out/alice.txt")), StandardCharsets.UTF_8);
 		List<String> words = Arrays.asList(contents.split("[\\P{L}]+"));		
 		
 		// [0] := 合計呼び出し回数, [1] := フィルタにマッチした回数, [2] := 5回目のときの呼び出し回数
@@ -20,16 +22,17 @@ public class Ch2Ex02 {
 			filterCalledCount[0]++;
 			if(w.length() > 12){
 				filterCalledCount[1]++;
-				if( filterCalledCount[1] == 5 ) {
+				if( filterCalledCount[1] == STOP_COUNT ) {
 					filterCalledCount[2] = filterCalledCount[0];
 				}
 				return true;
 			} else {
 				return false;
 			}
-		}).limit( 5 ).forEach(System.out::println);
+		}).limit( STOP_COUNT ).forEach(System.out::println);
 		
 		System.out.println();
+		System.out.println("total words:" + words.size());
 		System.out.println("total count:" + filterCalledCount[0]);
 		System.out.println("match count:" + filterCalledCount[1]);
 		System.out.println("last count :" + filterCalledCount[2]);

@@ -11,8 +11,7 @@ public class Ex02 {
 	static Logger log = Logger.getLogger("ex02");
 
 	public static void main(String[] args) {
-		List<String> words = Arrays.asList(new String[] {
-				"a", "aaa", "aa", "bbbb", "ccc", "ddd", "aaa", "cc", "ddd"});
+		List<String> words = Arrays.asList("a", "aaa", "aa", "bbbb", "ccc", "ddd", "aaa", "cc", "ddd");
 		List<String> longword = words.stream().filter(s -> {
 			log.log(Level.INFO, s);
 			return s.length() > 2;

@@ -24,7 +24,6 @@ public class Ex01 {
 		try {
 			content = new String(Files.readAllBytes(Paths.get("out/pg2600.txt")), StandardCharsets.UTF_8);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
         return Arrays.asList(content.split("[\\P{L}]+"));

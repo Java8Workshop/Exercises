@@ -39,7 +39,22 @@ class StopWach{
   
   
 }
+/*
+ * 
+シリアル・パラレルを単独で各4回ずつ実行した結果
+seq  　  76976433ns
+seq  107613057ns
+seq  122876632ns
+seq  115529435ns
 
+para 436087602ns
+para 435618058ns
+para 484553611ns
+para 477165790ns
+
+シリアルの方が早い？
+*
+*/
 
 public class WordCounterBench {
   
@@ -48,15 +63,19 @@ public class WordCounterBench {
     List<String> words = Arrays.asList(contents.split("[\\P{L}]+"));
     StopWach stopWach = new StopWach();
     
+    /**/
     stopWach.start();
     words.stream().filter(w -> w.length() > 12).count();
     stopWach.stop();
     System.out.println("seq "+ stopWach.getNanoTime()+"ns");
     stopWach.reset();
-    
+    /**/
+    /**/
     stopWach.start();
     words.parallelStream().filter(w-> w.length() > 12).count();
     stopWach.stop();
     System.out.println("para "+ stopWach.getNanoTime()+"ns");
+    /**/
+    
   }
 }

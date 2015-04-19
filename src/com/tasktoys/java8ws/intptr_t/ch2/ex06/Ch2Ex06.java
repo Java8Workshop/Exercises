@@ -14,6 +14,6 @@ public class Ch2Ex06 {
 		return Stream
 				.iterate(0, i -> i+1)
 				.limit(s.length())
-				.map(i -> s.charAt(i));
+				.map(s::charAt);
 	}
 }

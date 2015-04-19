@@ -13,7 +13,7 @@ import java.util.stream.Stream;
 public class InfiniteRandom {
 
     public static void main(String[] args) {
-        Stream<Long> stream = Stream.iterate(0L, n -> random(25214903917L, 11, 2^48, n));
+        Stream<Long> stream = Stream.iterate(1L, n -> random(25214903917L, 11, (long) Math.pow(2, 48), n));
         stream.limit(10).forEach(System.out::println);
     }
 

@@ -22,6 +22,6 @@ public class OneLinerPadding {
 	}
 	
 	public static Stream<Character> characterStreamEx(String s){
-		return IntStream.range(0, s.length()-1).map(s::charAt).mapToObj(i->(char)i);
+		return IntStream.range(0, s.length()).map(s::charAt).mapToObj(i->(char)i);
 	}
 }

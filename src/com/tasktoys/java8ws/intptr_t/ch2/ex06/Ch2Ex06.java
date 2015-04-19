@@ -11,9 +11,6 @@ public class Ch2Ex06 {
 	}
 	
 	public static Stream<Character> characterStream(String s) {
-		return Stream
-				.iterate(0, i -> i+1)
-				.limit(s.length())
-				.map(s::charAt);
+		return Stream.iterate(0, i -> i+1).limit(s.length()).map(s::charAt);
 	}
 }

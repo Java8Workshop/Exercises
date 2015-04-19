@@ -1,7 +1,6 @@
 package com.tasktoys.java8ws.intptr_t.ch2.ex07;
 
 import java.util.Spliterator;
-import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class Ch2Ex07 {

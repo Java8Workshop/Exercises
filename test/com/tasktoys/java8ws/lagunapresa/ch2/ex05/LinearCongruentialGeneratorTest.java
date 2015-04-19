@@ -14,7 +14,7 @@ import static org.junit.Assert.assertThat;
 public class LinearCongruentialGeneratorTest {
 
     @Test
-    public void testTypeOfStreamOfArray() throws IOException {
+    public void test() throws IOException {
         Stream<Long> s = argsOf(25214903917L, 11L,
                 (long) Math.pow(2, 48)).generate(0);
         assertThat(s.limit(10).collect(Collectors.toList()),

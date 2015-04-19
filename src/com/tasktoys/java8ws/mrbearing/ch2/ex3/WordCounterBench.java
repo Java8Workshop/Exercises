@@ -5,23 +5,21 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
-import java.util.function.Predicate;
 
-class StopWach{
+class StopWatch{
   private long start;
   private long end;
   
   
-  public StopWach(){
+  public StopWatch(){
     this.start = 0L;
-    this.end =0L;
+    this.end = 0L;
   }
   
   public void reset(){
     this.start = 0L;
-    this.end =0L;
+    this.end = 0L;
   }
   
   public void start(){
@@ -34,7 +32,7 @@ class StopWach{
   }
   
   public long getNanoTime(){
-    return end -start;
+    return end - start;
   }
   
   
@@ -61,20 +59,20 @@ public class WordCounterBench {
   public static void main(String[] args) throws IOException{
     String contents = new String(Files.readAllBytes(Paths.get("out/war_and_peace.txt")), StandardCharsets.UTF_8);
     List<String> words = Arrays.asList(contents.split("[\\P{L}]+"));
-    StopWach stopWach = new StopWach();
+    StopWatch stopWatch = new StopWatch();
     
     /**/
-    stopWach.start();
+    stopWatch.start();
     words.stream().filter(w -> w.length() > 12).count();
-    stopWach.stop();
-    System.out.println("seq "+ stopWach.getNanoTime()+"ns");
-    stopWach.reset();
+    stopWatch.stop();
+    System.out.println("seq "+ stopWatch.getNanoTime()+"ns");
+    stopWatch.reset();
     /**/
     /**/
-    stopWach.start();
+    stopWatch.start();
     words.parallelStream().filter(w-> w.length() > 12).count();
-    stopWach.stop();
-    System.out.println("para "+ stopWach.getNanoTime()+"ns");
+    stopWatch.stop();
+    System.out.println("para "+ stopWatch.getNanoTime()+"ns");
     /**/
     
   }

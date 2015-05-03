@@ -23,6 +23,10 @@ public class ImageUtil {
 		Color apply(int x, int y, Color colorAtXY);
 	}
 	
+	public static ColorTransformer compose(ColorTransformer t1, ColorTransformer t2) {
+		return (x, y, c) -> t2.apply(x, y, t1.apply(x, y, c));
+	}
+	
 	public static Image transform(Image in, ColorTransformer f) {
 		int width = (int)in.getWidth();
 		int height = (int)in.getHeight();

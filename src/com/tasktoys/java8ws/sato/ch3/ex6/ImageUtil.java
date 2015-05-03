@@ -6,6 +6,8 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.function.BiFunction;
+import java.util.function.UnaryOperator;
 
 import javafx.scene.image.Image;
 import javafx.scene.image.WritableImage;
@@ -14,9 +16,12 @@ import javafx.scene.paint.Color;
 import javax.imageio.ImageIO;
 import javax.imageio.stream.ImageOutputStream;
 
-import com.tasktoys.java8ws.sato.ch3.ex5.Main.ColorTransformer;
-
 public class ImageUtil {
+	
+	@FunctionalInterface
+	public interface ColorTransformer {
+		Color apply(int x, int y, Color colorAtXY);
+	}
 	
 	public static Image transform(Image in, ColorTransformer f) {
 		int width = (int)in.getWidth();
@@ -25,6 +30,30 @@ public class ImageUtil {
 		for (int x = 0; x < width; x++) {
 			for (int y = 0; y < height; y++) {
 				out.getPixelWriter().setColor(x, y, f.apply(x, y, in.getPixelReader().getColor(x, y)));
+			}
+		}
+		return out;
+	}
+	
+	public static <T> Image transform(Image in, BiFunction<Color, T, Color> f, T arg) {
+		int width = (int)in.getWidth();
+		int height = (int)in.getHeight();
+		WritableImage out = new WritableImage(width, height);
+		for (int x = 0; x < width; x++) {
+			for (int y = 0; y < height; y++) {
+				out.getPixelWriter().setColor(x, y, f.apply(in.getPixelReader().getColor(x, y), arg));
+			}
+		}
+		return out;
+	}
+	
+	public static <T> Image transform(Image in, UnaryOperator<Color> f) {
+		int width = (int)in.getWidth();
+		int height = (int)in.getHeight();
+		WritableImage out = new WritableImage(width, height);
+		for (int x = 0; x < width; x++) {
+			for (int y = 0; y < height; y++) {
+				out.getPixelWriter().setColor(x, y, f.apply(in.getPixelReader().getColor(x, y)));
 			}
 		}
 		return out;

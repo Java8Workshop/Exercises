@@ -5,9 +5,9 @@ import java.util.concurrent.locks.ReentrantLock;
 
 public class Main {
 
-	static final Counter sharedCounter = new Counter();
-	static final int count = 1000;
-	static final int threadN = 100000;
+	private static final Counter sharedCounter = new Counter();
+	private static final int count = 1000;
+	private static final int threadN = 100000;
 	
 	public static void main(String[] args) {
 		Runnable r = () -> {
@@ -31,7 +31,7 @@ public class Main {
 		});
 	}
 	
-	static void test(Runnable r) {
+	public static void test(Runnable r) {
 		sharedCounter.setCount(0);
 		Thread[] threads = new Thread[threadN];
 		for (int i = 0; i < threadN; i++) {
@@ -50,7 +50,7 @@ public class Main {
 		System.out.println(sharedCounter.getCount());
 	}
 	
-	static void withLock(Lock lock, Runnable r) {
+	public static void withLock(Lock lock, Runnable r) {
 		lock.lock();
 		try {
 			r.run();
@@ -59,11 +59,11 @@ public class Main {
 		}
 	}
 	
-	static void withoutLock(Runnable r) {
+	public static void withoutLock(Runnable r) {
 		r.run();
 	}
 
-	static private class Counter {
+	private static class Counter {
 		
 		int c;
 		

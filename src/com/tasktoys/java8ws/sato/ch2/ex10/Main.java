@@ -1,6 +1,5 @@
 package com.tasktoys.java8ws.sato.ch2.ex10;
 
-import java.util.function.Consumer;
 import java.util.stream.Stream;
 
 public class Main {

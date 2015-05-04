@@ -1,7 +1,6 @@
 package com.tasktoys.java8ws.sato.ch2.ex04;
 
 import java.util.Arrays;
-import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
 public class Main {

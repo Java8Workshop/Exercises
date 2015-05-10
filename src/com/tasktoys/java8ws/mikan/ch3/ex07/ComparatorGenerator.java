@@ -32,12 +32,8 @@ public class ComparatorGenerator {
     public static Comparator<String> generate(
             boolean naturalOrder, boolean caseSensitive, boolean acceptSpace) {
         return (String o1, String o2) -> {
-            String s1 = o1;
-            String s2 = o2;
-            if (!acceptSpace) {
-                s1 = o1.replaceAll(" ", "");
-                s2 = o2.replaceAll(" ", "");
-            }
+            String s1 = acceptSpace ? o1 : o1.replaceAll(" ", "");
+            String s2 = acceptSpace ? o2 : o2.replaceAll(" ", "");
             int result = caseSensitive ? s1.compareTo(s2) : s1.compareToIgnoreCase(s2);
             return naturalOrder ? result : -result;
         };

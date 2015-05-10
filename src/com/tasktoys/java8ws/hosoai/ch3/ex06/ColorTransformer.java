@@ -32,7 +32,7 @@ public class ColorTransformer extends Application{
 	@Override
 	public void start(Stage stage) throws Exception {
 		Image inImg = new Image("https://pbs.twimg.com/media/CEDfyQEVEAAkERc.png");
-		Image outImg = transform(inImg, (c, T)-> Color.hsb(c.getHue(), c.getSaturation(), c.getBrightness()*T), 0.2);
+		Image outImg = transform(inImg, (c, T)-> Color.hsb(c.getHue(), c.getSaturation(), c.getBrightness()*T>1.0?1.0:c.getBrightness()*T), 1.5);
 		stage.setScene(new Scene(new HBox(new ImageView(outImg))));
 		stage.show();
 	}

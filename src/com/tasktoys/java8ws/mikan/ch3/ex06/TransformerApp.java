@@ -38,8 +38,8 @@ public class TransformerApp extends Application {
                 || y < 10 || y > image.getHeight() - 10 ? Color.GRAY : c);
         Image image3 = transform(image,
                 (color, arg) -> {
-                    return color;
-                }, null);
+                    return arg ? color.invert() : color;
+                }, true);
         primaryStage.setScene(new Scene(new HBox(
                 new ImageView(image),
                 new ImageView(brightenedImage),

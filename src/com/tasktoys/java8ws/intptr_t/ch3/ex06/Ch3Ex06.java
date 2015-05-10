@@ -1,6 +1,5 @@
 package com.tasktoys.java8ws.intptr_t.ch3.ex06;
 
-import java.io.IOException;
 import java.nio.file.Paths;
 import java.util.function.BiFunction;
 
@@ -14,7 +13,7 @@ import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 public class Ch3Ex06 extends Application {
-	public static void main(String[] args) throws IOException {
+	public static void main(String[] args) {
 		launch(args);
 	}
 

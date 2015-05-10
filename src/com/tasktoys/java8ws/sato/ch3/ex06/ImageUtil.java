@@ -27,6 +27,10 @@ public class ImageUtil {
 		return (x, y, c) -> t2.apply(x, y, t1.apply(x, y, c));
 	}
 	
+	public static ColorTransformer convert(UnaryOperator<Color> f) {
+		return (x, y, c) -> f.apply(c);
+	}
+
 	public static Image transform(Image in, ColorTransformer f) {
 		int width = (int)in.getWidth();
 		int height = (int)in.getHeight();

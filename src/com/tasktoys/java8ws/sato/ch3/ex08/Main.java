@@ -1,10 +1,10 @@
-package com.tasktoys.java8ws.sato.ch3.ex8;
+package com.tasktoys.java8ws.sato.ch3.ex08;
 
 import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
 
-import com.tasktoys.java8ws.sato.ch3.ex6.ImageUtil;
-import com.tasktoys.java8ws.sato.ch3.ex6.ImageUtil.ColorTransformer;
+import com.tasktoys.java8ws.sato.ch3.ex06.ImageUtil;
+import com.tasktoys.java8ws.sato.ch3.ex06.ImageUtil.ColorTransformer;
 
 public class Main {
 

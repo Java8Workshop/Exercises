@@ -24,8 +24,6 @@ public class TransformerApp extends Application {
     private static final String IMAGE_URL = "https://pbs.twimg.com/media/CEDfyQEVEAAkERc.png";
 
     public static void main(String[] args) {
-//        Image image = new WritableImage(10, 10);
-//        Image brightenedImage = transform(image, null, null);
         TransformerApp.launch();
     }
 

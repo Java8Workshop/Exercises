@@ -1,4 +1,4 @@
-package com.tasktoys.java8ws.sato.ch3.ex9;
+package com.tasktoys.java8ws.sato.ch3.ex09;
 
 import java.lang.reflect.Field;
 import java.util.Comparator;

@@ -1,4 +1,4 @@
-package com.tasktoys.java8ws.sato.ch3.ex2;
+package com.tasktoys.java8ws.sato.ch3.ex02;
 
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;

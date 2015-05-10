@@ -1,4 +1,4 @@
-package com.tasktoys.java8ws.sato.ch3.ex3;
+package com.tasktoys.java8ws.sato.ch3.ex03;
 
 import java.util.function.BooleanSupplier;
 

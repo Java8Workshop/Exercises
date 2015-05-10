@@ -1,4 +1,4 @@
-package com.tasktoys.java8ws.sato.ch3.ex5;
+package com.tasktoys.java8ws.sato.ch3.ex05;
 
 import java.awt.image.BufferedImage;
 import java.io.File;

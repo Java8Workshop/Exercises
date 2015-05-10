@@ -5,8 +5,8 @@ import java.util.function.UnaryOperator;
 import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
 
-import com.tasktoys.java8ws.sato.ch3.ex6.ImageUtil;
-import com.tasktoys.java8ws.sato.ch3.ex6.ImageUtil.ColorTransformer;
+import com.tasktoys.java8ws.sato.ch3.ex06.ImageUtil;
+import com.tasktoys.java8ws.sato.ch3.ex06.ImageUtil.ColorTransformer;
 
 public class Main {
 

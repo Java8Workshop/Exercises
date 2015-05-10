@@ -1,8 +1,8 @@
-package com.tasktoys.java8ws.sato.ch3.ex7;
+package com.tasktoys.java8ws.sato.ch3.ex07;
 
 import java.util.Comparator;
 
-import com.tasktoys.java8ws.sato.ch3.ex7.ComparatorBuilder.OPTION;
+import com.tasktoys.java8ws.sato.ch3.ex07.ComparatorBuilder.OPTION;
 
 public class Main {
 

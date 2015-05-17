@@ -1,4 +1,4 @@
-package com.tasktoys.java8ws.mikan.ch3.ex06;
+package com.tasktoys.java8ws.mikan.ch3.ex05;
 
 import java.util.function.UnaryOperator;
 import javafx.application.Application;

@@ -20,8 +20,9 @@ import java.util.stream.Stream;
 
 public class InfiniteRandomStream {
 	public static void main(String[] args) {
+		System.currentTimeMillis();
 		Stream.iterate(100L, LinearCongruentialGenerator::getNext).limit(10).forEach(System.out::println);;
-	}	
+	}
 }
 
 class LinearCongruentialGenerator{

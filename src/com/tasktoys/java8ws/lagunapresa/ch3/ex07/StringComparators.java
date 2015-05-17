@@ -7,10 +7,7 @@ public class StringComparators {
 
     public static Comparator<String> generate(Comparison... cs) {
         Comparison c = Stream.of(cs).reduce(s -> s, Comparison::and);
-        return (s1, s2) -> {
-            Pair arg = c.apply(Pair.of(s1, s2));
-            return arg.s1.compareTo(arg.s2);
-        };
+        return (s1, s2) -> c.apply(Pair.of(s1, s2)).compare();
     }
 
     private StringComparators() {

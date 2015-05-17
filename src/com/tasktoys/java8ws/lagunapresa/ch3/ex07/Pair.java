@@ -20,4 +20,8 @@ class Pair {
         return of(f.apply(s1), f.apply(s2));
     }
 
+    int compare() {
+        return s1.compareTo(s2);
+    }
+
 }

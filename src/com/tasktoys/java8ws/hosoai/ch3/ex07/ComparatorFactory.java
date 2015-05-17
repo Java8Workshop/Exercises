@@ -2,9 +2,8 @@ package com.tasktoys.java8ws.hosoai.ch3.ex07;
 
 import java.util.Comparator;
 
-public class ConparatorFactory {
+public class ComparatorFactory {
 	public static void main(String[] args) {
-		
 		// 昇順，大文字小文字を区別する，空白を区別しない
 		Comparator<String> comparator = genComparator(true, false, false);
 		String a = "aaa";
@@ -18,7 +17,7 @@ public class ConparatorFactory {
 		comparator = genComparator(true, true, true);
 		System.out.println(comparator.compare(a, c));
 	}
-	
+
 	public static Comparator<String> genComparator(boolean ascendingOrder, boolean ignorecase, boolean ignoreSpace){	
 		return (t,u)->{
 			if (ignorecase){
@@ -26,8 +25,8 @@ public class ConparatorFactory {
 				u = u.toLowerCase();
 			}
 			if(ignoreSpace){
-				t = t.trim();
-				u = u.trim();
+				t = t.replace("\\s", "");
+				u = u.replaceAll("\\s", "");
 			}
 			if(ascendingOrder){
 				return t.compareTo(u);

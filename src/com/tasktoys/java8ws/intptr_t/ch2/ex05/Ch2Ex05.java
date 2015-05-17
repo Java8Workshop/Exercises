@@ -4,7 +4,7 @@ import java.util.stream.Stream;
 
 public class Ch2Ex05 {
 	public static void main(String[] args) {
-		long seed = 0;
+		long seed = 100;
 		
 		long a = 25214903917L;
 		long c = 11;

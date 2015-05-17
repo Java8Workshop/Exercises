@@ -16,7 +16,7 @@ public class StreamFilter {
 			System.out.println(word);
 		}
 	}
-	public String[] findLongWords(int length) {		
+	public String[] findLongWords(int length) {
 		this.length=length;
 		String[] result = null;
 		try {

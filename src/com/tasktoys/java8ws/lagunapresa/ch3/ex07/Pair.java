@@ -2,10 +2,9 @@ package com.tasktoys.java8ws.lagunapresa.ch3.ex07;
 
 import java.util.function.Function;
 
-class Pair {
+final class Pair {
 
-    final String s1;
-    final String s2;
+    final String s1, s2;
 
     static Pair of(String s1, String s2) {
         return new Pair(s1, s2);

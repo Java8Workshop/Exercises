@@ -1,24 +1,9 @@
 package com.tasktoys.java8ws.lagunapresa.ch3.ex07;
 
-public enum StandardComparisons implements Comparison {
-
-    DESCENDING {
-        @Override
-        public Pair apply(Pair p) {
-            return Pair.of(p.s2, p.s1);
-        }
-    },
-    CASE_INSENSITIVE {
-        @Override
-        public Pair apply(Pair p) {
-            return p.map(String::toLowerCase);
-        }
-    },
-    WHITE_INSENSITIVE {
-        @Override
-        public Pair apply(Pair p) {
-            return p.map(s -> s.replaceAll("\\s", ""));
-        }
-    },;
-
+public class StandardComparisons {
+    public static final Comparison DESCENDING = p -> Pair.of(p.s2, p.s1);
+    public static final Comparison CASE_INSENSITIVE = p -> p.map(String::toLowerCase);
+    public static final Comparison WHITE_INSENSITIVE = p -> p.map(s -> s.replaceAll("\\s", ""));
+    private StandardComparisons() {
+    }
 }

@@ -3,9 +3,9 @@ package com.tasktoys.java8ws.lagunapresa.ch3.ex11;
 import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
 
-import java.util.Arrays;
 import java.util.List;
 
+import static com.tasktoys.java8ws.lagunapresa.ch0.Misc.List;
 import static com.tasktoys.java8ws.lagunapresa.ch3.ex05.ColorTransformation.transform;
 import static com.tasktoys.java8ws.lagunapresa.ch3.ex11.ColorTransformers.combine;
 import static com.tasktoys.java8ws.lagunapresa.ch3.ex11.ColorTransformers.from;
@@ -29,14 +29,12 @@ public class App extends com.tasktoys.java8ws.lagunapresa.ch3.ex05.App {
     @Override
     protected List<Image> defineImages() {
         Image image = new Image(IMAGE_URL);
-        return Arrays.asList(
+        return List(
             image,
-            transform(image,
-                combine(
-                    from(c -> c.deriveColor(0.0, 1.0, BRIGHTNESS_FACTOR, 1.0)),
-                    (x, y, c) -> onBorder(image, BORDER_WIDTH, x, y) ? Color.GRAY : c
-                )
-            )
+            transform(image, combine(
+                from(c -> c.deriveColor(0.0, 1.0, BRIGHTNESS_FACTOR, 1.0)),
+                (x, y, c) -> onBorder(image, BORDER_WIDTH, x, y) ? Color.GRAY : c
+            ))
         );
     }
 

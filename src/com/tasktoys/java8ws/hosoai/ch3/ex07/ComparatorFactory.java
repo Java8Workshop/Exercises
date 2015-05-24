@@ -25,7 +25,7 @@ public class ComparatorFactory {
 				u = u.toLowerCase();
 			}
 			if(ignoreSpace){
-				t = t.replace("\\s", "");
+				t = t.replaceAll("\\s", "");
 				u = u.replaceAll("\\s", "");
 			}
 			if(ascendingOrder){

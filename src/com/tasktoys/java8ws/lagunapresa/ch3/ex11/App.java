@@ -16,7 +16,6 @@ public class App extends com.tasktoys.java8ws.lagunapresa.ch3.ex05.App {
 
     private static final double BRIGHTNESS_FACTOR = 1.5;
     private static final double BORDER_WIDTH = 10.0;
-    private static final Color GRAY = new Color(0.3, 0.3, 0.3, 1.0);
 
     public static void main(String[] args) {
         launch();
@@ -35,7 +34,7 @@ public class App extends com.tasktoys.java8ws.lagunapresa.ch3.ex05.App {
             transform(image,
                 combine(
                     from(c -> c.deriveColor(0.0, 1.0, BRIGHTNESS_FACTOR, 1.0)),
-                    (x, y, c) -> onBorder(image, BORDER_WIDTH, x, y) ? GRAY : c
+                    (x, y, c) -> onBorder(image, BORDER_WIDTH, x, y) ? Color.GRAY : c
                 )
             )
         );

@@ -13,7 +13,6 @@ public class App extends ImagesApp {
     private static final String IMAGE_URL = "http://mnewsplus.blog7.mmm.me/imgs/m/mnewsplus/09aa3757.jpg";
 
     private static final double BORDER_WIDTH = 10.0;
-    private static final Color GRAY = new Color(0.3, 0.3, 0.3, 1.0);
 
     public static void main(String[] args) {
         launch();
@@ -30,7 +29,7 @@ public class App extends ImagesApp {
         return Arrays.asList(
             image,
             transform(image,
-                (x, y, c) -> onBorder(image, BORDER_WIDTH, x, y) ? GRAY : c
+                (x, y, c) -> onBorder(image, BORDER_WIDTH, x, y) ? Color.GRAY : c
             )
         );
     }

@@ -30,7 +30,7 @@ public class UnaryComposeType extends Application {
     public void start(Stage primaryStage) throws Exception {
         UnaryOperator<Color> op = Color::brighter;
         Image image = new Image(IMAGE_URL);
-        // ↓同じメソッドがあるが、型が違うのではじかれる (ノミナル型)
+        // ↓同じメソッドがあるが、型が違うのではじかれてしまう (ノミナル型)
         //
         // 不適合な型: 型変数Vのインスタンスが存在しないので、Function<V,Color>はUnaryOperator<Color>に適合しません
         //  V,T,Rが型変数の場合:

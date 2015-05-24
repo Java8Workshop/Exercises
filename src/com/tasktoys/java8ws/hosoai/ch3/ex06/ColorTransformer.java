@@ -8,7 +8,7 @@ import javafx.scene.image.WritableImage;
 import javafx.scene.paint.Color;
 
 @FunctionalInterface
-public interface ColorTransformer extends UnaryOperator<Color>{
+public interface ColorTransformer {
 	public static <T> Image transform(Image in, BiFunction<Color, T, Color> f, T arg){
 		int width = (int) in.getWidth();
 		int height = (int) in.getHeight();
@@ -32,6 +32,22 @@ public interface ColorTransformer extends UnaryOperator<Color>{
 		}
 		return out;
 	}
-		
-	public Color apply(Color colorAtXY);
+	
+	public static Image transform(Image in, ColorTransformer c){
+		int width = (int) in.getWidth();
+		int height = (int) in.getHeight();
+		WritableImage out = new WritableImage(width, height);
+		for(int x=0; x<width; x++){
+			for(int y=0; y<height; y++){
+				out.getPixelWriter().setColor(x, y, c.apply(x, y, in.getPixelReader().getColor(x, y)));
+			}
+		}		
+		return out;
+	}
+
+	public Color apply(int x, int y, Color colorAtXY);
+	
+	public static ColorTransformer unaryToColorTransformer(UnaryOperator<Color> u){
+		return null;
+	}
 }

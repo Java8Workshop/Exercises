@@ -9,6 +9,8 @@ import javafx.scene.paint.Color;
 
 @FunctionalInterface
 public interface ColorTransformer {
+	public Color apply(int x, int y, Color colorAtXY);
+	
 	public static <T> Image transform(Image in, BiFunction<Color, T, Color> f, T arg){
 		int width = (int) in.getWidth();
 		int height = (int) in.getHeight();
@@ -41,13 +43,11 @@ public interface ColorTransformer {
 			for(int y=0; y<height; y++){
 				out.getPixelWriter().setColor(x, y, c.apply(x, y, in.getPixelReader().getColor(x, y)));
 			}
-		}		
+		}
 		return out;
 	}
-
-	public Color apply(int x, int y, Color colorAtXY);
 	
-	public static ColorTransformer unaryToColorTransformer(UnaryOperator<Color> u){
-		return null;
+	public static ColorTransformer fromUnary(UnaryOperator<Color> u){
+		return (x,y,c)->u.apply(c);
 	}
 }

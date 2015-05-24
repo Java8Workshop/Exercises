@@ -1,4 +1,4 @@
-package com.tasktoys.java8ws.mrbearing.ch3.ex6;
+package com.tasktoys.java8ws.mrbearing.ch3.ex06;
 
 import java.nio.IntBuffer;
 import java.util.function.BiFunction;

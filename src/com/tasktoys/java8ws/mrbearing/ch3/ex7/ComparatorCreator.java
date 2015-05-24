@@ -17,6 +17,10 @@ public class ComparatorCreator {
 		return (o1, o2) -> o1.compareTo(o2);
 	}
 
+	public static Comparator<String> comparingOrderedReversedComparator() {
+		return (o1, o2) -> o1.compareTo(o2);
+	}
+
 	public static Comparator<String> comparingIgnoreCaseComparator() {
 		return (o1, o2) -> o1.compareToIgnoreCase(o2);
 	}

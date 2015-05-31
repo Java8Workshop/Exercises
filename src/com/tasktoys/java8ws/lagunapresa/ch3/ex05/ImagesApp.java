@@ -16,8 +16,6 @@ import java.util.stream.Collectors;
 
 public abstract class ImagesApp extends Application {
 
-    private static final int IMAGE_MARGIN = 10;
-
     private static final class Pair {
 
         final double cursor;
@@ -41,21 +39,21 @@ public abstract class ImagesApp extends Application {
     public void start(Stage stage) {
         Rectangle2D display = Screen.getPrimary().getVisualBounds();
 
-        List<ImageView> views = defineImages().stream()
+        List<ImageView> views = defineImages().stream().sequential()
                 .map(ImageView::new)
                 .reduce(Pair.empty(),
                         (acc, v) -> {
                             v.setX(acc.cursor);
                             List<ImageView> li = new LinkedList<>(acc.li);
                             li.add(v);
-                            return Pair.of(acc.cursor + v.getImage().getWidth() + IMAGE_MARGIN, li);
+                            return Pair.of(acc.cursor + v.getImage().getWidth(), li);
                         },
                         (p1, p2) -> {
                             throw new AssertionError();
                         }
                 ).li;
 
-        int wWidth = views.stream().collect(Collectors.summingInt(v -> (int) v.getImage().getWidth() + IMAGE_MARGIN)) - IMAGE_MARGIN;
+        int wWidth = views.stream().collect(Collectors.summingInt(v -> (int) v.getImage().getWidth()));
         int wHeight = views.stream().collect(Collectors.summarizingInt(v -> (int) v.getImage().getHeight())).getMax();
         Group root = new Group(new ArrayList<>(views));
         Scene scene = new Scene(root, wWidth, wHeight);

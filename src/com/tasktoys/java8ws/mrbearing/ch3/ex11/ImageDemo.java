@@ -39,11 +39,11 @@ public class ImageDemo extends Application {
 
 	public static ColorTransformer compose(ColorTransformer c1,
 			ColorTransformer c2) {
-		return (x,y,c)->c2.apply(x, y, c1.apply(x, y, c));
+		return (x, y, c) -> c2.apply(x, y, c1.apply(x, y, c));
 	}
 
-	public static ColorTransformer toColorTransformer(UnaryOperator<Color> op){
-		return(x,y,c) -> op.apply(c);
+	public static ColorTransformer toColorTransformer(UnaryOperator<Color> op) {
+		return (x, y, c) -> op.apply(c);
 	}
 
 	public void start(Stage stage) {
@@ -51,8 +51,8 @@ public class ImageDemo extends Application {
 		Image image = new Image(
 				"https://pbs.twimg.com/media/CEDfyQEVEAAkERc.png");
 		/*
-		Image brightenedImage = transform(image, Color::brighter);
-		*/
+		 * Image brightenedImage = transform(image, Color::brighter);
+		 */
 		Image image2 = transform(image,
 				(x, y, c) -> (x / 10) % 2 == (y / 10) % 2 ? Color.GRAY : c);
 
@@ -66,10 +66,8 @@ public class ImageDemo extends Application {
 			return c;
 		});
 
-		Image imageBrightenedFramed = transform(image, compose(
-				toColorTransformer(Color::brighter)
-				,
-				(x, y, c) -> {
+		Image imageBrightenedFramed = transform(image,
+				compose(toColorTransformer(Color::brighter), (x, y, c) -> {
 					double h = image.getHeight();
 					double w = image.getWidth();
 					if (x <= 10 || y <= 10)
@@ -77,10 +75,10 @@ public class ImageDemo extends Application {
 					if (w - 10 <= x || h - 10 <= y)
 						return Color.GRAY;
 					return c;
-				}
-				));
+				}));
 
-		stage.setScene(new Scene(new HBox(new ImageView(image),new ImageView(imageBrightenedFramed))));
+		stage.setScene(new Scene(new HBox(new ImageView(image), new ImageView(
+				imageBrightenedFramed))));
 		stage.show();
 	}
 

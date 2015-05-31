@@ -18,10 +18,11 @@ public class Ch3Ex21 {
 		});
 		
 		exec.execute(future);
+
 		Future<String> result = map(future, i -> String.valueOf(i * 2) + "です。");
-		exec.shutdown();
-		
 		System.out.println(result.get());
+		
+		exec.shutdown();
 	}
 	
 	static <T, U> Future<U> map(Future<T> future, Function<T, U> f) 

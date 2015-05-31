@@ -25,8 +25,7 @@ public class Ch3Ex21 {
 	}
 	
 	static <T, U> Future<U> map(Future<T> future, Function<T, U> f) 
-			throws InterruptedException, ExecutionException {		
-		U u = f.apply(future.get());
+			throws InterruptedException, ExecutionException {				
 		return new Future<U>() {
 			boolean canceled = false;
 			
@@ -47,14 +46,14 @@ public class Ch3Ex21 {
 
 			@Override
 			public U get() throws InterruptedException, ExecutionException {
-				return u;
+				return f.apply(future.get());
 			}
 
 			@Override
 			public U get(long timeout, TimeUnit unit)
 					throws InterruptedException, ExecutionException,
 					TimeoutException {
-				return u;
+				return get();
 			}			
 		};
 	}

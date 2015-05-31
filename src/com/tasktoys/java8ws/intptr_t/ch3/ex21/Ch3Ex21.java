@@ -54,7 +54,7 @@ public class Ch3Ex21 {
 			public U get(long timeout, TimeUnit unit)
 					throws InterruptedException, ExecutionException,
 					TimeoutException {
-				return get();
+				return f.apply(future.get(timeout, unit));
 			}			
 		};
 	}

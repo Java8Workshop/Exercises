@@ -61,9 +61,7 @@ public class Ch3Ex16 {
 					}catch(Throwable t2){
 						handler.accept(t2);
 					}
-
 				}
-
 			}
 		};
 		t.start();

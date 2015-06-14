@@ -25,7 +25,7 @@ public class UnaryOperatorApi {
 
         // 解決法2：もし UnaryOperator が次のような実装（AdvancedUnaryOperator）であれば解決する。
         AdvancedUnaryOperator<Color> op2 = Color::brighter;
-        Image finalImage2 = transform(image, op2.compose(Color::grayscale));
+        Image finalImage2 = transform(image, op2.compose2(Color::grayscale));
 
         // 解決法3：transform メソッドの第2引数の型を Function<Color, Color> にする。
         Image finalImage3 = transform2(image, op.compose(Color::grayscale));
@@ -39,7 +39,7 @@ public class UnaryOperatorApi {
     public interface AdvancedUnaryOperator<T> extends UnaryOperator<T> {
         // この compose は Function#compose をオーバーライドしていない。
         // FunctionalInterface であることを保つためデフォルト実装にしてあるのが無理矢理ではある。
-        default AdvancedUnaryOperator<T> compose(AdvancedUnaryOperator<T> before) {
+        default AdvancedUnaryOperator<T> compose2(AdvancedUnaryOperator<T> before) {
             Objects.requireNonNull(before);
             return t -> apply(before.apply(t));
         }

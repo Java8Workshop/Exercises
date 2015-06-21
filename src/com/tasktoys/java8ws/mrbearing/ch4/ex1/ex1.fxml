@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.layout.*?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="194.0" prefWidth="808.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <TextField id="txField" text="Hello,JavaFx" />
+      <Label id="label" alignment="TOP_LEFT" contentDisplay="TOP" text="Hello,JavaFx">
+         <font>
+            <Font size="100.0" />
+         </font>
+      </Label>
+   </children>
+</VBox>

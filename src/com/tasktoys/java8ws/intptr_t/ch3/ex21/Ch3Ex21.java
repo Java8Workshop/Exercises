@@ -10,39 +10,39 @@ import java.util.concurrent.TimeoutException;
 import java.util.function.Function;
 
 public class Ch3Ex21 {
-	public static void main(String[] args) throws InterruptedException, ExecutionException {		
+	public static void main(String[] args) throws InterruptedException, ExecutionException  {		
 		ExecutorService exec = Executors.newFixedThreadPool(1);
 		FutureTask<Integer> future = new FutureTask<Integer>(() -> {
 			Thread.sleep(1000);
 			return 1;
 		});
 		
-		exec.execute(future);
+		try {
+			exec.execute(future);
 
-		Future<String> result = map(future, i -> String.valueOf(i * 2) + "です。");
-		System.out.println(result.get());
-		
-		exec.shutdown();
+			Future<String> result = map(future, i -> String.valueOf(i * 2) + "です。");
+			System.out.println(result.get());
+		} finally {
+			exec.shutdown();
+		}
 	}
 	
 	static <T, U> Future<U> map(Future<T> future, Function<T, U> f) 
 			throws InterruptedException, ExecutionException {				
-		return new Future<U>() {
-			boolean canceled = false;
-			
+		return new Future<U>() {			
 			@Override
 			public boolean cancel(boolean mayInterruptIfRunning) {
-				return true;
+				return future.cancel(mayInterruptIfRunning);
 			}
 
 			@Override
 			public boolean isCancelled() {
-				return canceled;
+				return future.isCancelled();
 			}
 
 			@Override
 			public boolean isDone() {
-				return true;
+				return future.isDone();
 			}
 
 			@Override
@@ -53,7 +53,7 @@ public class Ch3Ex21 {
 			@Override
 			public U get(long timeout, TimeUnit unit)
 					throws InterruptedException, ExecutionException,
-					TimeoutException {
+						   TimeoutException {
 				return f.apply(future.get(timeout, unit));
 			}			
 		};

@@ -3,6 +3,7 @@ package com.tasktoys.java8ws.mrbearing.ch4.ex1;
 import java.io.IOException;
 
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -12,10 +13,12 @@ import javafx.stage.Stage;
 
 public class Ex1FX extends Application{
 
+
+
 	@Override
 	public void start(Stage stage) throws Exception {
 		try{
-			Parent root = FXMLLoader.load(getClass().getResource("ex1.fxml"));
+			Parent root = FXMLLoader.load(getClass().getResource("_ex1.fxml"));
 			TextField textField = (TextField) root.lookup("#txField");
 			Label label =(Label) root.lookup("#label");
 
@@ -27,6 +30,7 @@ public class Ex1FX extends Application{
 			stage.show();
 		}catch(IOException ioe){
 			ioe.printStackTrace();
+			Platform.exit();
 			System.exit(0);
 		}
 	}

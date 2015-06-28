@@ -60,7 +60,57 @@ public class Ex5 extends Application {
 
 	public static <T, U, R> ObservableValue<R> observe(BiFunction<T, U, R> f,
 			ObservableValue<T> t, ObservableValue<U> u) {
-		return null;
+		return new ObservableValue<R>() {
+			Map<ChangeListener<? super R>, ChangeListener<T>> changeTListenerMap = new HashMap<>();
+			Map<ChangeListener<? super R>, ChangeListener<U>> changeUListenerMap = new HashMap<>();
+			@Override
+			public void addListener(InvalidationListener arg0) {
+				t.addListener(arg0);
+				u.addListener(arg0);
+			}
+
+			@Override
+			public void removeListener(InvalidationListener arg0) {
+				t.removeListener(arg0);
+				u.removeListener(arg0);
+			}
+
+			@Override
+			public void addListener(ChangeListener<? super R> arg0) {
+				ChangeListener<T> tlistener = (observer, oldVal, newVal) -> {
+					arg0.changed(this, f.apply(oldVal, u.getValue()), f.apply(newVal, u.getValue()));
+				};
+
+				ChangeListener<U> ulistener = (observer, oldVal, newVal) -> {
+					arg0.changed(this, f.apply(t.getValue(),oldVal), f.apply(t.getValue(),newVal));
+				};
+
+				t.addListener(tlistener);
+				u.addListener(ulistener);
+				this.changeTListenerMap.put(arg0, tlistener);
+				this.changeUListenerMap.put(arg0, ulistener);
+			}
+			@Override
+			public void removeListener(ChangeListener<? super R> arg0) {
+				ChangeListener<T> tListener = this.changeTListenerMap
+						.getOrDefault(arg0, null);
+				if (tListener != null) {
+					t.removeListener(tListener);
+					this.changeTListenerMap.remove(arg0);
+				}
+
+				ChangeListener<U> uListener = this.changeUListenerMap
+						.getOrDefault(arg0, null);
+				if (uListener != null) {
+					u.removeListener(uListener);
+					this.changeTListenerMap.remove(arg0);
+				}
+			}
+			@Override
+			public R getValue() {
+				return f.apply(t.getValue(), u.getValue());
+			}
+		};
 
 	}
 
@@ -77,10 +127,9 @@ public class Ex5 extends Application {
 		smaller.setOnAction(event -> gauge.setWidth(gauge.getWidth() - 10));
 		larger.setOnAction(event -> gauge.setWidth(gauge.getWidth() + 10));
 		larger.disableProperty().bind(
-				observe(t -> t.doubleValue() >= 100
-					, gauge.widthProperty()));
+				observe(t -> t.doubleValue() >= 100, gauge.widthProperty()));
 		smaller.disableProperty().bind(
-				observe(t->t.doubleValue()<=0. , gauge.widthProperty()));
+				observe(t -> t.doubleValue() <= 0., gauge.widthProperty()));
 
 		HBox box = new HBox(10);
 		box.getChildren().addAll(smaller, pane, larger);

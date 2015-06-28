@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<?import java.lang.*?>
+<?import com.tasktoys.java8ws.hosoai.ch4.ex08.*?>
+<ParentClass xmlns:fx="http://javafx.com/fxml" name="parent"
+	fx:id="myobj" fx:controller="com.tasktoys.java8ws.hosoai.ch4.ex08.FXMLtoObject">
+	<children>
+		<ChildClass name="child1"></ChildClass>
+		<ChildClass name="child2"></ChildClass>
+		<ChildClass name="child3"></ChildClass>
+	</children>
+</ParentClass>

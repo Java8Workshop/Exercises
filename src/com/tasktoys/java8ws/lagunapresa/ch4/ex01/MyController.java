@@ -1,6 +1,5 @@
 package com.tasktoys.java8ws.lagunapresa.ch4.ex01;
 
-import javafx.beans.binding.Bindings;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
@@ -19,11 +18,6 @@ public class MyController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        label.textProperty().bind(
-            Bindings.createStringBinding(
-                textField::getText,
-                textField.textProperty()
-            )
-        );
+        label.textProperty().bind(textField.textProperty());
     }
 }

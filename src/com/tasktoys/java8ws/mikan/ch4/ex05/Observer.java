@@ -19,6 +19,11 @@ import javafx.beans.value.ObservableValue;
 public class Observer {
 
     public static <T, R> ObservableValue<R> observe(Function<T, R> f, ObservableValue<T> t) {
+
+        // Simple way
+        // return Bindings.createObjectBinding(() -> f.apply(t.getValue()), t);
+        //
+        // Hard way
         Set<ChangeListener<? super R>> changeListeners = new HashSet<>();
         Set<InvalidationListener> invalidationListeners = new HashSet<>();
         ObservableValue<R> value = new ObservableValue<R>() {
@@ -56,6 +61,11 @@ public class Observer {
 
     public static <T, U, R> ObservableValue<R> observe(
             BiFunction<T, U, R> f, ObservableValue<T> t, ObservableValue<U> u) {
+
+        // Simple way
+        // return Bindings.createObjectBinding(() -> f.apply(t.getValue(), u.getValue()), t, u);
+        //
+        // Hard way
         Set<ChangeListener<? super R>> changeListeners = new HashSet<>();
         Set<InvalidationListener> invalidationListeners = new HashSet<>();
         ObservableValue<R> value = new ObservableValue<R>() {

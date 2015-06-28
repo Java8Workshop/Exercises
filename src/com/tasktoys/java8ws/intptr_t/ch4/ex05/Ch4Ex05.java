@@ -48,7 +48,7 @@ public class Ch4Ex05 extends Application {
 		//this.larger.disableProperty().bind(
 		//	Bindings.greaterThanOrEqual(gauge.widthProperty(), 100));
 		this.larger.disableProperty().bind(observe(
-			(t, c) -> t.doubleValue() >= 100. && !c.booleanValue(), gauge.widthProperty(), overable.selectedProperty()));
+			(t, c) -> t.doubleValue() >= 100. && !c, gauge.widthProperty(), overable.selectedProperty()));
 		
 		this.smaller.setOnAction(event -> {
 			this.gauge.setWidth(this.gauge.getWidth() - 10.);

@@ -32,19 +32,21 @@ public class Ex5 extends Application {
 
 			@Override
 			public void addListener(InvalidationListener arg0) {
-				// TODO 自動生成されたメソッド・スタブ
-
+				t.addListener(arg0);
 			}
 
 			@Override
 			public void removeListener(InvalidationListener arg0) {
-				// TODO 自動生成されたメソッド・スタブ
-
+				t.removeListener(arg0);
 			}
 
 			@Override
 			public void addListener(ChangeListener<? super R> arg0) {
-				// TODO 自動生成されたメソッド・スタブ
+				ChangeListener<T> tlis = (observer, oldV, newV) -> {
+					arg0.changed(this, f.apply(oldV), f.apply(newV));
+				};
+
+				t.addListener(tlis);
 
 			}
 
@@ -60,7 +62,6 @@ public class Ex5 extends Application {
 
 			}
 		};
-
 	}
 
 	public static <T, U, R> ObservableValue<R> observe(BiFunction<T, U, R> f,
@@ -72,32 +73,37 @@ public class Ex5 extends Application {
 	@Override
 	public void start(Stage stage) throws Exception {
 		Button smaller = new Button("Smaller");
-	      Button larger = new Button("Larger");
-	      Rectangle gauge = new Rectangle(0, 5, 50, 15);
-	      Rectangle outline = new Rectangle(0, 5, 100, 15);
-	      outline.setFill(null);
-	      outline.setStroke(Color.BLACK);
-	      Pane pane = new Pane();
-	      pane.getChildren().addAll(gauge, outline);
-	      smaller.setOnAction(event -> gauge.setWidth(gauge.getWidth() - 10));
-	      larger.setOnAction(event -> gauge.setWidth(gauge.getWidth() + 10));
-/*
-	      larger.disableProperty().bind(
-	    		  observe(t -> t >= 100 ,
-	    		  	gauge.widthProperty()));
-*/
-	      /*
-	      smaller.disableProperty().bind(lessThanOrEqual(gauge.widthProperty(), 0));
-	      larger.disableProperty().bind(greaterThanOrEqual(gauge.widthProperty(), 100));
-	       */
+		Button larger = new Button("Larger");
+		Rectangle gauge = new Rectangle(0, 5, 50, 15);
+		Rectangle outline = new Rectangle(0, 5, 100, 15);
+		outline.setFill(null);
+		outline.setStroke(Color.BLACK);
+		Pane pane = new Pane();
+		pane.getChildren().addAll(gauge, outline);
+		smaller.setOnAction(event -> gauge.setWidth(gauge.getWidth() - 10));
+		larger.setOnAction(event -> gauge.setWidth(gauge.getWidth() + 10));
+		/*
+		 * larger.disableProperty().bind( observe(t -> t >= 100 ,
+		 * gauge.widthProperty()));
+		 */
+		/*
+		 * smaller.disableProperty().bind(lessThanOrEqual(gauge.widthProperty(),
+		 * 0));
+		 * larger.disableProperty().bind(greaterThanOrEqual(gauge.widthProperty
+		 * (), 100));
+		 */
 
-	      HBox box = new HBox(10);
-	      box.getChildren().addAll(smaller, pane, larger);
-	      Scene scene = new Scene(box);
-	      stage.setScene(scene);
-	      stage.show();
+		HBox box = new HBox(10);
+		box.getChildren().addAll(smaller, pane, larger);
+		Scene scene = new Scene(box);
+		stage.setScene(scene);
+		stage.show();
 		stage.show();
 
+	}
+
+	public static void main(String[] args) {
+		Ex5.launch(args);
 	}
 
 }

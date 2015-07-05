@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<?import java.lang.*?>
+<?import java.awt.*?>
+<?import javax.swing.*?>
+<?import com.tasktoys.java8ws.mikan.ch4.ex08.*?>
+<JFrameWrapper xmlns:fx="http://javafx.com/fxml" name="parent" title="fxml swing" visible="true"
+               fx:id="jframe" fx:controller="com.tasktoys.java8ws.mikan.ch4.ex08.SwingController">
+    <defaultCloseOperation>
+        <JFrame fx:constant="EXIT_ON_CLOSE" />
+    </defaultCloseOperation>
+    <size>
+        <DimensionWrapper width="300" height="300" />
+    </size>
+    <layout>
+        <FlowLayout />
+    </layout>
+    <jMenuBar>
+        <JMenuBarWrapper>
+            <children>
+                <JMenuWrapper text="file">
+                    <children>
+                        <JMenuItem text="exit" fx:id="exitItem" />
+                    </children>
+                </JMenuWrapper>
+                <JMenuWrapper text="help">
+                    <children>
+                        <JMenuWrapper text="help!">
+                            <children>
+                                <JMenuWrapper text="help!!">
+                                    <children>
+                                        <JMenuWrapper text="help!!!">
+                                            <children>
+                                                <JMenuItem text="give up!" />
+                                            </children>
+                                        </JMenuWrapper>
+                                    </children>
+                                </JMenuWrapper>
+                            </children>
+                        </JMenuWrapper>
+                        <JMenuItem text="about..." fx:id="aboutItem" />
+                    </children>
+                </JMenuWrapper>
+            </children>
+        </JMenuBarWrapper>
+    </jMenuBar>
+    <children>
+        <JPanelWrapper>
+            <children>
+                <JLabel text="label" />
+                <JButton text="button" />
+            </children>
+        </JPanelWrapper>
+    </children>
+</JFrameWrapper>

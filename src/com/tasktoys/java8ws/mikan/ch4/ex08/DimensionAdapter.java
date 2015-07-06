@@ -7,11 +7,11 @@ package com.tasktoys.java8ws.mikan.ch4.ex08;
 import java.awt.Dimension;
 
 /**
- * JavaBean wrapper of the {@code java.awt.Dimension}.
+ * JavaBean adapter of the {@link java.awt.Dimension}.
  *
  * @author mikan
  */
-public class DimensionWrapper extends Dimension {
+public class DimensionAdapter extends Dimension {
 
     private static final long serialVersionUID = 1L;
 

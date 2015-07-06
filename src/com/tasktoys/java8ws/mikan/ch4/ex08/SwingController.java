@@ -19,7 +19,7 @@ import javax.swing.JOptionPane;
 public class SwingController implements Initializable {
 
     @FXML
-    JFrameWrapper jframe;
+    JFrameAdapter jframe;
 
     @FXML
     JMenuItem exitItem;

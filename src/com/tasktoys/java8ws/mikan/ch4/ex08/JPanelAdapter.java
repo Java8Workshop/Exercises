@@ -9,13 +9,18 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JPanel;
 
-public class JPanelWrapper extends JPanel {
+/**
+ * JavaBean adapter of the {@link javax.swing.JPanel}.
+ *
+ * @author mikan
+ */
+public class JPanelAdapter extends JPanel {
 
     private static final long serialVersionUID = 1L;
 
     private final List<Component> children;
 
-    public JPanelWrapper() {
+    public JPanelAdapter() {
         children = new ArrayList<>();
     }
 

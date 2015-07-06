@@ -5,22 +5,22 @@
 package com.tasktoys.java8ws.mikan.ch4.ex08;
 
 import java.awt.Component;
-import java.awt.Container;
 import java.util.ArrayList;
 import java.util.List;
-import javax.swing.JFrame;
+import javax.swing.JMenu;
 
 /**
- * JavaBean wrapper of the {@code javax.swing.JFrame}.
+ * JavaBean adapter of the {@link javax.swing.JMenu}.
  *
  * @author mikan
  */
-public final class JFrameWrapper extends JFrame {
+public class JMenuAdapter extends JMenu {
 
     private static final long serialVersionUID = 1L;
+
     private final List<Component> children;
 
-    public JFrameWrapper() {
+    public JMenuAdapter() {
         children = new ArrayList<>();
     }
 
@@ -33,9 +33,8 @@ public final class JFrameWrapper extends JFrame {
         if (children == null) {
             return;
         }
-        Container container = getContentPane();
-        container.removeAll();
-        children.forEach(container::add);
+        removeAll();
+        children.forEach(this::add);
         super.doLayout();
     }
 }

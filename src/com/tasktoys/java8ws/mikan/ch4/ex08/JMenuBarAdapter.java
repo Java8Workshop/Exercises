@@ -10,17 +10,17 @@ import java.util.List;
 import javax.swing.JMenuBar;
 
 /**
- * JavaBean wrapper of the {@code javax.swing.JMenuBar}.
+ * JavaBean adapter of the {@link javax.swing.JMenuBar}.
  *
  * @author mikan
  */
-public class JMenuBarWrapper extends JMenuBar {
+public class JMenuBarAdapter extends JMenuBar {
 
     private static final long serialVersionUID = 1L;
 
     private final List<Component> children;
 
-    public JMenuBarWrapper() {
+    public JMenuBarAdapter() {
         children = new ArrayList<>();
     }
 

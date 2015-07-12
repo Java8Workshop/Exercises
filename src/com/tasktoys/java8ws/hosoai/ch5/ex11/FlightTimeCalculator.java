@@ -18,10 +18,10 @@ public class FlightTimeCalculator {
 		// ZoneId.getAvailableZoneIds().stream().forEach(System.out::println);
 		// // show zoneIds
 		ZonedDateTime departureDateTime = ZonedDateTime.of(
-				LocalDateTime.of(LocalDate.now(), LocalTime.of(21, 50)),
+				LocalDateTime.of(LocalDate.of(2015, 7, 13), LocalTime.of(21, 50)),
 				ZoneId.of("Asia/Tokyo"));
 		ZonedDateTime arrivalDateTime = ZonedDateTime.of(
-				LocalDateTime.of(LocalDate.now().plusDays(1), LocalTime.of(16, 50)),
+				LocalDateTime.of(LocalDate.of(2015, 7, 14), LocalTime.of(16, 50)),
 				ZoneId.of("America/Los_Angeles"));
 		Long flightTimeMinute = calculateArrivalTime(departureDateTime, arrivalDateTime).toMinutes();
 		

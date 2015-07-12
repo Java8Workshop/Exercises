@@ -1,4 +1,4 @@
-package com.tasktoys.java8ws.mrbearing.ch5.ex2;
+package com.tasktoys.java8ws.mrbearing.ch5.ex02;
 
 import java.time.LocalDate;
 

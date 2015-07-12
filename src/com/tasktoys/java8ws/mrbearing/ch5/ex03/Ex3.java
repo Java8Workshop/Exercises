@@ -1,4 +1,4 @@
-package com.tasktoys.java8ws.mrbearing.ch5.ex3;
+package com.tasktoys.java8ws.mrbearing.ch5.ex03;
 
 import java.time.LocalDate;
 import java.time.temporal.TemporalAdjuster;

@@ -130,7 +130,9 @@ public class Ex5 extends Application {
 				observe(t -> t.doubleValue() >= 100, gauge.widthProperty()));
 		smaller.disableProperty().bind(
 				observe(t -> t.doubleValue() <= 0., gauge.widthProperty()));
-
+		
+		
+		
 		HBox box = new HBox(10);
 		box.getChildren().addAll(smaller, pane, larger);
 		Scene scene = new Scene(box);

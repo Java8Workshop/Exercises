@@ -29,4 +29,3 @@ public class FXMLtoObject implements Initializable{
 		myobj.getChildren().stream().map(c->"  "+c.getName()).forEach(System.out::println);		
 	}
 }
-

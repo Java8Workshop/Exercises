@@ -37,7 +37,6 @@ public class ProgrammersDay {
         Calendar cal = Calendar.getInstance();
         cal.set(year, 0, 1);
         cal.add(Calendar.DAY_OF_YEAR, 255);
-        cal.toInstant();
         return LocalDateTime.ofInstant(cal.toInstant(), ZoneId.systemDefault()).toLocalDate();
     }
 }

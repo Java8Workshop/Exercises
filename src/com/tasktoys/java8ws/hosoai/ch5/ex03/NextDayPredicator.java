@@ -13,16 +13,14 @@ public class NextDayPredicator {
 				LocalDate result = (LocalDate)temporal;
 				do{
 					result = result.plusDays(1);
-				}while(predicate.test(result));
+				}while(!predicate.test(result));
 				return result;
 			}
 		};
 	}
 	
-	
-	
 	public static void main(String[] args) {
-		LocalDate adjustedDate = LocalDate.now().with(next(w-> w.getDayOfWeek().getValue()<6));
-		System.out.println(adjustedDate+" : next day of week < 6");
+		LocalDate adjustedDate = LocalDate.now().with(next(w-> w.getDayOfWeek().getValue()>6));
+		System.out.println(adjustedDate+" : next day of week > 6");
 	}
 }

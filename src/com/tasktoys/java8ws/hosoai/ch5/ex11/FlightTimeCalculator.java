@@ -18,16 +18,38 @@ public class FlightTimeCalculator {
 		// ZoneId.getAvailableZoneIds().stream().forEach(System.out::println);
 		// // show zoneIds
 		ZonedDateTime departureDateTime = ZonedDateTime.of(
-				LocalDateTime.of(LocalDate.of(2015, 7, 13), LocalTime.of(21, 50)),
-				ZoneId.of("Asia/Tokyo"));
-		ZonedDateTime arrivalDateTime = ZonedDateTime.of(
-				LocalDateTime.of(LocalDate.of(2015, 7, 14), LocalTime.of(16, 50)),
+				LocalDateTime.of(LocalDate.of(2015, 8, 1), LocalTime.of(15, 10)),
 				ZoneId.of("America/Los_Angeles"));
-		Long flightTimeMinute = calculateArrivalTime(departureDateTime, arrivalDateTime).toMinutes();
+		ZonedDateTime arrivalDateTime = ZonedDateTime.of(
+				LocalDateTime.of(LocalDate.of(2015, 8, 2), LocalTime.of(11, 10)),
+				ZoneId.of("Europe/Berlin"));
+		long flightTimeMinute = calculateArrivalTime(departureDateTime, arrivalDateTime).toMinutes();
+		showRoute(departureDateTime, arrivalDateTime, flightTimeMinute, 11*60 );
 		
-		System.out.print("Tokyo+(" + departureDateTime.getHour() + ":" + departureDateTime.getMinute()
+		departureDateTime = ZonedDateTime.of(
+				LocalDateTime.of(LocalDate.of(2015, 8, 1), LocalTime.of(23, 40)),
+				ZoneId.of("Asia/Tokyo"));
+		arrivalDateTime = ZonedDateTime.of(
+				LocalDateTime.of(LocalDate.of(2015, 8, 1), LocalTime.of(12, 15)),
+				ZoneId.of("US/Hawaii"));
+		flightTimeMinute = calculateArrivalTime(departureDateTime, arrivalDateTime).toMinutes();
+		showRoute(departureDateTime, arrivalDateTime, flightTimeMinute, 7*60+35);
+
+		departureDateTime = ZonedDateTime.of(
+				LocalDateTime.of(LocalDate.of(2015, 8, 1), LocalTime.of(16, 40)),
+				ZoneId.of("Asia/Tokyo"));
+		arrivalDateTime = ZonedDateTime.of(
+				LocalDateTime.of(LocalDate.of(2015, 8, 2), LocalTime.of(6, 15)),
+				ZoneId.of("Europe/Luxembourg"));
+		flightTimeMinute = calculateArrivalTime(departureDateTime, arrivalDateTime).toMinutes();
+		showRoute(departureDateTime, arrivalDateTime, flightTimeMinute, 20*60+35);
+
+	}
+	
+	public static void showRoute(ZonedDateTime departure, ZonedDateTime arrival, long culcFlightTime, long correctFlightTime){
+		System.out.print(departure.getZone()+"(" + departure.getHour() + ":" + departure.getMinute()
 				+ ") -- flight time ");
-		System.out.print( "(" + flightTimeMinute/60+":"+flightTimeMinute%60+")") ;
-		System.out.println("--> Los Angeles+(" + arrivalDateTime.getHour() + ":" + arrivalDateTime.getMinute()+ ")");
+		System.out.print( "(" + culcFlightTime/60+":"+culcFlightTime%60+")") ;
+		System.out.println("-->"+arrival.getZone()+"(" + arrival.getHour() + ":" + arrival.getMinute()+ ")  correctFlightTime:"+correctFlightTime/60+correctFlightTime%60);
 	}
 }

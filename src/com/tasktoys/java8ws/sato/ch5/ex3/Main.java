@@ -9,7 +9,7 @@ public class Main {
 
 	public static void main(String[] args) {
 		LocalDate today = LocalDate.now();
-		LocalDate day = today.with(next(w -> w.getDayOfWeek().equals(DayOfWeek.MONDAY)));
+		LocalDate day = today.with(next(w -> w.getDayOfWeek().equals(DayOfWeek.SUNDAY)));
 		System.out.println("next working day " + day);
 	}
 	
@@ -19,7 +19,7 @@ public class Main {
 			while (!p.test(d)){
 				d = d.plusDays(1);
 			}
-			return d;
+			return d.plusDays(1);
 		};
 	}
 

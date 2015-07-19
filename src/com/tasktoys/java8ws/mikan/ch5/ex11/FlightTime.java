@@ -42,6 +42,7 @@ public class FlightTime {
      * @throws DateTimeParseException if the text cannot be parsed to a duration
      */
     public static Duration createHMDuration(int h, int m) {
-        return Duration.parse("PT" + h + "H" + m + "M");
+        // return Duration.parse("PT" + h + "H" + m + "M");
+        return Duration.ofMinutes(h * 60 + m);
     }
 }

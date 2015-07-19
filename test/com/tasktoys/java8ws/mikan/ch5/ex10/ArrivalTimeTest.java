@@ -45,7 +45,7 @@ public class ArrivalTimeTest {
 
     @Test
     public void testArrivalTime_CV6356() {
-        // Cargolux CV6356 (KMQ 8/01 16:40 -> LUX 8/02 06:15, Duration: )
+        // Cargolux CV6356 (KMQ 8/01 16:40 -> LUX 8/02 06:15, Duration: 20:35)
         LocalDateTime departureTime = LocalDateTime.of(2015, Month.AUGUST, 1, 16, 40);
         ZoneId departureZone = ZoneId.of("Asia/Tokyo");
         Duration flightTime = ArrivalTime.createHMDuration(20, 35);

@@ -21,5 +21,12 @@ public class LeapYears {
         System.out.println("date3: " + date3 + " (date1 + 4Y)");
         LocalDate date4 = date1.plusYears(1).plusYears(1).plusYears(1).plusYears(1);
         System.out.println("date4: " + date4 + " (date1 + 1Yx4)");
+        /*
+         Result:
+         date1: 2000-02-29
+         date2: 2001-02-28 (date1 + 1Y)
+         date3: 2004-02-29 (date1 + 4Y)
+         date4: 2004-02-28 (date1 + 1Yx4)
+         */
     }
 }

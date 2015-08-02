@@ -29,8 +29,8 @@ public class AdderBench {
         ExecutorService executorService = Executors.newFixedThreadPool(threads);
         Instant begin = Instant.now();
         IntStream.range(0, threads).forEach(i -> executorService.submit(() -> IntStream.range(0, limit).forEach(n -> adder.incrementAndGet())));
-        Instant end = Instant.now();
         executorService.shutdown();
+        Instant end = Instant.now();
         System.out.println("AtomicLong: " + Duration.between(begin, end).toMillis() + "msec. Value: " + adder.longValue());
     }
 
@@ -39,8 +39,8 @@ public class AdderBench {
         ExecutorService executorService = Executors.newFixedThreadPool(threads);
         Instant begin = Instant.now();
         IntStream.range(0, threads).forEach(i -> executorService.submit(() -> IntStream.range(0, limit).forEach(n -> adder.increment())));
-        Instant end = Instant.now();
         executorService.shutdown();
+        Instant end = Instant.now();
         System.out.println("LongAdder:  " + Duration.between(begin, end).toMillis() + "msec. Value: " + adder.longValue());
     }
 

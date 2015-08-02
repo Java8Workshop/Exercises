@@ -7,11 +7,11 @@ import java.util.concurrent.atomic.LongAdder;
 
 /*
  * Output:
- *  LongAdder :4729
+ *  AtomicLongAdder :2242
  *  result value : 100000000
- *  AtomicLongAdder :2417
+ *  LongAdder :468
  *  result value : 100000000
- *  ManuallyLongAdder :1752
+ *  ManuallyLongAdder :1323
  *  result value : 100000000
  */
 public class LongAdderBenchmark {
@@ -19,23 +19,8 @@ public class LongAdderBenchmark {
 	public static final int INCREMENTS = 100000;
 
 	public static void main(String[] args) {
-		Instant start = Instant.now();
-		LongAdderThread[] threads = new LongAdderThread[NUM_OF_THREAD];
-		for (int i = 0; i < NUM_OF_THREAD; i++) {
-			threads[i] = new LongAdderThread();
-			threads[i].start();
-		}
-		for (int i = 0; i < NUM_OF_THREAD; i++) {
-			try {
-				threads[i].join();
-			} catch (InterruptedException e) {
-				e.printStackTrace();
-			}
-		}
-		Instant end = Instant.now();
-		System.out.println("LongAdder :"
-				+ Duration.between(start, end).toMillis());
-		System.out.println("result value : " + LongAdderThread.largest);
+		Instant start;
+		Instant end;
 
 		start = Instant.now();
 		AtomicLongAdderThread[] atomicThreads = new AtomicLongAdderThread[NUM_OF_THREAD];
@@ -51,9 +36,27 @@ public class LongAdderBenchmark {
 			}
 		}
 		end = Instant.now();
+
 		System.out.println("AtomicLongAdder :"
 				+ Duration.between(start, end).toMillis());
 		System.out.println("result value : " + AtomicLongAdderThread.largest);
+		start = Instant.now();
+		LongAdderThread[] threads = new LongAdderThread[NUM_OF_THREAD];
+		for (int i = 0; i < NUM_OF_THREAD; i++) {
+			threads[i] = new LongAdderThread();
+			threads[i].start();
+		}
+		for (int i = 0; i < NUM_OF_THREAD; i++) {
+			try {
+				threads[i].join();
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+		}
+		end = Instant.now();
+		System.out.println("LongAdder :"
+				+ Duration.between(start, end).toMillis());
+		System.out.println("result value : " + LongAdderThread.largest);
 
 		start = Instant.now();
 		LongManuallyAdderThread[] manuallyThreads = new LongManuallyAdderThread[NUM_OF_THREAD];
@@ -92,12 +95,8 @@ class LongAdderThread extends Thread {
 	@Override
 	public void run() {
 		for (int i = 0; i < LongAdderBenchmark.INCREMENTS; i++) {
-			incrementLargest();
+			largest.increment();
 		}
-	}
-
-	synchronized public static void incrementLargest() {
-		largest.increment();
 	}
 }
 

@@ -30,7 +30,8 @@ public class AdderBench {
         Instant begin = Instant.now();
         IntStream.range(0, threads).forEach(i -> executorService.submit(() -> IntStream.range(0, limit).forEach(n -> adder.incrementAndGet())));
         Instant end = Instant.now();
-        System.out.println("AtomicLong: " + Duration.between(begin, end).toMillis() + "msec.");
+        executorService.shutdown();
+        System.out.println("AtomicLong: " + Duration.between(begin, end).toMillis() + "msec. Value: " + adder.longValue());
     }
 
     public void incrementWithLongAdder(int threads, int limit) {
@@ -39,7 +40,8 @@ public class AdderBench {
         Instant begin = Instant.now();
         IntStream.range(0, threads).forEach(i -> executorService.submit(() -> IntStream.range(0, limit).forEach(n -> adder.increment())));
         Instant end = Instant.now();
-        System.out.println("LongAdder:  " + Duration.between(begin, end).toMillis() + "msec.");
+        executorService.shutdown();
+        System.out.println("LongAdder:  " + Duration.between(begin, end).toMillis() + "msec. Value: " + adder.longValue());
     }
 
 }

@@ -30,9 +30,7 @@ public class Ch6Ex03 {
 	}
 	
 	private static<T> Duration evalThreadTimes(T instance, Consumer<T> action, Function<T, Long> tester) {
-		Thread[] threads = makeThreads(instance, value -> {
-			action.accept(instance);
-		});
+		Thread[] threads = makeThreads(instance, action);
 		
 		Duration duration = calcRunningTime(threads);
 
@@ -47,7 +45,7 @@ public class Ch6Ex03 {
 		Thread threads[] = new Thread[MAX_THREAD];
 		
 		for(int i = 0; i < MAX_THREAD; i++) {
-			threads[i] = new Thread( () -> {
+			threads[i] = new Thread(() -> {
 				for(int j = 0; j < ADD_COUNT; j++) {
 					action.accept(instance);
 				}
@@ -60,14 +58,14 @@ public class Ch6Ex03 {
 	private static Duration calcRunningTime(Thread[] threads) {
 		Instant start = Instant.now();
 		
-		Arrays.stream(threads).forEach( thread ->  thread.start() );
-		Arrays.stream(threads).forEach( thread -> {
+		Arrays.stream(threads).forEach(thread ->  thread.start());
+		Arrays.stream(threads).forEach(thread -> {
 			try {
 				thread.join();
 			} catch(InterruptedException ex) {
 				ex.printStackTrace();
 			}
-		} );
+		});
 		
 		Instant end = Instant.now();
 		return Duration.between(start, end);

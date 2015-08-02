@@ -14,9 +14,15 @@ import org.junit.Test;
 public class ProgrammersDayTest {
 
     @Test
-    public void testYetAnotherCalc_equality() {
-        assertEquals(ProgrammersDay.calc(2014), ProgrammersDay.yetAnotherCalc(2014)); // non-leap
-        assertEquals(ProgrammersDay.calc(2016), ProgrammersDay.yetAnotherCalc(2016)); // leap
+    public void testYetAnotherCalc1_equality() {
+        assertEquals(ProgrammersDay.calc(2014), ProgrammersDay.yetAnotherCalc1(2014)); // non-leap
+        assertEquals(ProgrammersDay.calc(2016), ProgrammersDay.yetAnotherCalc1(2016)); // leap
+    }
+
+    @Test
+    public void testYetAnotherCalc2_equality() {
+        assertEquals(ProgrammersDay.calc(2014), ProgrammersDay.yetAnotherCalc2(2014)); // non-leap
+        assertEquals(ProgrammersDay.calc(2016), ProgrammersDay.yetAnotherCalc2(2016)); // leap
     }
 
     @Test

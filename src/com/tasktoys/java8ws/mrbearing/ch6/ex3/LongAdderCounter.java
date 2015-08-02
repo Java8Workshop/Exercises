@@ -18,7 +18,7 @@ public class LongAdderCounter {
 		ArrayList<Thread> threads = new ArrayList<Thread>();
 		for(int i=0; i<1000; i++)
 			threads.add(new Thread(()-> {
-				for(int a=0; a<100000; a++)
+				for(int a=0; a<1000000; a++)
 					along.increment();;
 				}));
 

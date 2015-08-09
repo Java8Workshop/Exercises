@@ -16,7 +16,7 @@ public class UsageLongAccumulator {
 			t.join();
 		}
 		System.out.println("Maximum : "+FindMinMaxThread.getMaximum());
-		System.out.println("Maximum : "+FindMinMaxThread.getMinimum());
+		System.out.println("Minumum : "+FindMinMaxThread.getMinimum());
 		System.out.println(" used values");
 		for(FindMinMaxThread t : threadArray){
 			for(long l : t.values){

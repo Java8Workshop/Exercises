@@ -26,15 +26,15 @@ public class UsageLongAccumulator {
 	}
 	public static long[] getLongRandomValues(int num){
 		Random r = new Random(new Random().nextLong());
-		return LongStream.iterate(0, a->r.nextLong()).limit(num).toArray();
+		return LongStream.iterate(r.nextLong(), a->r.nextLong()).limit(num).toArray();
 	}
 }
 
 class FindMinMaxThread extends Thread{
-	private static LongAccumulator getMaximum = new LongAccumulator((long a, long b)->a>b ? a:b, 0);
-	private static LongAccumulator getMinimum = new LongAccumulator((long a, long b)->a<b ? a:b, 0);
+	private final static LongAccumulator getMaximum = new LongAccumulator((long a, long b)->a>b ? a:b, 0);
+	private final static LongAccumulator getMinimum = new LongAccumulator((long a, long b)->a<b ? a:b, 0);
 	public long[] values;
-	public FindMinMaxThread(long[] values){
+	FindMinMaxThread(long[] values){
 		this.values = values;
 	}
 	

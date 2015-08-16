@@ -16,15 +16,15 @@ public class LongMinMax {
 
     public long max(LongStream longs) {
         Objects.requireNonNull(longs);
-        LongAccumulator max = new LongAccumulator(Long::max, 0);
-        longs.forEach(v -> max.accumulate(v));
+        LongAccumulator max = new LongAccumulator(Long::max, Long.MIN_VALUE);
+        longs.parallel().forEach(max::accumulate);
         return max.get();
     }
 
     public long min(LongStream longs) {
         Objects.requireNonNull(longs);
-        LongAccumulator max = new LongAccumulator(Long::min, 0);
-        longs.forEach(v -> max.accumulate(v));
+        LongAccumulator max = new LongAccumulator(Long::min, Long.MAX_VALUE);
+        longs.parallel().forEach(max::accumulate);
         return max.get();
     }
 }

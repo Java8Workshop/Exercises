@@ -11,7 +11,7 @@ public class SerchMINMAX {
 		ArrayList<Long> longList = new ArrayList<Long>();
 		//Random r = new Random(System.currentTimeMillis());
 
-		for(int i=0;i<100; i++)
+		for(int i=10;i<100; i++)
 			longList.add(new Long(i));
 
 		longList.forEach((a)->{
@@ -22,7 +22,7 @@ public class SerchMINMAX {
 		LongAccumulator maxAcum = new LongAccumulator(
 				(x,y)->{
 					return (x > y) ? x :y;
-				}, 0 );
+				},  Long.MIN_VALUE);
 
 		longList.forEach(maxAcum::accumulate);
 		System.out.println("max:"+maxAcum.get());
@@ -31,7 +31,7 @@ public class SerchMINMAX {
 		LongAccumulator minAcum = new LongAccumulator(
 				(x,y)->{
 					return (x < y) ? x :y;
-				}, 0 );
+				}, Long.MAX_VALUE );
 
 		longList.forEach(minAcum::accumulate);
 		System.out.println("min:"+minAcum.get());

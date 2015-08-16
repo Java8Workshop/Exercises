@@ -31,8 +31,8 @@ public class UsageLongAccumulator {
 }
 
 class FindMinMaxThread extends Thread{
-	private final static LongAccumulator getMaximum = new LongAccumulator((long a, long b)->a>b ? a:b, 0);
-	private final static LongAccumulator getMinimum = new LongAccumulator((long a, long b)->a<b ? a:b, 0);
+	private final static LongAccumulator getMaximum = new LongAccumulator((long a, long b)->a>b ? a:b, Long.MIN_VALUE);
+	private final static LongAccumulator getMinimum = new LongAccumulator((long a, long b)->a<b ? a:b, Long.MAX_VALUE);
 	public long[] values;
 	FindMinMaxThread(long[] values){
 		this.values = values;

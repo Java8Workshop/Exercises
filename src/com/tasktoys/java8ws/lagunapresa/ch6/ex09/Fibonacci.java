@@ -4,21 +4,21 @@ import java.util.Arrays;
 
 public class Fibonacci {
 
-    static final Matrix FIBONACCI_ID = new Matrix(new int[][]{{1, 1}, {1, 0}});
+    static final Matrix FIBONACCI_ID = new Matrix(new long[][]{{1L, 1L}, {1L, 0L}});
 
     private static final class Matrix {
 
-        final int[][] value;
+        final long[][] value;
 
-        Matrix(int[][] value) {
+        Matrix(long[][] value) {
             this.value = value;
         }
 
         Matrix multiply(Matrix that) {
-            int[][] c = new int[2][2];
+            long[][] c = new long[2][2];
             for (int i = 0; i < 2; i++) {
                 for (int j = 0; j < 2; j++) {
-                    int sum = 0;
+                    long sum = 0;
                     for (int k = 0; k < 2; k++) {
                         sum += this.value[i][k] * that.value[k][j];
                     }

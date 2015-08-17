@@ -6,7 +6,6 @@ package com.tasktoys.java8ws.mikan.ch6.ex09;
 
 import java.math.BigInteger;
 import java.util.Arrays;
-import java.util.stream.Stream;
 
 /**
  *
@@ -48,14 +47,6 @@ public class ParallelFibonacci {
             this.value = value;
         }
 
-        private static Matrix of(ComputableNumber v1, ComputableNumber v2,
-                ComputableNumber v3, ComputableNumber v4) {
-            ComputableNumber[][] value = new ComputableNumber[2][2];
-            value[0] = Stream.of(v1, v2).toArray(ComputableNumber[]::new);
-            value[1] = Stream.of(v3, v4).toArray(ComputableNumber[]::new);
-            return new Matrix(value);
-        }
-
         public static Matrix of(long v1, long v2, long v3, long v4) {
             return of(new LongAdapter(v1), new LongAdapter(v2),
                     new LongAdapter(v3), new LongAdapter(v4));
@@ -64,6 +55,12 @@ public class ParallelFibonacci {
         public static Matrix of(BigInteger v1, BigInteger v2, BigInteger v3, BigInteger v4) {
             return of(new BigIntegerAdapter(v1), new BigIntegerAdapter(v2),
                     new BigIntegerAdapter(v3), new BigIntegerAdapter(v4));
+        }
+
+        private static Matrix of(ComputableNumber v1, ComputableNumber v2,
+                ComputableNumber v3, ComputableNumber v4) {
+            ComputableNumber[][] array = {{v1, v2}, {v3, v4}};
+            return new Matrix(array);
         }
 
         public Matrix multiply(Matrix v) {
@@ -75,16 +72,7 @@ public class ParallelFibonacci {
         }
 
         private ComputableNumber at(int n) {
-            switch (n) {
-                case 0:
-                case 1:
-                    return value[0][n];
-                case 2:
-                case 3:
-                    return value[1][n - 2];
-                default:
-                    throw new IllegalArgumentException("Out of matrix: " + n);
-            }
+            return value[n < value.length ? 0 : 1][n % value.length];
         }
     }
 

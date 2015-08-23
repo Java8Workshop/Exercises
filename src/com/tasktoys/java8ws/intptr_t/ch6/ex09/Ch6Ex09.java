@@ -12,19 +12,17 @@ public class Ch6Ex09 {
 		Matrix[] fibs = new Matrix[n];
 		Arrays.parallelSetAll(fibs, i -> {
 			Matrix m = new Matrix(2, 2);
-			m.set(0, 0, 1);
-			m.set(0, 1, 1);
-			m.set(1, 0, 1);
-			m.set(1, 1, 0);			
+			m.set(0, 0, 1L);
+			m.set(0, 1, 1L);
+			m.set(1, 0, 1L);
+			m.set(1, 1, 0L);
 			return m;
 		});
-		
+
 		// フィボナッチ数を計算
 		// F^n(n=0)を除外するため、1から開始する
-		Arrays.parallelPrefix(fibs, 1, fibs.length,(lhs, rhs) -> {
-			return lhs.multiply(rhs);
-		});
-		
+		Arrays.parallelPrefix(fibs, 1, fibs.length, Matrix::multiply);
+
 		// フィボナッチ数列表示
 		IntStream.range(0, fibs.length).forEach(i -> {
 			long ans = fibs[i].get(0, 0);

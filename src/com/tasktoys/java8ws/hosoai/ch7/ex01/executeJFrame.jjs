@@ -1,0 +1,9 @@
+var ZonedDateTime = java.time.ZonedDateTime
+var JLabel = javax.swing.JLabel
+var JFrame = javax.swing.JFrame
+
+var time = ZonedDateTime.now()
+var frame = new JFrame()
+frame.setSize(400,400)
+frame.add(new JLabel(time.toString()))
+frame.setVisible(true)

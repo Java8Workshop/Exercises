@@ -8,4 +8,5 @@ frame.setSize(400,400)
 frame.add(new JLabel(time.toString()))
 frame.setVisible(true)
 
+while(true){}
 // APIを試すだけであれば楽かもしれないけど，IDEのサポートがないと辛い．

@@ -16,7 +16,7 @@ import java.util.stream.Stream;
 
 public class MergeConcurrentHashMap {
 	private static final int THREADS = 2;
-	private ConcurrentHashMap<String, Set<File>> wordHashMap = new ConcurrentHashMap<>();
+	private final ConcurrentHashMap<String, Set<File>> wordHashMap = new ConcurrentHashMap<>();
 	
 	class WordCorrector extends Thread{
 		Set<File> files;
@@ -29,8 +29,14 @@ public class MergeConcurrentHashMap {
 				HashSet<File> fileSet = new HashSet<>();
 				fileSet.add(file);
 				try {
-					Set<String> words = Files.readAllLines(Paths.get(file.getAbsolutePath())).stream().flatMap(s->Stream.of(s.split("[\\P{L}]+"))).collect(Collectors.toSet());
-					words.forEach(word -> wordHashMap.merge(word, fileSet, (existSet, newValue)->{existSet.addAll(newValue); return existSet;}));
+					Set<String> words = Files.readAllLines(Paths.get(file.getAbsolutePath()))
+							.stream().flatMap(s->
+								Stream.of(s.split("[\\P{L}]+"))).collect(Collectors.toSet());
+					words.forEach(word -> 
+						wordHashMap.merge(word, fileSet, (existSet, newValue)->{
+							existSet.addAll(newValue); 
+							return existSet;
+						}));
 				} catch (IOException e) {
 					e.printStackTrace();
 				}
@@ -47,7 +53,6 @@ public class MergeConcurrentHashMap {
 		try {
 			executorService.awaitTermination(1000, TimeUnit.SECONDS);
 		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		for(String word : wordHashMap.keySet()){

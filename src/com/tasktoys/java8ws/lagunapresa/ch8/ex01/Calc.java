@@ -1,4 +1,4 @@
-package com.tasktoys.java8ws.lagunapresa.ch8;
+package com.tasktoys.java8ws.lagunapresa.ch8.ex01;
 
 public class Calc {
     public static long plus(int i, int j) {

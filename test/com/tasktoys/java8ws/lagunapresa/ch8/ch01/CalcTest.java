@@ -1,5 +1,6 @@
-package com.tasktoys.java8ws.lagunapresa.ch8;
+package com.tasktoys.java8ws.lagunapresa.ch8.ch01;
 
+import com.tasktoys.java8ws.lagunapresa.ch8.ex01.Calc;
 import org.junit.Test;
 
 import static org.hamcrest.CoreMatchers.is;

@@ -29,7 +29,7 @@ class LongMatrix{
 	 * | a b |
 	 * | c d |
 	 */
-	public long a,b,c,d;
+	public final long a,b,c,d;
 	LongMatrix(long a, long b, long c, long d){
 		this.a = a;
 		this.b = b;
@@ -44,10 +44,10 @@ class LongMatrix{
 }
 
 class BigIntegerMatrix{
-	public BigInteger a;
-	public BigInteger b;
-	public BigInteger c;
-	public BigInteger d;
+	public final BigInteger a;
+	public final BigInteger b;
+	public final BigInteger c;
+	public final BigInteger d;
 	BigIntegerMatrix(BigInteger a, BigInteger b, BigInteger c, BigInteger d){
 		this.a = a;
 		this.b = b;

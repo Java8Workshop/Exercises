@@ -17,6 +17,7 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
+import java.util.stream.Stream;
 
 /**
  *
@@ -38,17 +39,8 @@ public class WordLoader {
                 System.err.println(ex.getMessage());
                 return;
             }
-            String[] words = contents.split("[\\P{L}]+");
-            for (String s : words) {
-                result.merge(s.toLowerCase().trim(),
-                        Collections.singletonMap(f, null).keySet(),
-                        (Set<File> existingValue, Set<File> newValue) -> {
-                            Set<File> fileSet = new HashSet<>(existingValue.size() + newValue.size());
-                            fileSet.addAll(existingValue);
-                            fileSet.addAll(newValue);
-                            return fileSet;
-                        });
-            }
+            Stream.of(contents.split("[\\P{L}]+")).forEach(s -> result.merge(
+                    s.toLowerCase(), Collections.singleton(f), WordLoader::remap));
         }));
         executorService.shutdown();
         try {
@@ -57,5 +49,12 @@ public class WordLoader {
             System.err.println("Interrputed. " + ex.getMessage());
         }
         return result;
+    }
+
+    private static <T> Set<T> remap(Set<T> existingValue, Set<T> newValue) {
+        Set<T> fileSet = new HashSet<>(existingValue.size() + newValue.size());
+        fileSet.addAll(existingValue);
+        fileSet.addAll(newValue);
+        return fileSet;
     }
 }

@@ -29,7 +29,7 @@ public class UnsignedInt {
     }
 
     public int div(int value) {
-        return Integer.divideUnsigned(this.value, value);
+        return (int) Long.divideUnsigned(Integer.toUnsignedLong(this.value), Integer.toUnsignedLong(value));
     }
 
     public int compare(int value) {

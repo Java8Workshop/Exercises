@@ -23,12 +23,12 @@ public class Gcd {
             }
         },
 
-//        ORIGINAL {
-//            @Override
-//            public int apply(int i1, int i2) {
-//                return;
-//            }
-//        }
+        ORIGINAL {
+            @Override
+            public int apply(int i1, int i2) {
+                return Integer.remainderUnsigned(i1, i2);
+            }
+        }
 
     }
 

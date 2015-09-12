@@ -10,7 +10,7 @@ package com.tasktoys.java8ws.mikan.ch8.ex02;
  */
 public class NegateExact {
 
-    public static boolean collectNagateExactError(int value) {
+    public static boolean collectNegateExactError(int value) {
         try {
             Math.negateExact(value);
             return false;

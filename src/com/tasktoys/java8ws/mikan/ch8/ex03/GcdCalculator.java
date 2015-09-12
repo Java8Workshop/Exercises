@@ -14,8 +14,8 @@ public class GcdCalculator {
         int currentA = Math.abs(a);
         int currentB = Math.abs(b);
         if (currentA < currentB) {
-            currentA = b;
-            currentB = a;
+            currentA = Math.abs(b);
+            currentB = Math.abs(a);
         }
         if (currentB == 0) {
             return a;
@@ -29,8 +29,8 @@ public class GcdCalculator {
         int currentA = Math.abs(a);
         int currentB = Math.abs(b);
         if (a < b) {
-            currentA = b;
-            currentB = a;
+            currentA = Math.abs(b);
+            currentB = Math.abs(a);
         }
         if (currentB == 0) {
             return a;
@@ -44,8 +44,8 @@ public class GcdCalculator {
         int currentA = Math.abs(a);
         int currentB = Math.abs(b);
         if (a < b) {
-            currentA = b;
-            currentB = a;
+            currentA = Math.abs(b);
+            currentB = Math.abs(a);
         }
         if (currentB == 0) {
             return a;
@@ -56,7 +56,7 @@ public class GcdCalculator {
     }
 
     private static int rem(int a, int b) {
-        return (int) (Long.remainderUnsigned(Integer.toUnsignedLong(a), Integer.toUnsignedLong(b)));
+        return Integer.remainderUnsigned(a, b);
     }
 
     private GcdCalculator() {

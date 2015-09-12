@@ -16,8 +16,8 @@ public class NegateExactTest {
 
     @Test
     public void testDoTryNagateExactError() {
-        assertTrue(NegateExact.collectNagateExactError(Integer.MIN_VALUE));
-        assertFalse(NegateExact.collectNagateExactError(0));
-        assertFalse(NegateExact.collectNagateExactError(Integer.MAX_VALUE));
+        assertTrue(NegateExact.collectNegateExactError(Integer.MIN_VALUE));
+        assertFalse(NegateExact.collectNegateExactError(0));
+        assertFalse(NegateExact.collectNegateExactError(Integer.MAX_VALUE));
     }
 }

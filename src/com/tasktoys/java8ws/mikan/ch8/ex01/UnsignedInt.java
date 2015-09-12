@@ -20,16 +20,16 @@ public class UnsignedInt {
         this.value = value;
     }
 
-    public int add(int value) {
-        return (int) (Integer.toUnsignedLong(this.value) + Integer.toUnsignedLong(value));
+    public long add(int value) {
+        return Integer.toUnsignedLong(this.value) + Integer.toUnsignedLong(value);
     }
 
-    public int sub(int value) {
-        return (int) (Integer.toUnsignedLong(this.value) - Integer.toUnsignedLong(value));
+    public long sub(int value) {
+        return Integer.toUnsignedLong(this.value) - Integer.toUnsignedLong(value);
     }
 
     public int div(int value) {
-        return (int) Long.divideUnsigned(Integer.toUnsignedLong(this.value), Integer.toUnsignedLong(value));
+        return Integer.divideUnsigned(this.value, value);
     }
 
     public int compare(int value) {

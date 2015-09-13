@@ -1,9 +1,7 @@
 『Java SE8 実践プログラミング』輪読会
 ===================================
 
-[![Join the chat at https://gitter.im/Java8Workshop/Exercises](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/Java8Workshop/Exercises?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
-
-[![Build Status](https://travis-ci.org/Java8Workshop/Exercises.svg)](https://travis-ci.org/Java8Workshop/Exercises)
+[![Build Status](https://travis-ci.org/aosn/java8.svg)](https://travis-ci.org/aosn/java8)
 
 ようこそ！
 

@@ -29,7 +29,7 @@ public class Ch8Ex01 {
 		// 符号付き: (-1 - 0) < 0
 		System.out.print(cmp(0xffffffff, 0));
 		System.out.print(" ");
-		int scmp = Integer.compare(0xffffffff, 0);		
+		int scmp = Integer.compare(0xffffffff, 0);
 		System.out.println(scmp);
 
 		// 計算方法: a % b = c ...d (検算: c * b + d = a)
@@ -49,7 +49,7 @@ public class Ch8Ex01 {
 		return Integer.toUnsignedLong(x - y);
 	}
 
-	public static long div(int x, int y) {
+	public static int div(int x, int y) {
 		return Integer.divideUnsigned(x, y);
 	}
 	

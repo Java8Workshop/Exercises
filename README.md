@@ -51,15 +51,15 @@ Scala や Clojure といった関数型プログラミングの考え方を取�
 
 ## スケジュール
 
-:arrow_right: [スケジュール](https://github.com/Java8Workshop/Exercises/wiki/Schedule)
+:arrow_right: [スケジュール](https://github.com/aosn/java8/wiki/Schedule)
 
 ## 参加メンバー
 
-:arrow_right: [参加メンバー](https://github.com/Java8Workshop/Exercises/wiki/Members)
+:arrow_right: [参加メンバー](https://github.com/aosn/java8/wiki/Members)
 
 ## ノート
 
-:arrow_right: [ノート](https://github.com/Java8Workshop/Exercises/wiki/Note)
+:arrow_right: [ノート](https://github.com/aosn/java8/wiki/Note)
 
 ## 本リポジトリの利用方法
 
@@ -71,7 +71,7 @@ Scala や Clojure といった関数型プログラミングの考え方を取�
 2. `Git` カテゴリにある `Projects from Git` を選び、` Next > ` ボタンをクリックします。
 3. `Clone URI` を選び、` Next > ` ボタンをクリックします。
 4. 以下を入力し、``` Next > ``` ボタンをクリックします:
- * `URI:` https://github.com/Java8Workshop/Exercises.git
+ * `URI:` https://github.com/aosn/java8.git
  * `User:` _your-github-user-name_
  * `Password:` _your-github-user-password_
  * `Store in Secure Store` ☑ でパスワードを保存
@@ -98,7 +98,7 @@ Scala や Clojure といった関数型プログラミングの考え方を取�
 
 1. `チーム` メニューから `Git` サブメニューを開き `クローン...` をクリックします。
 2. 以下を入力し、``` 次 > ``` ボタンをクリックします:
- * `リポジトリURL:` https://github.com/Java8Workshop/Exercises.git
+ * `リポジトリURL:` https://github.com/aosn/java8.git
  * `ユーザー:` _your-github-user-name_
  * `パスワード:` _your-github-user-password_
  * `パスワードを保存` ☑ でパスワードを保存

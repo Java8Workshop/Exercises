@@ -1,9 +1,7 @@
 『Java SE8 実践プログラミング』輪読会
 ===================================
 
-[![Join the chat at https://gitter.im/Java8Workshop/Exercises](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/Java8Workshop/Exercises?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
-
-[![Build Status](https://travis-ci.org/Java8Workshop/Exercises.svg)](https://travis-ci.org/Java8Workshop/Exercises)
+[![Build Status](https://travis-ci.org/aosn/java8.svg)](https://travis-ci.org/aosn/java8)
 
 ようこそ！
 
@@ -53,15 +51,69 @@ Scala や Clojure といった関数型プログラミングの考え方を取�
 
 ## スケジュール
 
-:arrow_right: [スケジュール](https://github.com/Java8Workshop/Exercises/wiki/Schedule)
+|  # |     Date & Time (JST)  | A | mMYnLis |   Pages   | Ex. Review         |
+|---:|:----------------------:|:-:|:-------:|:---------:|:-------------------|
+|  1 | 2014-11-23 21:00-23:00 | 5 | oxoooo- | 211 - 214 |                    |
+|  2 | 2014-11-30 21:00-23:00 | 4 | ooxxoo- |           | 9-1,2              |
+|  3 | 2014-12-07 21:00-23:00 | 6 | oooooo- | 214 - 220 | 9-3,4              |
+|  4 | 2014-12-14 21:00-23:00 | 5 | oooxoo- |           | 9-5,6,7            |
+|  5 | 2014-12-21 21:00-23:00 | 6 | oooooo- | 221 - 228 |                    |
+|  6 | 2014-12-28 21:00-23:00 | 4 | oxxooo- | 228 - 231 |                    |
+|  7 | 2015-01-04 21:00-23:00 | 5 | oooxoo- |           | 9-8,9,10           |
+|  8 | 2015-01-11 21:00-23:00 | 5 | oooxoo- | 3 - 10    | 9-11               |
+|  9 | 2015-01-18 21:00-23:00 | 5 | ooooox- | 10 - 21   |                    |
+| 10 | 2015-01-25 21:00-23:00 | 6 | oooooo- | 21 - 23   | 1-1                |
+| 11 | 2015-02-01 21:00-23:00 | 5 | oox-ooo |           | 1-2                |
+| 12 | 2015-02-08 21:00-23:00 | 6 | ooo-ooo |           | 1-3                |
+| 13 | 2015-02-15 21:00-23:00 | 6 | ooo-ooo |           | 1-4,6              |
+| 14 | 2015-02-22 21:00-23:00 | 6 | ooo-ooo |           | 1-5,7,8            |
+| 15 | 2015-03-01 21:00-23:00 | 6 | ooo-ooo | 27 - 35   | 1-9                |
+| 16 | 2015-03-08 21:00-23:00 | 6 | ooo-ooo | 35 - 44   |                    |
+| 17 | 2015-03-15 21:00-23:00 | 6 | ooo-ooo | 44 - 54   |                    |
+| 18 | 2015-03-22 21:00-23:00 | 6 | ooo-ooo | 54 - 55   |                    |
+| 19 | 2015-03-29 21:00-23:00 | 6 | ooo-ooo |           |                    |
+| 20 | 2015-04-05 21:00-23:00 | 5 | oxo-ooo |           | 2-1                |
+| 21 | 2015-04-12 21:00-23:00 | 6 | ooo-ooo |           | 2-2,3              |
+| 22 | 2015-04-19 21:00-23:00 | 6 | ooo-ooo |           | 2-4,5,6,7          |
+| 23 | 2015-04-26 21:00-23:00 | 6 | ooo-ooo | 59 - 76   |                    |
+| 24 | 2015-05-03 21:00-23:00 | 5 | oxo-ooo | 76 - 78   | 3-6                |
+| 25 | 2015-05-10 21:00-23:00 | 6 | ooo-ooo |           | 3-7                |
+| 26 | 2015-05-17 21:00-23:00 | 6 | ooo-ooo |           | 3-10,11            |
+| 27 | 2015-05-24 21:00-23:00 | 6 | ooo-ooo |           |                    |
+| 28 | 2015-05-31 21:00-23:00 | 5 | oox-ooo |           | 3-16               |
+| 29 | 2015-06-07 21:00-23:00 | 6 | ooo-ooo | 83 - 95   | 3-21               |
+| 30 | 2015-06-14 21:00-23:00 | 6 | oxo-ooo | 95 - 115  |                    |
+| 31 | 2015-06-21 21:00-23:00 | 5 | oox-ooo |           | 4-1                |
+| 32 | 2015-06-28 21:00-23:00 | 4 | oox-oox |           | 4-5                |
+| 33 | 2015-07-05 21:00-23:00 | 4 | oxx-ooo | 119 - 129 | 4-2,4,6,7,8,9,10   |
+| 34 | 2015-07-12 21:00-23:00 | 6 | ooo-ooo | 129 - 135 |                    |
+| 35 | 2015-07-19 21:00-23:00 | 5 | oxo-ooo |           | 5-1,2,3,10,11      |
+| 36 | 2015-07-26 21:00-23:00 | 6 | ooo-ooo | 139 - 151 |                    |
+| 37 | 2015-08-02 21:00-23:00 | 6 | ooo-ooo | 151 - 157 | 6-3                |
+| 38 | 2015-08-09 21:00-23:00 | 6 | ooo-ooo |           | 6-4                |
+| 39 | 2015-08-16 21:00-23:00 | 5 | oox-ooo |           |                    |
+| 40 | 2015-08-23 21:00-23:00 | 6 | ooo-ooo | 161 - 167 | 6-5,9              |
+| 41 | 2015-08-30 21:00-23:00 | 5 | oox-ooo | 168 - 179 | 7-1                |
+| 42 | 2015-09-06 21:00-23:00 | 6 | ooo-ooo | 179 - 216 |                    |
+| 43 | 2015-09-12 Arima Onsen | 6 | ooo-ooo |           | 8-1,2,3            |
+|    | PROGRAMMER'S DAY       |   |         |           |                    |
+m: [mikan](/mikan), M: [MrBearing](/MrBearing), Y: [YuichiroSato](/YuichiroSato), n: [namichan0801](/namichan0801), L:[LagunaPresa](/LagunaPresa), i: [intptr-t](/intptr-t), s: [s-hosoai](/s-hosoai)
 
 ## 参加メンバー
 
-:arrow_right: [参加メンバー](https://github.com/Java8Workshop/Exercises/wiki/Members)
+* [mikan](/mikan) @川崎
+* [MrBearing](/MrBearing) @大阪
+* [YuichiroSato](/YuichiroSato) @デン・ハーグ
+* [namichan0801](/namichan0801) @東京
+* [LagunaPresa](/LagunaPresa) @山形 
+* [intptr-t](/intptr-t) @愛知
+* [s-hosoai](/s-hosoai) @九州
+
+(表明順)
 
 ## ノート
 
-:arrow_right: [ノート](https://github.com/Java8Workshop/Exercises/wiki/Note)
+:arrow_right: [ノート](https://github.com/aosn/java8/wiki/Note)
 
 ## 本リポジトリの利用方法
 
@@ -73,7 +125,7 @@ Scala や Clojure といった関数型プログラミングの考え方を取�
 2. `Git` カテゴリにある `Projects from Git` を選び、` Next > ` ボタンをクリックします。
 3. `Clone URI` を選び、` Next > ` ボタンをクリックします。
 4. 以下を入力し、``` Next > ``` ボタンをクリックします:
- * `URI:` https://github.com/Java8Workshop/Exercises.git
+ * `URI:` https://github.com/aosn/java8.git
  * `User:` _your-github-user-name_
  * `Password:` _your-github-user-password_
  * `Store in Secure Store` ☑ でパスワードを保存
@@ -100,7 +152,7 @@ Scala や Clojure といった関数型プログラミングの考え方を取�
 
 1. `チーム` メニューから `Git` サブメニューを開き `クローン...` をクリックします。
 2. 以下を入力し、``` 次 > ``` ボタンをクリックします:
- * `リポジトリURL:` https://github.com/Java8Workshop/Exercises.git
+ * `リポジトリURL:` https://github.com/aosn/java8.git
  * `ユーザー:` _your-github-user-name_
  * `パスワード:` _your-github-user-password_
  * `パスワードを保存` ☑ でパスワードを保存
@@ -108,3 +160,16 @@ Scala や Clojure といった関数型プログラミングの考え方を取�
 3. `master` に ☑ が入っているのを確認し、`次 > `ボタンをクリックします。
 4. そのまま中身をいじらずに ` 終了 ` をクリックします。
 5. 正常にクローンできると "クローン完了" ダイアログが表示されるので `プロジェクトを開く` をクリックします。
+
+### IntelliJ で開発する場合
+
+##### 初期設定 (簡易説明)
+
+1. clone します。
+2. build, out の各ディレクトリを作ります。
+3. `Module Settings` を開きます。
+ 1. `Project` > `Project SDK:` を 1.8 の JDK に、`Project language level:`を 8 に指定します。
+ 2. 同 `Project compiler output:` に 先ほどの _build_ ディレクトリを指定します。
+ 3. `Module` > `Sources` タブで _src_ ディレクトリを `Sources` に、_test_ ディレクトリを `Tests` に、_build_ ディレクトリと _out_ ディレクトリを `Excluded` に指定します。
+ 4. `Libraries` > `+` で _lib_ ディレクトリにある JUnit の jar ファイルを追加します。 
+4. 画面を閉じたらビルドできるはずです。

@@ -160,3 +160,16 @@ m: [mikan](/mikan), M: [MrBearing](/MrBearing), Y: [YuichiroSato](/YuichiroSato)
 3. `master` に ☑ が入っているのを確認し、`次 > `ボタンをクリックします。
 4. そのまま中身をいじらずに ` 終了 ` をクリックします。
 5. 正常にクローンできると "クローン完了" ダイアログが表示されるので `プロジェクトを開く` をクリックします。
+
+### IntelliJ で開発する場合
+
+##### 初期設定 (簡易説明)
+
+1. clone します。
+2. build, out の各ディレクトリを作ります。
+3. `Module Settings` を開きます。
+ 1. `Project` > `Project SDK:` を 1.8 の JDK に、`Project language level:`を 8 に指定します。
+ 2. 同 `Project compiler output:` に 先ほどの _build_ ディレクトリを指定します。
+ 3. `Module` > `Sources` タブで _src_ ディレクトリを `Sources` に、_test_ ディレクトリを `Tests` に、_build_ ディレクトリと _out_ ディレクトリを `Excluded` に指定します。
+ 4. `Libraries` > `+` で _lib_ ディレクトリにある JUnit の jar ファイルを追加します。 
+4. 画面を閉じたらビルドできるはずです。

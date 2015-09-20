@@ -7,7 +7,7 @@
 
 こちらは [mikan](/mikan) が主催する Java 8 本のオンライン輪読会の Wiki です。
 
-終了報告はこちら → https://aosn.github.io/#!ws1-java8.md
+終了報告はこちら → https://aosn.github.io/#!/workshop/1-java8.md
 
 ## 本リポジトリの利用方法
 

@@ -5,6 +5,7 @@
 package com.tasktoys.java8ws.mikan.ch8.ex01;
 
 import static org.junit.Assert.assertEquals;
+
 import org.junit.Test;
 
 /**
@@ -13,9 +14,12 @@ import org.junit.Test;
  */
 public class UnsignedIntTest {
 
+    private int max = Integer.MAX_VALUE;
+
     @Test
     public void testAdd_normalInput() {
-        assertEquals(0 + 0, new UnsignedInt(0).add(0));
-        assertEquals(Integer.MAX_VALUE + Integer.MAX_VALUE, new UnsignedInt(Integer.MAX_VALUE).add(Integer.MAX_VALUE));
+        assertEquals(0, new UnsignedInt(0).add(0));
+        assertEquals(max, new UnsignedInt(max).add(0));
+        assertEquals(max, new UnsignedInt(0).add(max));
     }
 }

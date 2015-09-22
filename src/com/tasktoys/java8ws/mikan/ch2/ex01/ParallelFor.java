@@ -1,6 +1,6 @@
 /*
  * Copyright(C) 2014-2015 Java 8 Workshop participants. All rights reserved.
- * https://github.com/Java8Workshop/Exercises
+ * https://github.com/aosn/java8
  */
 package com.tasktoys.java8ws.mikan.ch2.ex01;
 
@@ -27,41 +27,19 @@ import java.util.concurrent.Future;
  */
 public class ParallelFor {
 
-    private static final int DEFAULT_WORD_LENGTH = 12;
-    private static final int DEFAULT_SEGMENT_SIZE = 100;
     private final int wordLength;
     private final int segmentSize;
 
-    public static void main(String[] args) throws IOException {
-        ParallelFor.fetchAliceDotTxt();
-        String contents = new String(Files.readAllBytes(Paths.get("out/alice.txt")), StandardCharsets.UTF_8);
-        List<String> words = Arrays.asList(contents.split("[\\P{L}]+"));
-        ParallelFor pf = new ParallelFor(DEFAULT_WORD_LENGTH, DEFAULT_SEGMENT_SIZE);
-        System.out.println("Number of words: " + words.size());
-        System.out.println("for:\t" + pf.countSequential(words));
-        System.out.println("thread:\t" + pf.countParallel(words));
-    }
-
-    public static void fetchAliceDotTxt() {
-        if (new File("out/alice.txt").exists()) {
-            System.out.println("alice.txt already found. Download skipping.");
-            return;
-        }
-        String target = "http://www.umich.edu/~umfandsf/other/ebooks/alice30.txt";
-        try (InputStream input = new URL(target).openStream()) {
-            Files.copy(input, Paths.get("out/alice.txt"), StandardCopyOption.REPLACE_EXISTING);
-        } catch (MalformedURLException ex) {
-            System.err.println("MalformedURLException" + ex.getMessage());
-        } catch (IOException ex) {
-            System.err.println("IOException" + ex.getMessage());
-        }
-    }
-    
     public ParallelFor(int wordLength, int segmentSize) {
+        if (wordLength < 1) {
+            throw new IllegalArgumentException("illegal word length: " + wordLength);
+        }
+        if (segmentSize < 1) {
+            throw new IllegalArgumentException("illegal segment size: " + segmentSize);
+        }
         this.wordLength = wordLength;
         this.segmentSize = segmentSize;
     }
-
 
     public int countSequential(List<String> words) {
         int count = 0;
@@ -73,8 +51,8 @@ public class ParallelFor {
         return count;
     }
 
-   public int countParallel(List <String> words) {
-       int count = 0;
+    public int countParallel(List<String> words) {
+        int count = 0;
         ExecutorService exec = Executors.newSingleThreadExecutor();
         List<Future<Integer>> futures = new ArrayList<>();
         int begin = 0;
@@ -105,7 +83,7 @@ public class ParallelFor {
         }
         exec.shutdown();
         return count;
-   }
+    }
 
     private static class Counter implements Callable<Integer> {
 
@@ -120,11 +98,7 @@ public class ParallelFor {
 
         @Override
         public Integer call() throws Exception {
-            for (String w : segment) {
-                if (w.length() > wordLength) {
-                    count++;
-                }
-            }
+            segment.stream().filter(w -> w.length() > wordLength).forEach(w -> count++);
             return count;
         }
     }

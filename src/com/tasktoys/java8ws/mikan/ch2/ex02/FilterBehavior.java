@@ -1,6 +1,6 @@
 /*
  * Copyright(C) 2014-2015 Java 8 Workshop participants. All rights reserved.
- * https://github.com/Java8Workshop/Exercises
+ * https://github.com/aosn/java8
  */
 package com.tasktoys.java8ws.mikan.ch2.ex02;
 
@@ -18,23 +18,9 @@ import java.util.List;
  */
 public class FilterBehavior {
 
-    private static int cursor = 0;
+    private int cursor = 0;
 
-    public static void main(String[] args) throws IOException {
-        ParallelFor.fetchAliceDotTxt();
-        String contents = new String(Files.readAllBytes(Paths.get("out/alice.txt")), StandardCharsets.UTF_8);
-        List<String> words = Arrays.asList(contents.split("[\\P{L}]+"));
-        System.out.println("Number of words: " + words.size());
-        long count = words.stream().filter(w -> {
-            boolean result = w.length() > 12;
-            print(result);
-            return result;
-        }).limit(5).count();
-        System.out.println();
-        System.out.println("count: " + count);
-    }
-
-    private static void print(boolean result) {
+    public void print(boolean result) {
         System.out.print(result ? "#" : ".");
         cursor++;
         if (cursor >= 80) {

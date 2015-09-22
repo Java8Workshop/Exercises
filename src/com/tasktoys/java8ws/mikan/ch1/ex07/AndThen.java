@@ -1,6 +1,6 @@
 /*
  * Copyright(C) 2014-2015 Java 8 Workshop participants. All rights reserved.
- * https://github.com/Java8Workshop/About
+ * https://github.com/aosn/java8
  */
 package com.tasktoys.java8ws.mikan.ch1.ex07;
 
@@ -9,24 +9,6 @@ package com.tasktoys.java8ws.mikan.ch1.ex07;
  * @author mikan
  */
 public class AndThen {
-
-    public static void main(String[] args) {
-        new Thread(andThen(() -> {
-            System.out.println("hoge");
-            try {
-                Thread.sleep(1000);
-            } catch (InterruptedException ex) {
-                System.err.println(ex);
-            }
-        }, () -> {
-            System.out.println("fuga");
-            try {
-                Thread.sleep(1000);
-            } catch (InterruptedException ex) {
-                System.err.println(ex);
-            }
-        })).start();
-    }
 
     public static Runnable andThen(Runnable first, Runnable second) {
         return () -> {

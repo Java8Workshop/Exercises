@@ -2,7 +2,7 @@
 ${licenseFirst}
 </#if>
 ${licensePrefix}Copyright(C) 2014-2015 Java 8 Workshop participants. All rights reserved.
-${licensePrefix}https://github.com/Java8Workshop/Exercises
+${licensePrefix}https://github.com/aosn/java8
 <#if licenseLast??>
 ${licenseLast}
 </#if>

@@ -3,7 +3,7 @@
  * https://github.com/aosn/java8
  */
 
-package com.tasktoys.java8ws.mikan.ch4.ex02;
+package com.tasktoys.java8ws.mikan.ch4.ex03;
 
 import javafx.beans.property.*;
 import javafx.collections.ObservableList;
@@ -14,8 +14,6 @@ import javafx.scene.control.*;
 import javafx.util.Callback;
 
 import java.util.Comparator;
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * CAUTION: This class is not thread-safe.
@@ -24,9 +22,9 @@ import java.util.concurrent.ConcurrentHashMap;
  */
 public class GreetingWithChartAndTable<S> {
 
-    private final Map<String, Object> cache = new ConcurrentHashMap<>();
     // From Greetings
     private volatile StringProperty text = null;
+
     // From javafx.scene.chart.Chart
     private volatile BooleanProperty animated = null;
     private volatile ObjectProperty<Node> legend = null;
@@ -34,6 +32,7 @@ public class GreetingWithChartAndTable<S> {
     private volatile BooleanProperty legendVisible = null;
     private volatile StringProperty title = null;
     private volatile ObjectProperty<Side> titleSide = null;
+
     // From javafx.scene.control.TableView
     private volatile ObjectProperty<Callback<TableView.ResizeFeatures<S>, Boolean>> columnResizePolicy = null;
     private volatile ReadOnlyObjectProperty<Comparator<S>> comparator = null;
@@ -55,24 +54,19 @@ public class GreetingWithChartAndTable<S> {
         if (text == null) {
             synchronized (this) {
                 if (text == null) {
-                    text = new SimpleStringProperty((String) cache.get("text"));
-                    cache.remove("text");
+                    text = new SimpleStringProperty("");
                 }
             }
         }
         return text;
     }
 
-    public final String getText() {
-        return text == null ? (String) cache.get("text") : textProperty().get();
+    public final void setText(String newValue) {
+        textProperty().set(newValue);
     }
 
-    public final void setText(String newValue) {
-        if (text == null) {
-            cache.put("text", newValue);
-        } else {
-            textProperty().set(newValue);
-        }
+    public final String getText() {
+        return textProperty().get();
     }
 
     public final BooleanProperty animatedProperty() {

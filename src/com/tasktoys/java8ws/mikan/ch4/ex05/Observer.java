@@ -1,16 +1,17 @@
 /*
  * Copyright(C) 2014-2015 Java 8 Workshop participants. All rights reserved.
- * https://github.com/Java8Workshop/Exercises
+ * https://github.com/aosn/java8
  */
 package com.tasktoys.java8ws.mikan.ch4.ex05;
+
+import javafx.beans.InvalidationListener;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 
 import java.util.HashSet;
 import java.util.Set;
 import java.util.function.BiFunction;
 import java.util.function.Function;
-import javafx.beans.InvalidationListener;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 
 /**
  *

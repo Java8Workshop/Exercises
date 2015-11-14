@@ -3,13 +3,12 @@
  * https://github.com/aosn/java8
  */
 
-package com.tasktoys.java8ws.mikan.ch6.ex05;
+package com.tasktoys.java8ws.mikan.ch6.ex06;
 
 import java.io.File;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
-import java.util.Collections;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Objects;
@@ -21,7 +20,6 @@ import java.util.concurrent.TimeUnit;
 import java.util.stream.Stream;
 
 /**
- *
  * @author mikan
  */
 public class WordLoader {
@@ -40,8 +38,8 @@ public class WordLoader {
                 System.err.println(ex.getMessage());
                 return;
             }
-            Stream.of(contents.split("[\\P{L}]+")).forEach(s -> result.merge(
-                    s.toLowerCase(), Collections.singleton(f), WordLoader::remap));
+            Stream.of(contents.split("[\\P{L}]+")).forEach(s -> result.computeIfAbsent(
+                    s.toLowerCase(), x -> ConcurrentHashMap.newKeySet()).add(f));
         }));
         executorService.shutdown();
         try {

@@ -3,35 +3,33 @@
  * https://github.com/aosn/java8
  */
 
-package com.tasktoys.java8ws.mikan.ch6.ex05;
+package com.tasktoys.java8ws.mikan.ch6.ex01;
 
 import java.io.File;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
-import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
+import java.util.concurrent.atomic.AtomicReference;
 import java.util.stream.Stream;
 
 /**
+ * Created by mikan on 2015/09/16.
  *
  * @author mikan
  */
-public class WordLoader {
+public class ParallelUpdater {
 
-    private static final int THREAD_POOL_SIZE = 100;
+    private static final int THREAD_POOL_SIZE = 10;
 
-    public Map<String, Set<File>> loadWords(Set<File> files) {
+    public static String calculateLongestWord(Set<File> files) {
         Objects.requireNonNull(files);
+        AtomicReference<String> longest = new AtomicReference<>("");
         ExecutorService executorService = Executors.newFixedThreadPool(THREAD_POOL_SIZE);
-        ConcurrentHashMap<String, Set<File>> result = new ConcurrentHashMap<>();
         files.forEach(f -> executorService.submit(() -> {
             String contents;
             try {
@@ -40,8 +38,8 @@ public class WordLoader {
                 System.err.println(ex.getMessage());
                 return;
             }
-            Stream.of(contents.split("[\\P{L}]+")).forEach(s -> result.merge(
-                    s.toLowerCase(), Collections.singleton(f), WordLoader::remap));
+            Stream.of(contents.split("[\\P{L}]+")).forEach(w -> longest.accumulateAndGet(w, (w1, w2) ->
+                    w1.length() > w2.length() ? w1 : w2));
         }));
         executorService.shutdown();
         try {
@@ -49,13 +47,10 @@ public class WordLoader {
         } catch (InterruptedException ex) {
             System.err.println("Interrputed. " + ex.getMessage());
         }
-        return result;
+        return longest.get();
     }
 
-    private static <T> Set<T> remap(Set<T> existingValue, Set<T> newValue) {
-        Set<T> fileSet = new HashSet<>(existingValue.size() + newValue.size());
-        fileSet.addAll(existingValue);
-        fileSet.addAll(newValue);
-        return fileSet;
+    private ParallelUpdater() {
+        // static use only
     }
 }

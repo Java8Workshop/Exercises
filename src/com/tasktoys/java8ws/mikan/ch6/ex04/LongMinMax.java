@@ -1,7 +1,8 @@
 /*
  * Copyright(C) 2014-2015 Java 8 Workshop participants. All rights reserved.
- * https://github.com/Java8Workshop/Exercises
+ * https://github.com/aosn/java8
  */
+
 package com.tasktoys.java8ws.mikan.ch6.ex04;
 
 import java.util.Objects;

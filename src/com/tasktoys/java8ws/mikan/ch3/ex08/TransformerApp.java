@@ -2,7 +2,8 @@
  * Copyright(C) 2014-2015 Java 8 Workshop participants. All rights reserved.
  * https://github.com/aosn/java8
  */
-package com.tasktoys.java8ws.mikan.ch3.ex06;
+
+package com.tasktoys.java8ws.mikan.ch3.ex08;
 
 import javafx.application.Application;
 import javafx.scene.Scene;
@@ -12,8 +13,6 @@ import javafx.scene.image.WritableImage;
 import javafx.scene.layout.HBox;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
-
-import java.util.function.BiFunction;
 
 /**
  * @author mikan
@@ -26,22 +25,26 @@ public class TransformerApp extends Application {
         TransformerApp.launch();
     }
 
-    public static <T> Image transform(Image in, BiFunction<Color, T, Color> f, T arg) {
+    public static Image transform(Image in, ColorTransformer f) {
         int width = (int) in.getWidth();
         int height = (int) in.getHeight();
         WritableImage out = new WritableImage(width, height);
         for (int x = 0; x < width; x++) {
             for (int y = 0; y < height; y++) {
-                out.getPixelWriter().setColor(x, y, f.apply(in.getPixelReader().getColor(x, y), arg));
+                out.getPixelWriter().setColor(x, y, f.apply(x, y, in.getPixelReader().getColor(x, y)));
             }
         }
         return out;
     }
 
+    public static ColorTransformer createBorder(Image image, int size, Color color) {
+        return (x, y, c) -> x < size || x > image.getWidth() - size || y < size || y > image.getHeight() - size ? color : c;
+    }
+
     @Override
     public void start(Stage primaryStage) throws Exception {
         Image image = new Image(IMAGE_URL);
-        Image image2 = transform(image, (color, arg) -> arg ? color.invert() : color, true);
+        Image image2 = transform(image, createBorder(image, 10, Color.GRAY));
         primaryStage.setScene(new Scene(new HBox(new ImageView(image), new ImageView(image2))));
         primaryStage.show();
     }

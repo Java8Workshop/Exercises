@@ -1,10 +1,9 @@
 /*
  * Copyright(C) 2014-2015 Java 8 Workshop participants. All rights reserved.
- * https://github.com/Java8Workshop/Exercises
+ * https://github.com/aosn/java8
  */
 package com.tasktoys.java8ws.mikan.ch3.ex11;
 
-import java.util.function.UnaryOperator;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
@@ -14,32 +13,17 @@ import javafx.scene.layout.HBox;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
+import java.util.function.UnaryOperator;
+
 /**
- *
  * @author mikan
  */
 public class TransformerApp extends Application {
 
-    private static final String IMAGE_URL = "https://pbs.twimg.com/media/CEDfyQEVEAAkERc.png";
+    private static final String IMAGE_URL = "http://www001.upp.so-net.ne.jp/yshibata/myhomepage/images/js8ri.png";
 
     public static void main(String[] args) {
         TransformerApp.launch();
-    }
-
-    @Override
-    public void start(Stage primaryStage) throws Exception {
-        Image image = new Image(IMAGE_URL);
-        Image brightenedImage = transform(image, Color::brighter);
-        Image composedImage = transform(image, compose(
-                createColorTransformer(Color::brighter),
-                (x, y, c) -> x < 10 || x > image.getWidth() - 10
-                || y < 10 || y > image.getHeight() - 10 ? Color.GRAY : c));
-        primaryStage.setScene(new Scene(new HBox(
-                new ImageView(image),
-                new ImageView(brightenedImage),
-                new ImageView(composedImage)
-        )));
-        primaryStage.show();
     }
 
     public static Image transform(Image in, UnaryOperator<Color> f) {
@@ -72,6 +56,22 @@ public class TransformerApp extends Application {
 
     public static ColorTransformer createColorTransformer(UnaryOperator<Color> f) {
         return (x, y, c) -> f.apply(c); // unused: x, y
+    }
+
+    @Override
+    public void start(Stage primaryStage) throws Exception {
+        Image image = new Image(IMAGE_URL);
+        Image brightenedImage = transform(image, Color::brighter);
+        Image composedImage = transform(image, compose(
+                createColorTransformer(Color::brighter),
+                (x, y, c) -> x < 10 || x > image.getWidth() - 10
+                        || y < 10 || y > image.getHeight() - 10 ? Color.GRAY : c));
+        primaryStage.setScene(new Scene(new HBox(
+                new ImageView(image),
+                new ImageView(brightenedImage),
+                new ImageView(composedImage)
+        )));
+        primaryStage.show();
     }
 
     @FunctionalInterface

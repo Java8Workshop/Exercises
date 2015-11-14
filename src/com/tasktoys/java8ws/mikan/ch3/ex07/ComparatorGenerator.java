@@ -1,37 +1,22 @@
 /*
  * Copyright(C) 2014-2015 Java 8 Workshop participants. All rights reserved.
- * https://github.com/Java8Workshop/Exercises
+ * https://github.com/aosn/java8
  */
 package com.tasktoys.java8ws.mikan.ch3.ex07;
 
-import java.util.Arrays;
 import java.util.Comparator;
 
 /**
- *
  * @author mikan
  */
 public class ComparatorGenerator {
 
-    public static void main(String[] args) {
-        String[] source = {"111", "112", "113", "11 1", "11 2", "11 3"};
-        String[] ttt = source.clone();
-        String[] fff = source.clone();
-        Arrays.sort(ttt, generate(true, true, true));
-        Arrays.sort(ttt, generate(false, false, false));
-        System.out.println("--- t t t ----");
-        for (String s : ttt) {
-            System.out.println(s);
-        }
-        System.out.println("--- f f f ----");
-        for (String s : fff) {
-            System.out.println(s);
-        }
+    private ComparatorGenerator() {
+        // static use only
     }
 
-    public static Comparator<String> generate(
-            boolean naturalOrder, boolean caseSensitive, boolean acceptSpace) {
-        return (String o1, String o2) -> {
+    public static Comparator<String> generate(boolean naturalOrder, boolean caseSensitive, boolean acceptSpace) {
+        return (o1, o2) -> {
             String s1 = acceptSpace ? o1 : o1.replaceAll(" ", "");
             String s2 = acceptSpace ? o2 : o2.replaceAll(" ", "");
             int result = caseSensitive ? s1.compareTo(s2) : s1.compareToIgnoreCase(s2);

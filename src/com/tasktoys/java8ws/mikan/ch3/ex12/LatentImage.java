@@ -1,15 +1,17 @@
 /*
  * Copyright(C) 2014-2015 Java 8 Workshop participants. All rights reserved.
- * https://github.com/Java8Workshop/Exercises
+ * https://github.com/aosn/java8
  */
 package com.tasktoys.java8ws.mikan.ch3.ex12;
 
-import java.util.LinkedList;
-import java.util.List;
-import java.util.function.UnaryOperator;
 import javafx.scene.image.Image;
 import javafx.scene.image.WritableImage;
 import javafx.scene.paint.Color;
+
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Objects;
+import java.util.function.UnaryOperator;
 
 /**
  *
@@ -21,6 +23,7 @@ public class LatentImage {
     private final List<UnaryOperator<Color>> pendingOperations;
 
     protected LatentImage(Image in) {
+        Objects.requireNonNull(in);
         this.in = in;
         pendingOperations = new LinkedList<>();
     }
@@ -30,6 +33,7 @@ public class LatentImage {
     }
 
     public LatentImage transform(UnaryOperator<Color> f) {
+        Objects.requireNonNull(in);
         pendingOperations.add(f);
         return this;
     }

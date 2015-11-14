@@ -1,22 +1,26 @@
 /*
  * Copyright(C) 2014-2015 Java 8 Workshop participants. All rights reserved.
- * https://github.com/Java8Workshop/Exercises
+ * https://github.com/aosn/java8
  */
 package com.tasktoys.java8ws.mikan.ch3.ex16;
 
 import java.time.LocalTime;
+import java.util.Objects;
 import java.util.function.BiConsumer;
 import java.util.function.Consumer;
 import java.util.function.Supplier;
 
 /**
- *
  * @author mikan
  */
 public class DoInOrderAsync {
 
     private static final int LOOP_COUNT = 5;
     private static final int LOOP_INTERVAL = 1000;
+
+    private DoInOrderAsync() {
+        // static use only
+    }
 
     public static void main(String[] args) throws InterruptedException {
 
@@ -49,8 +53,11 @@ public class DoInOrderAsync {
         }
     }
 
-    public static <T> void doInOrderAsync(Supplier<T> first, BiConsumer<T, Throwable> second,
-            Consumer<Throwable> handler) {
+    public static <T> void doInOrderAsync(Supplier<? extends T> first, BiConsumer<? super T, Throwable> second,
+                                          Consumer<? super Throwable> handler) {
+        Objects.requireNonNull(first);
+        Objects.requireNonNull(second);
+        Objects.requireNonNull(handler);
         Thread t = new Thread() {
             @Override
             public void run() {
@@ -66,7 +73,9 @@ public class DoInOrderAsync {
         t.start();
     }
 
-    public static <T> void doInOrderAsync(Supplier<T> first, BiConsumer<T, Throwable> second) {
+    public static <T> void doInOrderAsync(Supplier<? extends T> first, BiConsumer<? super T, ? super Throwable> second) {
+        Objects.requireNonNull(first);
+        Objects.requireNonNull(second);
         Thread t = new Thread() {
             @Override
             public void run() {
